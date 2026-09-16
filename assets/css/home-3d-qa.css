@@ -1,0 +1,68 @@
+/* Home 3D QA — preserve the original interaction model, clarify what each scene is communicating. */
+
+.home-page :is(.diagnostic-stage,.system-visual,.operation-scene-wrap,.assessment-lab-stage,.care-stage,.home-work-visual){isolation:isolate}
+.home-page :is(.diagnostic-floor,.system-scene,.operation-scene,.lab-scene,.care-scene,.floor-scene){transform-style:preserve-3d;backface-visibility:hidden}
+.home-page :is(.diagnostic-stage,.system-visual,.operation-scene-wrap,.assessment-lab-stage,.care-stage).is-state-changing{animation:home-scene-settle 460ms cubic-bezier(.22,1,.36,1)}
+@keyframes home-scene-settle{0%{filter:saturate(.92);transform:translateY(3px)}100%{filter:none;transform:none}}
+
+/* Floor Diagnostic — six states should look visibly different and match the selected problem. */
+.home-page .diagnostic-stage[data-problem-state='0'] .diagnostic-surface{background:linear-gradient(145deg,#cbd3d7,#8c999f)}
+.home-page .diagnostic-stage[data-problem-state='1'] .diagnostic-wear{box-shadow:inset 0 0 0 1px rgb(255 255 255/.12)}
+.home-page .diagnostic-stage[data-problem-state='2'] .diagnostic-peel{filter:drop-shadow(0 18px 18px rgb(21 40 54/.22))}
+.home-page .diagnostic-stage[data-problem-state='3'] .diagnostic-field{box-shadow:inset 0 0 0 2px var(--color-accent),0 0 32px rgb(101 203 227/.24)}
+.home-page .diagnostic-stage[data-problem-state='3'] .diagnostic-floor>em{opacity:1;background:var(--color-signal);box-shadow:0 0 0 .45rem rgb(242 183 33/.12),0 0 1.1rem rgb(101 203 227/.35)}
+.home-page .diagnostic-stage[data-problem-state='4'] .diagnostic-surface{background:linear-gradient(145deg,#e4f7f9,#83c9da);box-shadow:inset 0 0 0 1px rgb(255 255 255/.7),0 26px 35px rgb(21 40 54/.18)}
+.home-page .diagnostic-stage[data-problem-state='4'] .diagnostic-sweep{box-shadow:0 0 1.2rem var(--color-accent),0 0 2.4rem rgb(101 203 227/.28)}
+.home-page .diagnostic-stage[data-problem-state='5'] .diagnostic-moisture{background:radial-gradient(ellipse at 35% 60%,rgb(22 107 162/.72),transparent 32%),radial-gradient(ellipse at 67% 45%,rgb(101 203 227/.34),transparent 24%),linear-gradient(145deg,#cbd3d7,#8c999f)}
+
+/* System Explorer — keep one slab, but make each service state technically distinct. */
+.home-page .system-visual[data-system-state='0'] .system-finish{background:linear-gradient(145deg,#35a1cf,#0b476d)}
+.home-page .system-visual[data-system-state='1'] .system-finish{background:linear-gradient(145deg,#6f9697,#294e55);box-shadow:inset 0 1px rgb(255 255 255/.34)}
+.home-page .system-visual[data-system-state='2'] .system-ground{opacity:1;filter:drop-shadow(0 0 10px rgb(101 203 227/.28))}
+.home-page .system-visual[data-system-state='2'] .system-finish{box-shadow:inset 0 0 0 2px rgb(101 203 227/.48),inset 0 1px rgb(255 255 255/.5)}
+.home-page .system-visual[data-system-state='3'] .system-layer{box-shadow:0 18px 28px rgb(0 0 0/.2)}
+.home-page .system-visual[data-system-state='3'] .system-finish{box-shadow:inset 0 0 0 2px rgb(255 255 255/.6)}
+.home-page .system-visual[data-system-state='4'] .system-finish{background-color:#5d9dad;background-image:linear-gradient(rgb(255 255 255/.2) 1px,transparent 1px),linear-gradient(90deg,rgb(255 255 255/.2) 1px,transparent 1px);background-size:4.5rem 4.5rem}
+.home-page .system-visual[data-system-state='5'] .system-wall{box-shadow:0 20px 38px rgb(0 0 0/.16)}
+.home-page .system-visual[data-system-state='6'] .system-shield{opacity:1;box-shadow:inset 0 0 32px rgb(101 203 227/.12),0 0 22px rgb(101 203 227/.18)}
+.home-page .system-visual[data-system-state='7'] .system-finish{background:linear-gradient(145deg,#9aa2a5,#5b6569);background-image:linear-gradient(145deg,#9aa2a5,#5b6569),radial-gradient(circle,rgb(255 255 255/.16) 0 1px,transparent 1px);background-size:auto,14px 14px}
+.home-page .system-visual.is-exploded .system-layer-labels{opacity:1;transform:translateX(-.25rem)}
+.home-page .system-layer-labels{transition:opacity 350ms var(--ease-out),transform 350ms var(--ease-out)}
+
+/* Operational Floor — each outcome highlights the relevant facility behavior, not random motion. */
+.home-page .operation-scene-wrap[data-operation-state='0'] .operation-route{stroke-dashoffset:0;filter:drop-shadow(0 0 5px rgb(22 107 162/.28))}
+.home-page .operation-scene-wrap[data-operation-state='1'] .operation-zone--inspection{box-shadow:0 18px 28px rgb(22 107 162/.22)}
+.home-page .operation-scene-wrap[data-operation-state='2'] .operation-zone--production{box-shadow:0 18px 28px rgb(22 107 162/.22)}
+.home-page .operation-scene-wrap[data-operation-state='3'] .operation-marker{box-shadow:0 0 0 .6rem rgb(101 203 227/.14),0 0 1.3rem rgb(101 203 227/.3)}
+
+/* Assessment Lab — maintain the correct sequence: surface > moisture > environment > system > application > inspection. */
+.home-page .assessment-lab-stage[data-lab-state='0'] .lab-substrate{box-shadow:0 28px 38px rgb(0 0 0/.35),inset 0 0 0 1px rgb(255 255 255/.16)}
+.home-page .assessment-lab-stage[data-lab-state='1'] .lab-moisture{filter:drop-shadow(0 0 16px rgb(38 130 172/.3))}
+.home-page .assessment-lab-stage[data-lab-state='2'] .lab-environment{box-shadow:inset 0 0 0 2px rgb(101 203 227/.34)}
+.home-page .assessment-lab-stage[data-lab-state='3'] :is(.lab-system,.lab-finish){filter:drop-shadow(0 18px 18px rgb(0 0 0/.18))}
+.home-page .assessment-lab-stage[data-lab-state='4'] .lab-application{box-shadow:0 18px 28px rgb(22 107 162/.18)}
+.home-page .assessment-lab-stage[data-lab-state='5'] .lab-scan{box-shadow:0 0 1.2rem var(--color-accent),0 0 2rem rgb(101 203 227/.24)}
+
+/* Clear Path — preserve sticky behavior and keep the 3D model dominant over the photo sequence. */
+@media (min-width:992px){
+    .home-page .home-work-layout{overflow:visible}
+    .home-page .home-work-visual{position:sticky;top:8.5rem;align-self:start;min-height:39rem}
+}
+.home-page .home-work-visual::before{opacity:.22;filter:saturate(.72) contrast(1.05);transform:scale(1.02)}
+.home-page .home-work-visual::after{background:linear-gradient(180deg,rgb(8 29 43/.25),rgb(8 29 43/.78) 72%,rgb(8 29 43/.94)),linear-gradient(90deg,rgb(8 29 43/.58),transparent 62%)}
+.home-page .home-work-visual .floor-scene{filter:drop-shadow(0 28px 45px rgb(0 0 0/.3)) saturate(1.08)}
+.home-page .home-work-stage.is-active .home-work-stage-copy strong{color:var(--color-primary-dark)}
+
+/* Aftercare — four states should read as guidance, inspection, warranty timeline and support. */
+.home-page .care-stage[data-care-state='0'] .care-route{border-style:dashed;filter:drop-shadow(0 0 8px rgb(101 203 227/.24))}
+.home-page .care-stage[data-care-state='1'] .care-scan{box-shadow:0 0 1.2rem var(--color-accent),0 0 2rem rgb(101 203 227/.25)}
+.home-page .care-stage[data-care-state='2'] .care-timeline{height:4px;box-shadow:0 0 1rem rgb(101 203 227/.2)}
+.home-page .care-stage[data-care-state='3'] .care-scene>i{box-shadow:0 0 0 .6rem rgb(101 203 227/.16),0 0 1.4rem rgb(101 203 227/.28)}
+
+@media (max-width:991.98px){
+    .home-page .system-visual{position:relative;top:auto}
+    .home-page :is(.diagnostic-stage,.system-visual,.assessment-lab-stage,.care-stage){min-height:auto}
+}
+@media (prefers-reduced-motion:reduce){
+    .home-page :is(.diagnostic-stage,.system-visual,.operation-scene-wrap,.assessment-lab-stage,.care-stage).is-state-changing{animation:none}
+}
