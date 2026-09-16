@@ -1,0 +1,122 @@
+/* Master service-detail template — Akshaya Floor Solutions */
+.service-page {
+    --service-ink: #102838;
+    --service-navy: #0e293a;
+    --service-blue: #176ea6;
+    --service-cyan: #68cee6;
+    --service-soft: #eef5f8;
+    --service-line: #d8e5ec;
+}
+
+.service-main { overflow: clip; }
+.service-main .section { padding-block: clamp(5.5rem, 8vw, 8rem); }
+.service-main .section-eyebrow {
+    font-size: .75rem; font-weight: 700; letter-spacing: .17em; text-transform: uppercase; color: var(--service-blue);
+}
+.service-main .section-title {
+    max-width: 12ch; margin-top: .8rem; font-family: var(--font-display); font-size: clamp(3rem, 5.2vw, 5rem);
+    font-weight: 600; line-height: .96; letter-spacing: -.035em; color: var(--service-ink);
+}
+.service-main .section-description { max-width: 46rem; font-size: 1.08rem; line-height: 1.75; color: #526a78; }
+
+.service-hero {
+    position: relative; isolation: isolate; min-height: min(50rem, calc(100svh - 6rem)); display: grid; align-items: center;
+    background: linear-gradient(135deg, #f8fbfc 0%, #edf5f8 62%, #e3eef3 100%);
+}
+.service-hero::before {
+    content: ''; position: absolute; inset: 0; z-index: -1; opacity: .28;
+    background-image: linear-gradient(rgb(23 110 166 / .08) 1px, transparent 1px), linear-gradient(90deg, rgb(23 110 166 / .08) 1px, transparent 1px);
+    background-size: 68px 68px; mask-image: linear-gradient(90deg, #000, #000 48%, transparent 88%);
+}
+.service-hero-grid { display: grid; grid-template-columns: minmax(0, .9fr) minmax(28rem, 1.1fr); gap: clamp(3rem, 6vw, 7rem); align-items: center; }
+.service-kicker { display: inline-flex; align-items: center; gap: .7rem; font-size: .76rem; font-weight: 700; letter-spacing: .17em; text-transform: uppercase; color: var(--service-blue); }
+.service-kicker::before { content: ''; width: 2.5rem; height: 2px; background: var(--service-cyan); }
+.service-hero h1 { margin-top: 1.2rem; max-width: 9ch; font-family: var(--font-display); font-size: clamp(4rem, 7vw, 7rem); font-weight: 600; line-height: .88; letter-spacing: -.045em; color: var(--service-ink); }
+.service-hero h1 em { color: var(--service-blue); font-style: normal; }
+.service-hero-copy > p { max-width: 39rem; margin-top: 1.8rem; font-size: clamp(1.05rem, 1.2vw, 1.2rem); line-height: 1.7; color: #536d7b; }
+.service-hero-actions { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 2rem; }
+.service-hero-note { margin-top: 1.4rem; font-size: .82rem; color: #6b808d; }
+.service-hero-media { position: relative; min-height: 36rem; overflow: hidden; background: #17394c url('../../website_assets/Epoxy Coating Pics/IMG20190903120103.jpg') center/cover no-repeat; box-shadow: 0 36px 80px rgb(14 41 58 / .2); }
+.service-hero-media::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 45%, rgb(8 27 39 / .58)); }
+.service-hero-badge { position: absolute; left: 1.5rem; bottom: 1.5rem; z-index: 2; max-width: 18rem; padding: 1rem 1.1rem; background: rgb(255 255 255 / .92); backdrop-filter: blur(10px); }
+.service-hero-badge span { display: block; font-size: .7rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--service-blue); }
+.service-hero-badge strong { display: block; margin-top: .4rem; font-size: 1rem; line-height: 1.35; color: var(--service-ink); }
+
+.service-intro-grid { display: grid; grid-template-columns: .85fr 1.15fr; gap: clamp(3rem, 7vw, 8rem); align-items: start; }
+.service-definition { font-size: clamp(1.5rem, 2.1vw, 2.2rem); line-height: 1.35; color: var(--service-ink); }
+.service-definition strong { color: var(--service-blue); }
+.service-copy p + p { margin-top: 1rem; }
+
+.service-problems { background: var(--service-navy); color: #f4fafc; }
+.service-problems .section-title { color: #f4fafc; }
+.service-problems .section-eyebrow { color: var(--service-cyan); }
+.service-problem-grid { margin-top: 3.5rem; display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid rgb(255 255 255 / .15); }
+.service-problem { padding: 1.6rem 1.25rem 1.8rem 0; border-bottom: 1px solid rgb(255 255 255 / .15); }
+.service-problem + .service-problem { padding-left: 1.25rem; border-left: 1px solid rgb(255 255 255 / .15); }
+.service-problem span { font-family: var(--font-display); font-size: 2.6rem; color: rgb(104 206 230 / .3); }
+.service-problem h3 { margin-top: 1rem; font-size: 1rem; color: #fff; }
+.service-problem p { margin-top: .5rem; font-size: .9rem; line-height: 1.6; color: #bcd0db; }
+
+.service-benefits-grid { margin-top: 3.5rem; display: grid; grid-template-columns: 1.2fr .8fr; gap: 4rem; }
+.service-benefits-list { border-top: 1px solid var(--service-line); }
+.service-benefit { display: grid; grid-template-columns: 4rem 1fr; gap: 1.25rem; padding: 1.35rem 0; border-bottom: 1px solid var(--service-line); }
+.service-benefit span { font-family: var(--font-display); font-size: 1.7rem; color: var(--service-cyan); }
+.service-benefit h3 { margin: 0; font-size: 1.02rem; color: var(--service-ink); }
+.service-benefit p { margin-top: .35rem; line-height: 1.65; color: #607784; }
+.service-benefits-media { min-height: 31rem; background: #17394c url('../../website_assets/Epoxy Coating Pics/IMG20190903134334.jpg') center/cover no-repeat; }
+
+.service-suitability { background: var(--service-soft); }
+.service-suitability-grid { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: 3rem; border-top: 1px solid #cbdde6; }
+.service-suitability-item { padding: 1.4rem 1.2rem 1.4rem 0; border-bottom: 1px solid #cbdde6; }
+.service-suitability-item:not(:nth-child(3n+1)) { padding-left: 1.2rem; border-left: 1px solid #cbdde6; }
+.service-suitability-item strong { display: block; color: var(--service-ink); }
+.service-suitability-item span { display: block; margin-top: .35rem; font-size: .9rem; line-height: 1.55; color: #627985; }
+
+.service-assessment-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 5rem; align-items: start; }
+.service-assessment-steps { border-top: 1px solid var(--service-line); }
+.service-assessment-step { display: grid; grid-template-columns: 3rem 1fr; gap: 1rem; padding: 1.25rem 0; border-bottom: 1px solid var(--service-line); }
+.service-assessment-step span { font-family: var(--font-display); font-size: 1.5rem; color: var(--service-blue); }
+.service-assessment-step strong { display: block; color: var(--service-ink); }
+.service-assessment-step p { margin-top: .35rem; color: #607784; line-height: 1.6; }
+
+.service-process { background: var(--service-navy); color: #eef8fb; }
+.service-process .section-title { color: #fff; }
+.service-process .section-eyebrow { color: var(--service-cyan); }
+.service-process-grid { margin-top: 3rem; display: grid; grid-template-columns: repeat(5, 1fr); }
+.service-process-item { padding: 1.4rem; border: 1px solid rgb(255 255 255 / .14); border-right: 0; }
+.service-process-item:last-child { border-right: 1px solid rgb(255 255 255 / .14); }
+.service-process-item span { font-family: var(--font-display); font-size: 2rem; color: var(--service-cyan); }
+.service-process-item strong { display: block; margin-top: 2.5rem; color: #fff; }
+.service-process-item p { margin-top: .5rem; font-size: .88rem; line-height: 1.6; color: #b8cdd8; }
+
+.service-maintenance-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; }
+.service-note-box { padding: 1.5rem; border-left: 3px solid var(--service-cyan); background: #f3f8fa; color: #536b78; line-height: 1.7; }
+.service-faq { margin-top: 2.5rem; border-top: 1px solid var(--service-line); }
+.service-faq details { border-bottom: 1px solid var(--service-line); }
+.service-faq summary { cursor: pointer; padding: 1.2rem 0; font-weight: 700; color: var(--service-ink); }
+.service-faq p { padding: 0 0 1.2rem; line-height: 1.7; color: #607784; }
+
+.service-final { background: linear-gradient(135deg, #0e293a, #124968); color: #fff; }
+.service-final .section-title { color: #fff; }
+.service-final-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 5rem; align-items: center; }
+.service-final p { color: #c9d9e1; line-height: 1.7; }
+
+@media (max-width: 991.98px) {
+    .service-hero-grid, .service-intro-grid, .service-benefits-grid, .service-assessment-grid, .service-maintenance-grid, .service-final-grid { grid-template-columns: 1fr; }
+    .service-hero-media { min-height: 28rem; }
+    .service-problem-grid { grid-template-columns: repeat(2, 1fr); }
+    .service-process-grid { grid-template-columns: repeat(2, 1fr); }
+    .service-process-item { border-right: 1px solid rgb(255 255 255 / .14); }
+}
+
+@media (max-width: 767.98px) {
+    .service-main .section { padding-block: 4.75rem; }
+    .service-hero { min-height: auto; }
+    .service-hero-grid { padding-block: 4rem 5rem; }
+    .service-hero h1 { font-size: clamp(3.5rem, 16vw, 5rem); }
+    .service-hero-media { min-height: 23rem; }
+    .service-problem-grid, .service-suitability-grid, .service-process-grid { grid-template-columns: 1fr; }
+    .service-problem + .service-problem, .service-suitability-item:not(:nth-child(3n+1)) { padding-left: 0; border-left: 0; }
+    .service-process-item { border-bottom: 0; }
+    .service-process-item:last-child { border-bottom: 1px solid rgb(255 255 255 / .14); }
+}
