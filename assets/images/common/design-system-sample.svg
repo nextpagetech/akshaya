@@ -1,0 +1,18 @@
+<!-- Internal abstract geometry for image-treatment review. Not a project photograph or flooring specification. -->
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="640" viewBox="0 0 960 640" fill="none">
+  <rect width="960" height="640" fill="#e8f3fa"/>
+  <g stroke="#166ba2" stroke-opacity=".1">
+    <path d="M0 160H960M0 320H960M0 480H960M160 0V640M320 0V640M480 0V640M640 0V640M800 0V640"/>
+  </g>
+  <path d="M155 413L473 237L808 416L490 592Z" fill="#152836" opacity=".1"/>
+  <path d="M155 340L473 164L808 343L490 519Z" fill="#152836"/>
+  <path d="M155 340L490 519V551L155 372Z" fill="#10517d"/>
+  <path d="M490 519L808 343V375L490 551Z" fill="#166ba2"/>
+  <path d="M155 259L473 83L808 262L490 438Z" fill="#166ba2"/>
+  <path d="M155 259L490 438V460L155 281Z" fill="#10517d"/>
+  <path d="M490 438L808 262V284L490 460Z" fill="#65cbe3"/>
+  <path d="M240 260L475 129L721 261L488 391Z" stroke="#65cbe3" stroke-width="2"/>
+  <g stroke="#166ba2" stroke-width="2">
+    <path d="M91 99H139M115 75V123M809 538H857M833 514V562"/>
+  </g>
+</svg>
