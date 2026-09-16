@@ -33,7 +33,6 @@ if ($showSiteShell ?? true) {
         <div class="container footer-main">
             <div class="footer-grid">
                 <div class="footer-brand">
-                    <!-- The supplied logo is unchanged; white backing preserves its original colors. -->
                     <a class="footer-logo" href="<?= site_escape(site_url('index.php')) ?>" aria-label="Akshaya Floor Solutions — Home">
                         <img src="<?= site_escape(asset_url('images/logo/logo.jpg')) ?>" alt="Akshaya Floor Solutions" width="220" height="159" loading="lazy">
                     </a>
@@ -49,9 +48,7 @@ if ($showSiteShell ?? true) {
                         <?php if ($siteConfig['address'] !== ''): ?>
                         <p class="footer-address"><?= site_escape($siteConfig['address']) ?></p>
                         <?php endif; ?>
-                        <!-- Email/address stay private placeholders until confirmed in configuration. -->
                     </address>
-                    <!-- Social links may be added when actual approved profile URLs are supplied. -->
                 </div>
 
                 <nav class="footer-link-group" aria-label="Footer flooring solutions">
@@ -70,7 +67,6 @@ if ($showSiteShell ?? true) {
                         <li><a href="<?= site_escape(site_url('industries/' . $slug . '.php')) ?>"><?= site_escape($footerIndustries[$slug]) ?></a></li>
                         <?php endforeach; ?>
                     </ul>
-                    <!-- No View All link: an industry listing page does not exist. -->
                 </nav>
 
                 <nav class="footer-link-group" aria-label="Footer quick links">
@@ -88,7 +84,6 @@ if ($showSiteShell ?? true) {
         <div class="container">
             <div class="footer-bottom">
                 <p>&copy; <?= date('Y') ?> <?= site_escape($siteConfig['company_name']) ?>. All rights reserved.</p>
-                <!-- Add approved Privacy Policy / Terms links here only after those pages exist. -->
             </div>
         </div>
     </footer>
@@ -97,5 +92,6 @@ if ($showSiteShell ?? true) {
     <script src="<?= site_escape(asset_url('js/main.js')) ?>" defer></script>
     <script src="<?= site_escape(asset_url('js/experience-fixes.js')) ?>" defer></script>
     <script src="<?= site_escape(asset_url('js/support-depth.js')) ?>" defer></script>
+    <script src="<?= site_escape(asset_url('js/interactive-pages.js')) ?>" defer></script>
 </body>
 </html>
