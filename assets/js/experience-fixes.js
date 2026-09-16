@@ -1,39 +1,9 @@
-/* Cross-site interaction QA: desktop menu grace + restrained inner-page technical depth. */
+/* Cross-site interaction QA: restrained inner-page technical depth. Navigation remains owned by main.js. */
 (() => {
     'use strict';
 
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
     const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)');
-
-    const stabilizeMegaMenus = () => {
-        if (!finePointer.matches) return;
-        document.querySelectorAll('[data-mega-item]').forEach((item) => {
-            const trigger = item.querySelector('.mega-toggle');
-            const panel = item.querySelector('.mega-panel');
-            if (!trigger || !panel || item.dataset.hoverGraceReady) return;
-            let closeTimer = 0;
-
-            const open = () => {
-                window.clearTimeout(closeTimer);
-                panel.hidden = false;
-                trigger.setAttribute('aria-expanded', 'true');
-            };
-            const close = () => {
-                window.clearTimeout(closeTimer);
-                closeTimer = window.setTimeout(() => {
-                    if (item.matches(':hover') || item.contains(document.activeElement)) return;
-                    panel.hidden = true;
-                    trigger.setAttribute('aria-expanded', 'false');
-                }, 360);
-            };
-
-            trigger.addEventListener('pointerenter', open);
-            panel.addEventListener('pointerenter', open);
-            item.addEventListener('pointerleave', close);
-            panel.addEventListener('pointerleave', close);
-            item.dataset.hoverGraceReady = 'true';
-        });
-    };
 
     const addPointerDepth = (element, xVar, yVar, maxX = 2.4, maxY = 3.6) => {
         if (!element || element.dataset.depthQaReady) return;
@@ -63,9 +33,7 @@
         const page = document.querySelector('.service-page');
         const media = page?.querySelector('.service-hero-media');
         if (!page || !media || page.dataset.serviceExperienceReady) return;
-
         addPointerDepth(media, '--detail-rx', '--detail-ry');
-
         const toggle = document.createElement('button');
         toggle.type = 'button';
         toggle.className = 'detail-layer-toggle';
@@ -78,12 +46,9 @@
             toggle.textContent = expanded ? 'Collapse system layers' : 'Explore system layers';
         });
         media.append(toggle);
-
-        const detailItems = [...page.querySelectorAll('.service-problem, .service-benefit, .service-assessment-step')];
-        detailItems.forEach((item, index) => {
+        [...page.querySelectorAll('.service-problem, .service-benefit, .service-assessment-step')].forEach((item, index) => {
             item.addEventListener('pointerenter', () => {
                 if (!finePointer.matches) return;
-                page.dataset.detailState = String(index % 4);
                 media.style.setProperty('--detail-shift', `${-(index % 4) * 4}px`);
             });
         });
@@ -94,10 +59,8 @@
         const page = document.querySelector('.industry-page');
         const media = page?.querySelector('.industry-hero-media');
         if (!page || !media || page.dataset.industryExperienceReady) return;
-
         addPointerDepth(media, '--industry-rx', '--industry-ry', 2.2, 3.2);
         media.dataset.envState = '0';
-
         const labels = [
             ['Surface', 'Review the existing floor condition'],
             ['Traffic', 'Understand movement and working loads'],
@@ -107,7 +70,6 @@
         const controls = document.createElement('div');
         controls.className = 'industry-visual-controls';
         controls.setAttribute('aria-label', 'Explore facility assessment factors');
-
         labels.forEach(([label, description], index) => {
             const button = document.createElement('button');
             button.type = 'button';
@@ -121,7 +83,6 @@
             controls.append(button);
         });
         media.append(controls);
-
         page.querySelectorAll('.industry-zone, .industry-solution').forEach((item, index) => {
             item.addEventListener('pointerenter', () => {
                 if (!finePointer.matches) return;
@@ -134,11 +95,9 @@
     };
 
     const start = () => {
-        stabilizeMegaMenus();
         initializeServiceExperience();
         initializeIndustryExperience();
     };
-
     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start, { once: true });
     else start();
 })();
