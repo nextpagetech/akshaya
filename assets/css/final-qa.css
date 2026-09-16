@@ -1,0 +1,22 @@
+/* Final cross-site QA: one consistent desktop/mobile rhythm after page-specific styles. */
+:root{--qa-section-space:clamp(4.5rem,6vw,6.5rem);--qa-section-space-mobile:4rem}
+
+.service-main .section,.industry-main .section,.support-main .section{padding-block:var(--qa-section-space)}
+.service-main .section-title,.industry-main .section-title,.support-main .section-title{font-size:clamp(2.7rem,4vw,4.15rem);line-height:.98;letter-spacing:-.035em}
+.service-main .section-description,.industry-main .section-description,.support-main .section-description{font-size:1.04rem;line-height:1.7}
+
+.service-hero-grid,.industry-hero-grid{min-height:min(42rem,calc(100svh - 6rem))}
+.service-hero h1,.industry-hero h1{font-size:clamp(3.7rem,6vw,6rem)}
+.service-hero-media,.industry-hero-media{min-height:31rem}
+
+/* Supporting pages use editorial hierarchy rather than hero-sized section headings. */
+.projects-page #project-method{max-width:17ch;font-size:clamp(2.8rem,3.7vw,3.7rem);line-height:1.02}
+.projects-page .support-dark .support-principles{margin-top:2.25rem}
+.contact-page #contact-form-title{max-width:16ch;font-size:clamp(2.7rem,3.5vw,3.6rem);line-height:1.02}
+.gallery-page #gallery-work,.gallery-page #gallery-context{max-width:18ch;font-size:clamp(2.65rem,3.6vw,3.7rem)}
+
+/* Keep major Home storytelling sections dramatic but not oversized. */
+.home-page .home-work-heading .section-title{font-size:clamp(2.8rem,4vw,4rem);max-width:18ch}.home-page .home-work-heading .section-description{max-width:45rem}.home-page #flooring-solutions .section-header,.home-page #industries .section-header,.home-page .assessment-lab .section-header{margin-bottom:clamp(2.5rem,4vw,4rem)}
+
+@media(max-width:991.98px){.service-hero-grid,.industry-hero-grid{min-height:auto;padding-block:3.75rem 4.75rem}.service-hero-media,.industry-hero-media{min-height:26rem}}
+@media(max-width:767.98px){.service-main .section,.industry-main .section,.support-main .section{padding-block:var(--qa-section-space-mobile)}.service-main .section-title,.industry-main .section-title,.support-main .section-title,.projects-page #project-method,.contact-page #contact-form-title,.gallery-page #gallery-work,.gallery-page #gallery-context{font-size:clamp(2.25rem,9.5vw,3.2rem);max-width:20ch}.service-hero h1,.industry-hero h1{font-size:clamp(3.1rem,14vw,4.7rem)}.service-hero-media,.industry-hero-media{min-height:22rem}}
