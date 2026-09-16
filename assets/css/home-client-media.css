@@ -1,0 +1,91 @@
+/* Home client media integration.
+ * Uses supplied Akshaya project/source photography. No client/project identity is implied by placement.
+ * These are presentation selections only and can be recropped/replaced after visual review.
+ */
+
+.home-page .home-demo-media img {
+    object-fit: cover;
+    object-position: center;
+}
+
+.home-page .home-image-disclosure {
+    display: none;
+}
+
+/* Hero: use supplied real project photography instead of the illustrative demo asset. */
+.home-page .ae-hero-image .home-demo-media img {
+    content: url('../../website_assets/Selected Pics from _23/006.JPG');
+}
+
+/* Industry explorer: use lightweight client site photos from the Amritha Tools set.
+ * Placement is generic visual support only; it does not claim these photos are from each listed industry.
+ */
+.home-page #industry-manufacturing .home-demo-media img {
+    content: url('../../website_assets/Amritha Tools/IMG-20190714-WA0024.jpg');
+}
+.home-page #industry-pharma .home-demo-media img {
+    content: url('../../website_assets/Amritha Tools/IMG-20190714-WA0025.jpg');
+}
+.home-page #industry-food-beverage .home-demo-media img {
+    content: url('../../website_assets/Amritha Tools/IMG-20190721-WA0003.jpg');
+}
+.home-page #industry-electronics .home-demo-media img {
+    content: url('../../website_assets/Amritha Tools/IMG-20190721-WA0004.jpg');
+}
+.home-page #industry-automobile .home-demo-media img {
+    content: url('../../website_assets/Amritha Tools/IMG-20190726-WA0040.jpg');
+}
+.home-page #industry-warehouses-logistics .home-demo-media img {
+    content: url('../../website_assets/Amritha Tools/IMG-20190726-WA0041.jpg');
+}
+.home-page #industry-hospitals-healthcare .home-demo-media img {
+    content: url('../../website_assets/Amritha Tools/IMG-20190727-WA0007.jpg');
+}
+.home-page #industry-data-centres .home-demo-media img {
+    content: url('../../website_assets/Amritha Tools/IMG-20190727-WA0008.jpg');
+}
+
+/* Featured project visuals. Keep copy deliberately generic until client/project metadata is approved. */
+.home-page .home-projects-grid .home-project:nth-child(1) .home-demo-media img {
+    content: url('../../website_assets/Epoxy Coating Pics/IMG20190903120103.jpg');
+}
+.home-page .home-projects-grid .home-project:nth-child(2) .home-demo-media img {
+    content: url('../../website_assets/Selected Pics from _23/038.JPG');
+}
+.home-page .home-projects-grid .home-project:nth-child(3) .home-demo-media img {
+    content: url('../../website_assets/Selected Pics from _23/045.JPG');
+}
+
+/* Real photography gets a restrained industrial treatment rather than AI-style overlays. */
+.home-page :is(.ae-hero-image, .home-industry-panel, .home-project) .home-demo-media::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(180deg, rgb(8 29 43 / .02), rgb(8 29 43 / .16));
+}
+
+.home-page .home-industry-panel .home-demo-media img,
+.home-page .home-project .home-demo-media img {
+    transition: transform 700ms cubic-bezier(.22,1,.36,1), filter 500ms ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .home-page .home-industry-panel:hover .home-demo-media img,
+    .home-page .home-project:hover .home-demo-media img {
+        transform: scale(1.025);
+    }
+}
+
+@media (max-width: 767.98px) {
+    .home-page .ae-hero-image .home-demo-media img {
+        object-position: 50% 50%;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .home-page .home-industry-panel .home-demo-media img,
+    .home-page .home-project .home-demo-media img {
+        transition: none;
+    }
+}
