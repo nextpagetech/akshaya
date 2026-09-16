@@ -1,0 +1,189 @@
+/* Cross-site interaction layer: purposeful motion, depth and scroll storytelling. */
+
+/* Home hero: GIF-like client-photo sequence without a heavy GIF download. */
+.home-page .ae-hero-image .home-demo-media::before {
+    content: '';
+    position: absolute;
+    z-index: 1;
+    inset: 0;
+    background: url('../../website_assets/Epoxy Coating Pics/IMG20190903120103.jpg') center/cover no-repeat;
+    animation: akshaya-hero-sequence 16s ease-in-out infinite;
+    will-change: opacity, background-image, transform;
+}
+.home-page .ae-hero-image .home-demo-media::after { z-index: 2; }
+@keyframes akshaya-hero-sequence {
+    0%, 20% { opacity: 1; background-image: url('../../website_assets/Epoxy Coating Pics/IMG20190903120103.jpg'); transform: scale(1.015); }
+    24% { opacity: 0; background-image: url('../../website_assets/Epoxy Coating Pics/IMG20190903120103.jpg'); transform: scale(1.035); }
+    25% { opacity: 0; background-image: url('../../website_assets/Epoxy Coating Pics/IMG20190903134334.jpg'); transform: scale(1.01); }
+    30%, 45% { opacity: 1; background-image: url('../../website_assets/Epoxy Coating Pics/IMG20190903134334.jpg'); transform: scale(1.025); }
+    49% { opacity: 0; background-image: url('../../website_assets/Epoxy Coating Pics/IMG20190903134334.jpg'); }
+    50% { opacity: 0; background-image: url('../../website_assets/Epoxy Coating Pics/IMG20190903135838.jpg'); transform: scale(1.01); }
+    55%, 70% { opacity: 1; background-image: url('../../website_assets/Epoxy Coating Pics/IMG20190903135838.jpg'); transform: scale(1.025); }
+    74% { opacity: 0; background-image: url('../../website_assets/Epoxy Coating Pics/IMG20190903135838.jpg'); }
+    75% { opacity: 0; background-image: url('../../website_assets/Selected Pics from _23/038.JPG'); transform: scale(1.01); }
+    80%, 95% { opacity: 1; background-image: url('../../website_assets/Selected Pics from _23/038.JPG'); transform: scale(1.025); }
+    100% { opacity: 1; background-image: url('../../website_assets/Epoxy Coating Pics/IMG20190903120103.jpg'); transform: scale(1.015); }
+}
+
+/* Shared scroll reveals for all inner pages. Content remains visible without JS. */
+.inner-motion-ready .inner-reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 760ms cubic-bezier(.22,1,.36,1), transform 760ms cubic-bezier(.22,1,.36,1);
+}
+.inner-motion-ready .inner-reveal.is-inview { opacity: 1; transform: none; }
+.inner-motion-ready .inner-reveal-left { transform: translateX(-28px); }
+.inner-motion-ready .inner-reveal-right { transform: translateX(28px); }
+.inner-motion-ready :is(.inner-reveal-left,.inner-reveal-right).is-inview { transform: none; }
+
+/* Section progress line adds quiet engineering motion as the visitor scrolls. */
+:is(.service-main,.industry-main,.support-main) .section { position: relative; }
+:is(.service-main,.industry-main,.support-main) .section::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: calc(var(--section-progress, 0) * 100%);
+    height: 2px;
+    background: linear-gradient(90deg, #176ea6, #68cee6, #f2b721);
+    pointer-events: none;
+}
+
+/* Service pages: real 3D system study rather than decorative hover only. */
+@media (min-width: 992px) {
+    .service-benefits-media { position: sticky; top: 8rem; transform-style: preserve-3d; perspective: 1100px; }
+}
+.service-benefits-media {
+    --service-depth-x: 0deg;
+    --service-depth-y: 0deg;
+    transform: perspective(1100px) rotateX(var(--service-depth-x)) rotateY(var(--service-depth-y));
+    transition: transform 520ms cubic-bezier(.22,1,.36,1), box-shadow 520ms cubic-bezier(.22,1,.36,1);
+    box-shadow: 0 28px 65px rgb(14 41 58 / .16);
+}
+.service-benefits-media::before,
+.service-benefits-media::after { transition: transform 650ms cubic-bezier(.22,1,.36,1), opacity 500ms ease; }
+.service-benefits-media[data-benefit-state='1']::before { transform: skewY(-6deg) translate3d(0,-20px,24px); }
+.service-benefits-media[data-benefit-state='1']::after { transform: skewY(-6deg) translate3d(0,12px,6px); }
+.service-benefits-media[data-benefit-state='2']::before { transform: skewY(-9deg) translate3d(14px,-28px,38px); }
+.service-benefits-media[data-benefit-state='2']::after { transform: skewY(-3deg) translate3d(-12px,18px,12px); }
+.service-benefits-media[data-benefit-state='3']::before { transform: skewY(-4deg) translate3d(-10px,-12px,18px); opacity: .7; }
+.service-benefits-media[data-benefit-state='3']::after { transform: skewY(-8deg) translate3d(16px,24px,30px); }
+.service-benefit { cursor: default; }
+.service-benefit.is-active { background: linear-gradient(90deg, rgb(104 206 230 / .10), transparent); }
+.service-benefit.is-active span { color: var(--service-blue); }
+.service-process-item,
+.industry-process-item { position: relative; overflow: hidden; transition: transform 320ms cubic-bezier(.22,1,.36,1), background-color 320ms ease; }
+.service-process-item::after,
+.industry-process-item::after { content:''; position:absolute; left:0; bottom:0; width:100%; height:2px; background:var(--service-cyan,#68cee6); transform:scaleX(0); transform-origin:left; transition:transform 420ms cubic-bezier(.22,1,.36,1); }
+@media (hover:hover) and (pointer:fine) {
+    .service-process-item:hover,
+    .industry-process-item:hover { transform: translateY(-7px); background: rgb(255 255 255 / .05); }
+    .service-process-item:hover::after,
+    .industry-process-item:hover::after { transform: scaleX(1); }
+}
+
+/* Industry pages: hero study remains interactive and the facility rows become linked states. */
+.industry-challenge,
+.industry-assessment-step { transition: transform 300ms cubic-bezier(.22,1,.36,1), background-color 300ms ease, border-color 300ms ease; }
+.industry-challenge.is-active,
+.industry-assessment-step.is-active { transform: translateX(.45rem); background: rgb(104 206 230 / .07); border-color: rgb(104 206 230 / .38); }
+.industry-hero-media .industry-visual-controls { box-shadow: 0 14px 38px rgb(5 21 31 / .2); }
+
+/* Support pages: stronger interactive composition, not static brochure sections. */
+.support-contact-grid > div:first-child,
+.support-form,
+.support-principles,
+.support-project-grid { transform-style: preserve-3d; }
+.support-form { transition: transform 450ms cubic-bezier(.22,1,.36,1), box-shadow 450ms ease; }
+.support-form:focus-within { transform: perspective(1200px) translateY(-4px) rotateX(.5deg); }
+.support-form .field { transition: transform 260ms ease; }
+.support-form .field:focus-within { transform: translateX(.35rem); }
+
+/* Gallery: editorial visual wall with clear interaction. */
+.gallery-page .support-gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0,1fr));
+    grid-auto-rows: 8rem;
+    gap: .8rem;
+    margin-top: 2.25rem;
+}
+.gallery-page .gallery-tile {
+    position: relative;
+    display: block;
+    min-width: 0;
+    padding: 0;
+    border: 0;
+    overflow: hidden;
+    cursor: zoom-in;
+    background-position: center;
+    background-size: cover;
+    box-shadow: 0 14px 34px rgb(14 41 58 / .08);
+}
+.gallery-page .gallery-tile::before {
+    content: attr(data-index);
+    position: absolute;
+    z-index: 3;
+    top: .8rem;
+    left: .8rem;
+    color: #fff;
+    font: 700 .68rem/1 var(--font-body);
+    letter-spacing: .12em;
+    text-shadow: 0 2px 8px rgb(0 0 0 / .35);
+}
+.gallery-page .gallery-tile::after {
+    content: 'VIEW IMAGE  ↗';
+    position: absolute;
+    z-index: 3;
+    right: .8rem;
+    bottom: .8rem;
+    padding: .55rem .7rem;
+    color: #fff;
+    background: rgb(8 34 49 / .78);
+    border-left: 2px solid #68cee6;
+    font: 700 .68rem/1 var(--font-body);
+    letter-spacing: .08em;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 240ms ease, transform 240ms ease;
+}
+.gallery-page .gallery-tile:nth-child(1){grid-column:span 7;grid-row:span 4}
+.gallery-page .gallery-tile:nth-child(2){grid-column:span 5;grid-row:span 2}
+.gallery-page .gallery-tile:nth-child(3){grid-column:span 5;grid-row:span 2}
+.gallery-page .gallery-tile:nth-child(4){grid-column:span 4;grid-row:span 3}
+.gallery-page .gallery-tile:nth-child(5){grid-column:span 4;grid-row:span 3}
+.gallery-page .gallery-tile:nth-child(6){grid-column:span 4;grid-row:span 3}
+.gallery-page .gallery-tile:nth-child(7){grid-column:span 5;grid-row:span 3}
+.gallery-page .gallery-tile:nth-child(8){grid-column:span 7;grid-row:span 3}
+.gallery-page .gallery-tile:nth-child(9){grid-column:span 4;grid-row:span 3}
+.gallery-page .gallery-tile:nth-child(10){grid-column:span 8;grid-row:span 3}
+@media (hover:hover) and (pointer:fine) {
+    .gallery-page .gallery-tile:hover { transform: perspective(900px) translateY(-5px) rotateX(1.2deg) rotateY(-1deg) scale(1.008); box-shadow: 0 24px 54px rgb(14 41 58 / .18); }
+    .gallery-page .gallery-tile:hover::after { opacity: 1; transform: none; }
+}
+.gallery-dialog { width:min(92vw,78rem); max-width:none; padding:0; border:0; background:#081b27; box-shadow:0 35px 95px rgb(0 0 0 / .45); }
+.gallery-dialog::backdrop { background:rgb(5 16 24 / .82); backdrop-filter:blur(6px); }
+.gallery-dialog figure { margin:0; }
+.gallery-dialog img { display:block; width:100%; max-height:82vh; object-fit:contain; background:#071721; }
+.gallery-dialog figcaption { padding:1rem 4rem 1rem 1.25rem; color:#c7d8e1; font-size:.84rem; }
+.gallery-dialog-close { position:absolute; z-index:2; top:.75rem; right:.75rem; width:2.75rem; height:2.75rem; border:1px solid rgb(255 255 255 / .28); background:rgb(8 34 49 / .8); color:#fff; font-size:1.3rem; }
+
+@media (max-width: 767.98px) {
+    .gallery-page .support-gallery-grid { grid-template-columns: 1fr 1fr; grid-auto-rows: 12rem; }
+    .gallery-page .gallery-tile { grid-column:auto!important; grid-row:auto!important; }
+    .gallery-page .gallery-tile:first-child,
+    .gallery-page .gallery-tile:nth-child(5),
+    .gallery-page .gallery-tile:nth-child(8) { grid-column:1/-1!important; }
+}
+@media (max-width: 479.98px) {
+    .gallery-page .support-gallery-grid { grid-template-columns:1fr; grid-auto-rows:15rem; }
+    .gallery-page .gallery-tile { grid-column:auto!important; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .home-page .ae-hero-image .home-demo-media::before { animation:none; }
+    .inner-motion-ready .inner-reveal,
+    .service-benefits-media,
+    .service-process-item,
+    .industry-process-item,
+    .gallery-page .gallery-tile { transition:none!important; transform:none!important; }
+}
