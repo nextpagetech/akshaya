@@ -1,10 +1,40 @@
 <?php
-// Temporary industries/automobile.php page shell; approved content will be added in a later step.
+$pageTitle = 'Automobile Industry Flooring Solutions';
+$pageDescription = 'Flooring solutions for automobile production, assembly, service and support areas, selected around traffic, cleaning, loads and operational requirements.';
+$bodyClass = 'industry-page industry-automobile';
 $assetPrefix = '..';
 require __DIR__ . '/../includes/header.php';
+$arrow = '<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-5-5 5 5-5 5"/></svg>';
+$visitUrl = site_escape(site_url('schedule-visit.php'));
+$callUrl = site_escape('tel:+' . $siteConfig['phone_country_code'] . preg_replace('/\D+/', '', $siteConfig['phone']));
+$challenges = [
+ ['Vehicle and trolley movement','Repeated movement routes can concentrate wear in production and service areas.'],
+ ['Oil and process contamination','Spills and contamination can affect cleaning, safety and the condition of the substrate.'],
+ ['Mixed-use zones','Assembly, stores, utility and service areas may need different flooring approaches.'],
+ ['Shutdown coordination','Flooring work often needs to be planned around operating windows and production schedules.'],
+];
+$zones = [
+ ['Production / assembly','Traffic, cleanliness and surface condition need to be reviewed together.'],
+ ['Service / maintenance','Spill exposure, cleaning and local repairs can influence system selection.'],
+ ['Stores / material movement','Handling routes and concentrated traffic are key considerations.'],
+ ['Utility areas','The requirement may be practical durability rather than a decorative finish.'],
+ ['Inspection areas','Finish, cleanliness and ease of maintenance may be priorities.'],
+ ['Walkways / support zones','Visual separation, cleaning and daily traffic can be considered in the design.'],
+];
+$solutions = [
+ ['Epoxy Flooring','For selected production, inspection and support areas after substrate and exposure assessment.','../services/epoxy-flooring.php'],
+ ['PU Flooring','A possible route where the operating environment calls for a different resin-system approach.','../services/pu-flooring.php'],
+ ['VDF Flooring','For selected heavy-use concrete-floor applications where a dry-shake/VDF approach is part of the project design.','../services/vdf-flooring.php'],
+];
 ?>
-
-<main>
+<main class="industry-main" id="main-content">
+<section class="industry-hero"><div class="container-wide industry-hero-grid"><div class="industry-hero-copy"><span class="industry-kicker">Industry / Automobile</span><h1>Automobile <em>Facilities</em></h1><p>Flooring for automobile environments should be selected around traffic, contamination, loads, cleaning and the way each production or support zone is actually used.</p><div class="industry-hero-actions"><a class="btn btn-primary" href="<?= $visitUrl ?>">Schedule Site Visit <?= $arrow ?></a><a class="btn btn-outline" href="<?= $callUrl ?>">Talk to Our Team <?= $arrow ?></a></div><p class="industry-hero-note">Final flooring selection depends on site conditions and technical assessment.</p></div><div class="industry-hero-media" role="img" aria-label="Industrial flooring project source photograph"><div class="industry-hero-badge"><span>Zone-by-zone thinking</span><strong>Assembly, service, stores and utility areas can place very different demands on the floor.</strong></div></div></div></section>
+<section class="section"><div class="container industry-intro-grid"><div><span class="section-eyebrow">01 / Facility requirement</span><h2 class="section-title">The same plant can contain several different flooring problems.</h2></div><div class="industry-copy"><p class="industry-definition">A practical recommendation starts by understanding how each area is used, not by assigning one flooring system to the entire facility.</p><p>Traffic patterns, contamination, existing slab condition, cleaning routines and shutdown availability can all change the approach.</p></div></div></section>
+<section class="section industry-challenges"><div class="container"><span class="section-eyebrow">02 / Common challenges</span><h2 class="section-title">Operational demand shows up on the floor.</h2><div class="industry-challenge-grid"><?php foreach($challenges as $i=>[$t,$d]): ?><article class="industry-challenge"><span><?= sprintf('%02d',$i+1) ?></span><h3><?= site_escape($t) ?></h3><p><?= site_escape($d) ?></p></article><?php endforeach; ?></div></div></section>
+<section class="section"><div class="container"><span class="section-eyebrow">03 / Areas within the facility</span><h2 class="section-title">Treat each operating zone according to its use.</h2><div class="industry-zone-grid"><?php foreach($zones as [$t,$d]): ?><div class="industry-zone"><strong><?= site_escape($t) ?></strong><span><?= site_escape($d) ?></span></div><?php endforeach; ?></div></div></section>
+<section class="section industry-solutions"><div class="container"><span class="section-eyebrow">04 / Solution routes</span><h2 class="section-title">The system follows the requirement.</h2><div class="industry-solution-list"><?php foreach($solutions as $i=>[$t,$d,$u]): ?><article class="industry-solution"><span><?= sprintf('%02d',$i+1) ?></span><div><h3><?= site_escape($t) ?></h3><p><?= site_escape($d) ?></p></div><a href="<?= site_escape($u) ?>">Explore <?= $arrow ?></a></article><?php endforeach; ?></div></div></section>
+<section class="section"><div class="container industry-assessment-grid"><div><span class="section-eyebrow">05 / Assessment</span><h2 class="section-title">Understand the floor before specifying the finish.</h2><p class="section-description">We review the existing substrate, traffic, contamination, cleaning, loads and the practical execution window before discussing a system.</p></div><div class="industry-assessment-steps"><article class="industry-assessment-step"><span>01</span><div><strong>Condition survey</strong><p>Review cracks, wear, old coatings and local repairs.</p></div></article><article class="industry-assessment-step"><span>02</span><div><strong>Operating exposure</strong><p>Discuss movement, spills, cleaning and day-to-day use.</p></div></article><article class="industry-assessment-step"><span>03</span><div><strong>Execution planning</strong><p>Plan preparation and application around the available shutdown window.</p></div></article></div></div></section>
+<section class="section industry-execution"><div class="container"><span class="section-eyebrow">06 / Execution</span><h2 class="section-title">From survey to controlled handover.</h2><div class="industry-process-grid"><article class="industry-process-item"><span>01</span><strong>Survey</strong><p>Review areas and operating conditions.</p></article><article class="industry-process-item"><span>02</span><strong>Preparation</strong><p>Prepare and repair the agreed substrate.</p></article><article class="industry-process-item"><span>03</span><strong>Application</strong><p>Apply the selected system with site coordination.</p></article><article class="industry-process-item"><span>04</span><strong>Inspection</strong><p>Review finish and completion conditions.</p></article><article class="industry-process-item"><span>05</span><strong>Handover</strong><p>Discuss care and project-specific support.</p></article></div></div></section>
+<section class="section industry-final"><div class="container industry-final-grid"><div><span class="section-eyebrow">07 / Start with the facility</span><h2 class="section-title">Let us understand your production and service areas.</h2></div><div><p>Share the floor condition, operating zones, approximate area and available shutdown time. We can then discuss the right assessment path.</p><div class="industry-hero-actions"><a class="btn btn-primary" href="<?= $visitUrl ?>">Schedule Site Visit <?= $arrow ?></a><a class="btn btn-outline" href="<?= $callUrl ?>">Call an Expert <?= $arrow ?></a></div></div></div></section>
 </main>
-
 <?php require __DIR__ . '/../includes/footer.php'; ?>
