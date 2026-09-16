@@ -293,9 +293,20 @@
 }
 
 /* Projects — editorial case-study feel. */
+.home-page #featured-projects {
+    background:
+        linear-gradient(180deg, #f4f8fa 0%, #edf4f7 100%);
+}
+
+.home-page .home-projects-grid {
+    gap: clamp(1.25rem, 2vw, 2rem);
+}
+
 .home-page .home-project {
     border-radius: .35rem;
     overflow: hidden;
+    border: 1px solid rgb(16 44 61 / .08);
+    box-shadow: 0 20px 45px rgb(16 44 61 / .08);
 }
 
 .home-page .home-project::after {
@@ -303,7 +314,7 @@
     position: absolute;
     inset: 0;
     pointer-events: none;
-    background: linear-gradient(180deg, transparent 28%, rgb(9 28 40 / .82) 100%);
+    background: linear-gradient(180deg, transparent 24%, rgb(9 28 40 / .86) 100%);
 }
 
 .home-page .home-project-copy {
@@ -315,6 +326,65 @@
     font-family: var(--font-display);
     font-weight: 600;
     letter-spacing: -.025em;
+}
+
+.home-page .home-project-facts {
+    border-top: 1px solid rgb(255 255 255 / .2);
+}
+
+.home-page .home-project-facts div {
+    border-bottom-color: rgb(255 255 255 / .12);
+}
+
+.home-page .home-development-label {
+    color: var(--home-cyan);
+    letter-spacing: .13em;
+}
+
+/* Empty proof sections should never look like fabricated social proof.
+ * Keep them out of the publishable Home until approved logos/testimonials exist. */
+.home-page .home-customers,
+.home-page .home-feedback {
+    display: none;
+}
+
+/* Aftercare — quieter than the technical assessment, but still engineered. */
+.home-page .care-experience {
+    position: relative;
+    background:
+        linear-gradient(90deg, rgb(23 110 166 / .04) 1px, transparent 1px) 0 0 / 72px 100%,
+        #f8fbfc;
+}
+
+.home-page .care-layout {
+    align-items: center;
+}
+
+.home-page .care-stage {
+    border: 1px solid rgb(16 44 61 / .09);
+    box-shadow: 0 28px 65px rgb(16 44 61 / .1);
+}
+
+.home-page .care-interface {
+    max-width: 36rem;
+}
+
+.home-page .care-tabs button {
+    border-radius: 0;
+    border-left: 2px solid transparent;
+}
+
+.home-page .care-tabs button[aria-selected='true'] {
+    border-left-color: var(--home-cyan);
+    background: rgb(104 206 230 / .08);
+}
+
+.home-page .care-note {
+    padding-top: 1rem;
+    border-top: 1px solid var(--home-line);
+    color: #607786;
+    font-size: .9rem;
+    line-height: 1.65;
 }
 
 /* Final conversion section. */
@@ -344,8 +414,19 @@
     color: #f6fbfd;
 }
 
-.home-page .home-final-cta .section-description {
+.home-page .home-final-cta .section-description,
+.home-page .home-final-cta p {
     color: #c8d8e0;
+}
+
+.home-page .home-final-cta .action-group {
+    margin-top: 1.75rem;
+}
+
+@media (max-width: 1199.98px) {
+    .home-page .home-main :is(.diagnostic-tabs, .system-tabs, .operation-tabs, .assessment-rail, .care-tabs) button {
+        min-height: 3.25rem;
+    }
 }
 
 @media (max-width: 991.98px) {
@@ -364,6 +445,14 @@
 
     .home-page .ae-hero-scene {
         margin-top: 3rem;
+    }
+
+    .home-page .home-heading-row {
+        gap: 1.5rem;
+    }
+
+    .home-page .care-interface {
+        max-width: none;
     }
 }
 
@@ -398,6 +487,79 @@
     .home-page .ae-hero-trust {
         flex-wrap: wrap;
         row-gap: .45rem;
+    }
+
+    .home-page .home-heading-row {
+        align-items: flex-start;
+    }
+
+    .home-page .home-heading-row .link-arrow {
+        margin-top: .25rem;
+    }
+
+    .home-page .home-projects-grid {
+        gap: 1rem;
+    }
+
+    .home-page .home-project-facts {
+        display: none;
+    }
+
+    .home-page .care-stage {
+        min-height: 20rem;
+    }
+
+    .home-page .home-final-cta .action-group {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: .75rem;
+    }
+
+    .home-page .home-final-cta .btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 414px) {
+    .home-page .home-main .section-eyebrow,
+    .home-page .ae-hero-eyebrow,
+    .home-page .home-detail-label {
+        letter-spacing: .12em;
+    }
+
+    .home-page .ae-hero-title {
+        font-size: clamp(3rem, 14vw, 3.8rem);
+    }
+
+    .home-page .ae-hero-lead {
+        font-size: 1rem;
+        line-height: 1.62;
+    }
+
+    .home-page .ae-hero-trust {
+        font-size: .72rem;
+    }
+
+    .home-page .home-main :is(.diagnostic-tabs, .system-tabs, .operation-tabs, .assessment-rail, .care-tabs) {
+        overflow-x: auto;
+        overscroll-behavior-inline: contain;
+        scrollbar-width: none;
+    }
+
+    .home-page .home-main :is(.diagnostic-tabs, .system-tabs, .operation-tabs, .assessment-rail, .care-tabs)::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+@media (max-width: 359px) {
+    .home-page .ae-hero-title {
+        font-size: 2.75rem;
+    }
+
+    .home-page .home-main .section-title,
+    .home-page .home-main .home-heading-row h2 {
+        font-size: 2.35rem;
     }
 }
 
