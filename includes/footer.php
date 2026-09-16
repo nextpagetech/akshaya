@@ -93,5 +93,6 @@ if ($showSiteShell ?? true) {
     <script src="<?= site_escape(asset_url('js/experience-fixes.js')) ?>" defer></script>
     <script src="<?= site_escape(asset_url('js/support-depth.js')) ?>" defer></script>
     <script src="<?= site_escape(asset_url('js/interactive-pages.js')) ?>" defer></script>
+    <script src="<?= site_escape(asset_url('js/home-3d-qa.js')) ?>" defer></script>
 </body>
 </html>
