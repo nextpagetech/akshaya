@@ -12,14 +12,14 @@ $callUrl = site_escape('tel:+' . $siteConfig['phone_country_code'] . preg_replac
 $problems = [
     ['Worn or damaged floor', 'Existing coatings, cracks and surface wear need to be understood before selecting a new finish.'],
     ['Dusting concrete', 'A weak or dusty surface may require preparation and repair before a resin flooring system can be considered.'],
-    ['Cleaning difficulty', 'A seamless floor concept can be discussed where joints and difficult-to-clean interfaces are a concern.'],
+    ['Cleaning difficulty', 'A seamless floor concept can be considered where joints and difficult-to-clean interfaces are a concern.'],
     ['Finish requirement', 'Smooth or textured finishes can be reviewed around cleaning, traffic and area-use requirements.'],
 ];
 
 $benefits = [
     ['Seamless surface concept', 'Epoxy systems can create a continuous floor finish where the project and substrate are suitable.'],
-    ['Finish options', 'The client material describes smooth and textured finish possibilities, with colour options available.'],
-    ['Maintenance planning', 'Floor finish and sealer choices should be considered alongside the facility cleaning routine.'],
+    ['Finish options', 'Smooth and textured finishes can be considered, with colour selected around the project requirement.'],
+    ['Maintenance planning', 'Floor finish and care requirements can be considered alongside the facility cleaning routine.'],
     ['Repair and levelling scope', 'Depressions, local repairs or levelling requirements can be assessed as part of surface preparation.'],
 ];
 
@@ -35,7 +35,7 @@ $suitability = [
 $assessment = [
     ['Surface condition', 'Review the substrate, existing coating, cracks, contamination and visible damage.'],
     ['Moisture / site condition', 'Check whether moisture or other site conditions could affect preparation or application.'],
-    ['Operating environment', 'Discuss traffic, loads, cleaning, chemical exposure and shutdown availability.'],
+    ['Operating environment', 'Discuss traffic, loads, cleaning, exposure and shutdown availability.'],
     ['Finish and system selection', 'Agree the finish concept and system approach only after the floor and use are understood.'],
 ];
 
@@ -61,7 +61,7 @@ $process = [
                 </div>
                 <p class="service-hero-note">Final system selection and specification depend on site conditions and technical assessment.</p>
             </div>
-            <div class="service-hero-media" role="img" aria-label="Akshaya epoxy flooring project source photograph">
+            <div class="service-hero-media" role="img" aria-label="Akshaya flooring project photograph">
                 <div class="service-hero-badge"><span>Start with the floor</span><strong>Surface condition, moisture, use and shutdown window guide the recommendation.</strong></div>
             </div>
         </div>
@@ -71,8 +71,8 @@ $process = [
         <div class="container service-intro-grid">
             <div><span class="section-eyebrow">01 / What it is</span><h2 class="section-title" id="what-is-epoxy">A continuous resin floor, not a one-size-fits-all coating.</h2></div>
             <div class="service-copy">
-                <p class="service-definition">The client source material describes Akshaya's epoxy flooring as a <strong>mixed, poured and trowelled seamless flooring system</strong>, with smooth or textured finish possibilities.</p>
-                <p>For the website, we are keeping the technical language deliberately project-dependent. The exact build-up, preparation, finish and performance requirements should be decided after the actual floor and operating environment are assessed.</p>
+                <p class="service-definition">Epoxy flooring is a <strong>mixed and applied resin system</strong> that can form a continuous surface with smooth or textured finish options.</p>
+                <p>The exact build-up, surface preparation, finish and application method should be decided after the actual floor and operating environment are assessed.</p>
                 <p>This is especially important when the existing substrate has cracks, moisture, old coatings, contamination or uneven areas.</p>
             </div>
         </div>
@@ -100,7 +100,7 @@ $process = [
                     <article class="service-benefit"><span><?= sprintf('%02d', $i + 1) ?></span><div><h3><?= site_escape($title) ?></h3><p><?= site_escape($description) ?></p></div></article>
                     <?php endforeach; ?>
                 </div>
-                <div class="service-benefits-media" role="img" aria-label="Epoxy flooring application source photograph"></div>
+                <div class="service-benefits-media" role="img" aria-label="Akshaya flooring application photograph"></div>
             </div>
         </div>
     </section>
@@ -118,7 +118,7 @@ $process = [
 
     <section class="section" aria-labelledby="epoxy-assessment">
         <div class="container service-assessment-grid">
-            <div><span class="section-eyebrow">05 / Assessment approach</span><h2 class="section-title" id="epoxy-assessment">We recommend after understanding the floor.</h2><p class="section-description">Akshaya's proposal material itself follows a technical-proposal-after-site-visit approach. The website follows the same logic.</p></div>
+            <div><span class="section-eyebrow">05 / Assessment approach</span><h2 class="section-title" id="epoxy-assessment">We recommend after understanding the floor.</h2><p class="section-description">The right flooring approach starts with a site review, followed by a technical recommendation based on the actual floor and operating requirement.</p></div>
             <div class="service-assessment-steps">
                 <?php foreach ($assessment as $i => [$title, $description]): ?><article class="service-assessment-step"><span><?= sprintf('%02d', $i + 1) ?></span><div><strong><?= site_escape($title) ?></strong><p><?= site_escape($description) ?></p></div></article><?php endforeach; ?>
             </div>
@@ -139,11 +139,11 @@ $process = [
         <div class="container service-maintenance-grid">
             <div><span class="section-eyebrow">07 / Maintenance & care</span><h2 class="section-title" id="epoxy-care">The finished floor still needs the right care routine.</h2><p class="section-description">Cleaning method, traffic and operating exposure should be considered alongside the selected finish. Maintenance guidance should be specific to the installed system.</p></div>
             <div>
-                <div class="service-note-box">The source profiles describe smoother sealed finishes as easier to maintain, but the final finish and care method should be confirmed for the actual project rather than treated as a universal rule.</div>
+                <div class="service-note-box">A smoother finish may simplify routine cleaning in some environments, while other areas may call for more texture. The correct balance should be decided around actual use and cleaning needs.</div>
                 <div class="service-faq">
-                    <details><summary>Can epoxy flooring be used over an existing floor?</summary><p>The client material describes application over several existing substrates, but the new website does not promise this universally. The existing floor must first be checked for soundness, contamination, moisture and preparation requirements.</p></details>
-                    <details><summary>Can the finish be smooth or textured?</summary><p>Yes, the supplied profile material describes smooth and textured finish options. The appropriate finish depends on cleaning, use and project requirements.</p></details>
-                    <details><summary>How quickly can the area return to service?</summary><p>This depends on the selected material, site conditions, preparation and project scope. We do not publish a universal curing or reopening time without confirming the system.</p></details>
+                    <details><summary>Can epoxy flooring be used over an existing floor?</summary><p>It can be considered on some existing substrates, but only after checking soundness, contamination, moisture and preparation requirements.</p></details>
+                    <details><summary>Can the finish be smooth or textured?</summary><p>Yes. Smooth and textured finish options can be discussed. The appropriate finish depends on cleaning, use and project requirements.</p></details>
+                    <details><summary>How quickly can the area return to service?</summary><p>This depends on the selected material, site conditions, preparation and project scope. The reopening window should be confirmed for the specific system.</p></details>
                     <details><summary>Is epoxy the right solution for every industrial floor?</summary><p>No. Substrate condition, moisture, loads, traffic, operating exposure and shutdown planning all affect the recommendation.</p></details>
                 </div>
             </div>
