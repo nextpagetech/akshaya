@@ -1,0 +1,53 @@
+/* Supporting-page depth: photography remains authentic; movement only helps hierarchy. */
+.support-page .support-hero-media {
+    --support-rx: 0deg;
+    --support-ry: 0deg;
+    position: relative;
+    overflow: hidden;
+    transform-style: preserve-3d;
+    transform: perspective(1200px) rotateX(var(--support-rx)) rotateY(var(--support-ry));
+    transition: transform 480ms cubic-bezier(.22,1,.36,1), box-shadow 480ms cubic-bezier(.22,1,.36,1);
+}
+.support-page .support-hero-media::before {
+    content: '';
+    position: absolute;
+    z-index: 2;
+    right: 7%;
+    bottom: 10%;
+    width: 58%;
+    height: 34%;
+    pointer-events: none;
+    border: 1px solid rgb(104 206 230 / .72);
+    background:
+        linear-gradient(rgb(104 206 230 / .18) 1px, transparent 1px),
+        linear-gradient(90deg, rgb(104 206 230 / .18) 1px, transparent 1px),
+        linear-gradient(145deg, rgb(23 110 166 / .28), rgb(8 34 49 / .18));
+    background-size: 2rem 2rem, 2rem 2rem, auto;
+    transform: perspective(800px) rotateX(62deg) rotateZ(-7deg) translateZ(24px);
+    box-shadow: 0 24px 36px rgb(8 27 39 / .32);
+}
+.support-page .support-hero-media::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background: linear-gradient(180deg, rgb(8 27 39 / .02), rgb(8 27 39 / .32));
+}
+.support-project-card,
+.gallery-tile {
+    transform-style: preserve-3d;
+    transition: transform 420ms cubic-bezier(.22,1,.36,1), box-shadow 420ms cubic-bezier(.22,1,.36,1), filter 420ms ease;
+}
+@media (hover:hover) and (pointer:fine) {
+    .support-project-card:hover { transform: perspective(1000px) translateY(-6px) rotateX(1.4deg); box-shadow: 0 26px 50px rgb(14 41 58 / .2); }
+    .gallery-tile:hover { transform: scale(1.018); filter: saturate(1.05) contrast(1.02); }
+}
+@media (max-width:767.98px) {
+    .support-page .support-hero-media::before { width: 72%; right: 3%; opacity: .72; }
+}
+@media (prefers-reduced-motion:reduce) {
+    .support-page .support-hero-media,
+    .support-project-card,
+    .gallery-tile { transform:none!important; transition:none!important; }
+}
