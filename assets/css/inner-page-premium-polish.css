@@ -1,0 +1,89 @@
+/* Premium polish for Service + Industry detail pages.
+ * Goal: editorial/engineering quality without decorative excess.
+ */
+
+:where(.service-page,.industry-page){--premium-shadow:0 28px 70px rgb(13 41 58/.12);--premium-shadow-hover:0 36px 86px rgb(13 41 58/.17);--premium-line:rgb(23 110 166/.16);--premium-glass:rgb(255 255 255/.88)}
+
+/* Stronger section rhythm and subtle visual zoning. */
+.service-main>.section:nth-of-type(odd):not(.service-problems):not(.service-process):not(.service-final),
+.industry-main>.section:nth-of-type(odd):not(.industry-challenges):not(.industry-execution):not(.industry-final){background-image:linear-gradient(180deg,rgb(238 245 248/.34),rgb(255 255 255/0) 32%)}
+.service-main>.section,.industry-main>.section{position:relative}
+.service-main>.section::before,.industry-main>.section::before{content:'';position:absolute;top:0;left:max(1.25rem,calc((100vw - 1320px)/2));width:clamp(2.5rem,5vw,5rem);height:1px;background:linear-gradient(90deg,var(--service-cyan,#68cee6),transparent)}
+.industry-main>.section::before{background:linear-gradient(90deg,var(--industry-cyan,#68cee6),transparent)}
+
+/* Editorial heading treatment: wide enough to breathe, still controlled. */
+.service-main .section-title,.industry-main .section-title{text-wrap:balance}
+.service-main .section-eyebrow,.industry-main .section-eyebrow{display:inline-flex;align-items:center;gap:.75rem}
+.service-main .section-eyebrow::before,.industry-main .section-eyebrow::before{content:'';width:1.7rem;height:2px;background:currentColor;opacity:.55}
+
+/* Hero: make it feel like an authored industrial editorial, not a template. */
+.service-hero,.industry-hero{overflow:hidden}
+.service-hero::after,.industry-hero::after{content:'';position:absolute;z-index:-1;right:-10vw;top:-18vw;width:42vw;height:42vw;border:1px solid rgb(104 206 230/.16);border-radius:50%;box-shadow:0 0 0 7vw rgb(104 206 230/.035),0 0 0 14vw rgb(23 110 166/.025)}
+.service-hero-copy,.industry-hero-copy{position:relative}
+.service-hero-copy::after,.industry-hero-copy::after{content:'TECHNICAL / FLOOR SYSTEM';display:block;margin-top:2.2rem;padding-top:1rem;border-top:1px solid var(--premium-line);font:700 .65rem/1 var(--font-body);letter-spacing:.16em;color:rgb(82 106 120/.7)}
+.industry-hero-copy::after{content:'OPERATING ENVIRONMENT / FLOOR REQUIREMENT'}
+.service-hero-media,.industry-hero-media{border:1px solid rgb(255 255 255/.55);box-shadow:var(--premium-shadow);transition:transform .55s cubic-bezier(.22,1,.36,1),box-shadow .55s ease}
+.service-hero-media::after,.industry-hero-media::after{background:linear-gradient(180deg,transparent 38%,rgb(8 27 39/.68) 100%)}
+.service-hero-badge,.industry-hero-badge{border:1px solid rgb(255 255 255/.75);box-shadow:0 16px 36px rgb(5 28 42/.14)}
+
+/* Intro / assessment split sections get an intentional technical rail. */
+.service-intro-grid>div:first-child,.service-assessment-grid>div:first-child,.service-maintenance-grid>div:first-child,.service-final-grid>div:first-child,
+.industry-intro-grid>div:first-child,.industry-assessment-grid>div:first-child,.industry-final-grid>div:first-child{position:relative;padding-left:1.4rem}
+.service-intro-grid>div:first-child::before,.service-assessment-grid>div:first-child::before,.service-maintenance-grid>div:first-child::before,.service-final-grid>div:first-child::before,
+.industry-intro-grid>div:first-child::before,.industry-assessment-grid>div:first-child::before,.industry-final-grid>div:first-child::before{content:'';position:absolute;left:0;top:.2rem;bottom:.2rem;width:2px;background:linear-gradient(180deg,#68cee6,#176ea6 45%,transparent)}
+
+/* Lists/cards: less generic, more engineered. */
+.service-problem,.industry-challenge,.service-suitability-item,.industry-zone,.service-benefit,.industry-solution,.service-assessment-step,.industry-assessment-step,.service-process-item,.industry-process-item{position:relative;transition:transform .32s cubic-bezier(.22,1,.36,1),background-color .32s ease,border-color .32s ease,box-shadow .32s ease}
+.service-problem::after,.industry-challenge::after,.service-suitability-item::after,.industry-zone::after{content:'';position:absolute;left:0;bottom:-1px;width:0;height:2px;background:linear-gradient(90deg,#68cee6,#176ea6);transition:width .35s cubic-bezier(.22,1,.36,1)}
+.service-benefit,.industry-solution,.service-assessment-step,.industry-assessment-step{padding-inline:.25rem}
+.service-benefit.is-active,.industry-challenge.is-active,.industry-assessment-step.is-active{box-shadow:inset 3px 0 #68cee6}
+
+/* Benefits visual should feel like a premium technical object. */
+.service-benefits-media{border:1px solid rgb(23 110 166/.12);box-shadow:var(--premium-shadow);isolation:isolate}
+.service-benefits-media::before,.service-benefits-media::after{box-shadow:0 18px 32px rgb(4 25 38/.18)}
+.service-benefits-media:has(+*){background-clip:padding-box}
+
+/* Soft-background sections: cleaner panel composition. */
+.service-suitability,.industry-solutions{background:linear-gradient(135deg,#edf5f8 0%,#f8fbfc 52%,#edf5f8 100%)}
+.service-suitability-grid,.industry-solution-list,.industry-zone-grid{background:rgb(255 255 255/.48);border:1px solid rgb(23 110 166/.09);box-shadow:0 18px 45px rgb(13 41 58/.055)}
+.service-suitability-item,.industry-zone{padding:1.6rem 1.35rem!important;border-color:rgb(23 110 166/.12)!important}
+.industry-solution{padding:1.45rem 1.2rem}
+
+/* Dark sections: richer depth without glows. */
+.service-problems,.service-process,.industry-challenges,.industry-execution{background-image:radial-gradient(circle at 82% 20%,rgb(104 206 230/.11),transparent 28rem),linear-gradient(135deg,#0c2636,#123b51 68%,#0d2b3d)}
+.service-problem-grid,.industry-challenge-grid,.service-process-grid,.industry-process-grid{border-color:rgb(255 255 255/.16)}
+.service-process-item,.industry-process-item{background:rgb(255 255 255/.018)}
+
+/* FAQ / note styling — editorial rather than Bootstrap-like. */
+.service-note-box,.industry-note{box-shadow:0 14px 34px rgb(13 41 58/.07);border-top:1px solid rgb(23 110 166/.08);border-right:1px solid rgb(23 110 166/.08);border-bottom:1px solid rgb(23 110 166/.08)}
+.service-faq summary,.industry-faq summary{position:relative;padding-right:2.5rem;transition:color .22s ease,padding-left .22s ease}
+.service-faq summary::after,.industry-faq summary::after{content:'+';position:absolute;right:.15rem;top:50%;translate:0 -50%;font-size:1.25rem;font-weight:400;color:#176ea6}
+.service-faq details[open] summary::after,.industry-faq details[open] summary::after{content:'−'}
+
+/* Final CTA sections: premium end-cap with restrained technical line. */
+.service-final,.industry-final{position:relative;overflow:hidden;background:linear-gradient(135deg,#0c2636,#124968)}
+.service-final::after,.industry-final::after{content:'';position:absolute;right:-7rem;bottom:-11rem;width:28rem;height:28rem;border:1px solid rgb(104 206 230/.18);transform:rotate(26deg);box-shadow:0 0 0 5rem rgb(104 206 230/.025),0 0 0 10rem rgb(104 206 230/.02)}
+.service-final-grid,.industry-final-grid{position:relative;z-index:1}
+
+@media (hover:hover) and (pointer:fine){
+  .service-hero-media:hover,.industry-hero-media:hover{transform:translateY(-5px) perspective(1200px) rotateX(.7deg) rotateY(-.7deg);box-shadow:var(--premium-shadow-hover)}
+  .service-problem:hover,.industry-challenge:hover,.service-suitability-item:hover,.industry-zone:hover{transform:translateY(-4px);background-color:rgb(104 206 230/.045)}
+  .service-problem:hover::after,.industry-challenge:hover::after,.service-suitability-item:hover::after,.industry-zone:hover::after{width:100%}
+  .service-benefit:hover,.industry-solution:hover,.service-assessment-step:hover,.industry-assessment-step:hover{transform:translateX(.45rem)}
+  .service-process-item:hover,.industry-process-item:hover{transform:translateY(-6px);background:rgb(255 255 255/.045);box-shadow:0 18px 34px rgb(0 0 0/.12)}
+  .service-faq summary:hover,.industry-faq summary:hover{color:#176ea6;padding-left:.35rem}
+}
+
+@media(max-width:991.98px){
+  .service-hero-copy::after,.industry-hero-copy::after{display:none}
+  .service-intro-grid>div:first-child,.service-assessment-grid>div:first-child,.service-maintenance-grid>div:first-child,.service-final-grid>div:first-child,
+  .industry-intro-grid>div:first-child,.industry-assessment-grid>div:first-child,.industry-final-grid>div:first-child{padding-left:1rem}
+}
+@media(max-width:767.98px){
+  .service-main>.section::before,.industry-main>.section::before{left:1.25rem;width:2rem}
+  .service-suitability-grid,.industry-solution-list,.industry-zone-grid{box-shadow:none}
+  .service-suitability-item,.industry-zone{padding:1.35rem 0!important}
+}
+@media(prefers-reduced-motion:reduce){
+  .service-hero-media,.industry-hero-media,.service-problem,.industry-challenge,.service-suitability-item,.industry-zone,.service-benefit,.industry-solution,.service-assessment-step,.industry-assessment-step,.service-process-item,.industry-process-item{transition:none!important;transform:none!important}
+}
