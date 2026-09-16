@@ -1,0 +1,1 @@
+Home refinement is loaded through responsive.css after the preserved responsive-base.css. This keeps the original responsive stylesheet intact while allowing Home-only polish on the development branch.
