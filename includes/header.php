@@ -61,7 +61,13 @@ if ($showSiteShell) {
     <!-- Bootstrap CSS, followed by the reserved project stylesheets. -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Space+Grotesk:wght@500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-display: 'Barlow Semi Condensed', 'Arial Narrow', 'Segoe UI', sans-serif;
+            --font-body: 'Inter', 'Segoe UI', Arial, sans-serif;
+        }
+    </style>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link href="<?= site_escape(asset_url('css/style.css')) ?>" rel="stylesheet">
     <link href="<?= site_escape(asset_url('css/responsive.css')) ?>" rel="stylesheet">
