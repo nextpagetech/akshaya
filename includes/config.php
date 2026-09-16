@@ -8,8 +8,8 @@ $siteConfig = [
     'phone' => '9866076372',
     'whatsapp' => '9866076372',
     'phone_country_code' => '91', // Confirmed India dialing prefix for Call/WhatsApp links.
-    'email' => '', // Awaiting confirmed email address.
-    'address' => '', // Awaiting confirmed postal address.
+    'email' => 'akshaya.ckr@gmail.com', // Confirmed in current client proposal/profile documents.
+    'address' => '', // Keep hidden until the current public postal address is reconfirmed.
     // Social links remain hidden until approved public URLs are supplied.
     'social_links' => [
         'linkedin' => '',
