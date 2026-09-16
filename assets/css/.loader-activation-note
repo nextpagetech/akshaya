@@ -1,0 +1,1 @@
+Activation uses Git tree blob reuse to preserve the original responsive.css as responsive-base.css and point responsive.css to the lightweight loader.
