@@ -27,6 +27,8 @@
 .industry-hero-badge strong{display:block;margin-top:.4rem;font-size:1rem;line-height:1.4;color:var(--industry-ink)}
 .industry-pharma .industry-hero-media{background-image:url('../../website_assets/Epoxy Coating Pics/IMG20190904110926.jpg')}
 .industry-manufacturing .industry-hero-media{background-image:url('../../website_assets/Selected Pics from _23/038.JPG')}
+.industry-food-beverage .industry-hero-media{background-image:url('../../website_assets/Amritha Tools/IMG-20190721-WA0003.jpg')}
+.industry-electronics .industry-hero-media{background-image:url('../../website_assets/Amritha Tools/IMG-20190721-WA0004.jpg')}
 .industry-intro-grid,.industry-assessment-grid,.industry-final-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(3rem,7vw,8rem);align-items:start}
 .industry-copy p{line-height:1.75;color:#5e7582}.industry-copy p+p{margin-top:1rem}.industry-definition{font-size:clamp(1.45rem,2vw,2.1rem)!important;line-height:1.35!important;color:var(--industry-ink)!important}
 .industry-challenges{background:var(--industry-navy);color:#f4fafc}.industry-challenges .section-title{color:#fff}.industry-challenges .section-eyebrow{color:var(--industry-cyan)}
