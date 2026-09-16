@@ -1,0 +1,76 @@
+/* Home section layout correction — keep the interactive scene visible sooner and avoid oversized empty header bands. */
+
+/* Interactive Floor Analysis Lab: this is an interactive section, not a poster hero. */
+.home-page .assessment-lab .section-header--split{
+    display:block;
+    max-width:72rem;
+    margin-bottom:clamp(2.5rem,4vw,4rem);
+}
+.home-page .assessment-lab .section-header--split .section-eyebrow{
+    display:block;
+    margin-bottom:1.15rem;
+}
+.home-page .assessment-lab .section-header--split .section-title{
+    max-width:21ch;
+    margin:0;
+    font-size:clamp(3rem,3.75vw,4.35rem);
+    line-height:.98;
+    letter-spacing:-.038em;
+}
+.home-page .assessment-lab .section-header--split .section-description{
+    max-width:49rem;
+    margin:1.35rem 0 0;
+    font-size:clamp(1rem,1.15vw,1.15rem);
+    line-height:1.65;
+}
+.home-page .assessment-lab{
+    padding-top:clamp(4.5rem,5vw,6rem)!important;
+}
+.home-page .assessment-lab-layout{
+    margin-top:0!important;
+}
+
+/* How We Work: compact the introduction so the sticky 3D journey enters the viewport quickly. */
+.home-page .home-work-heading{
+    display:block;
+    max-width:66rem;
+    margin-bottom:clamp(2.5rem,4.5vw,4.5rem)!important;
+}
+.home-page .home-work-heading .section-eyebrow{
+    display:block;
+    margin-bottom:1.05rem;
+}
+.home-page .home-work-heading .section-title{
+    max-width:18ch!important;
+    margin:0;
+    font-size:clamp(3rem,3.75vw,4.25rem)!important;
+    line-height:.98;
+    letter-spacing:-.038em;
+}
+.home-page .home-work-heading .section-description{
+    max-width:47rem!important;
+    margin:1.35rem 0 0;
+    font-size:clamp(1rem,1.1vw,1.14rem);
+    line-height:1.65;
+}
+.home-page .home-work{
+    padding-top:clamp(4.5rem,5vw,6rem)!important;
+}
+
+/* Prevent the top of the interactive model from falling below the fold on normal laptops. */
+@media (min-width:1200px) and (max-height:900px){
+    .home-page .assessment-lab,.home-page .home-work{padding-top:4rem!important}
+    .home-page .assessment-lab .section-header--split,.home-page .home-work-heading{margin-bottom:2.75rem!important}
+    .home-page .assessment-lab .section-header--split .section-title,.home-page .home-work-heading .section-title{font-size:clamp(2.9rem,3.35vw,3.8rem)!important}
+}
+
+@media (max-width:991.98px){
+    .home-page .assessment-lab .section-header--split,.home-page .home-work-heading{max-width:100%;margin-bottom:2.5rem!important}
+    .home-page .assessment-lab .section-header--split .section-title,.home-page .home-work-heading .section-title{max-width:20ch!important;font-size:clamp(2.65rem,7vw,3.7rem)!important}
+}
+
+@media (max-width:767.98px){
+    .home-page .assessment-lab,.home-page .home-work{padding-top:3.75rem!important}
+    .home-page .assessment-lab .section-header--split .section-title,.home-page .home-work-heading .section-title{font-size:clamp(2.3rem,10vw,3.2rem)!important;max-width:15ch!important}
+    .home-page .assessment-lab .section-header--split .section-description,.home-page .home-work-heading .section-description{margin-top:1rem}
+}
