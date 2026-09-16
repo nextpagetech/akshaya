@@ -1,0 +1,244 @@
+/* Cross-site visual QA fixes — restores the approved Home language and adds restrained, meaningful depth to inner pages. */
+
+/* ---------------- Header / mega-menu stability ---------------- */
+.site-header { z-index: 1200; }
+.desktop-navigation, .primary-navigation, .nav-disclosure { overflow: visible; }
+.nav-disclosure { position: relative; }
+/* Invisible hover bridge removes the dead zone between trigger and absolutely-positioned panel. */
+.nav-disclosure::after {
+    content: '';
+    position: absolute;
+    z-index: 1;
+    top: calc(100% - .15rem);
+    left: -1rem;
+    right: -1rem;
+    height: 1.15rem;
+    pointer-events: auto;
+}
+.mega-panel { z-index: 1210; }
+.mega-toggle[aria-expanded='true'],
+.nav-disclosure:focus-within > .mega-toggle { color: var(--color-primary); }
+.mega-toggle[aria-expanded='true'] .nav-chevron { transform: rotate(180deg); }
+
+/* ---------------- Home restoration ---------------- */
+.home-page .home-main .section {
+    padding-block: clamp(5rem, 6.5vw, 7.5rem);
+}
+.home-page .home-main .section-title,
+.home-page .home-main .home-heading-row h2 {
+    font-size: clamp(2.8rem, 4.35vw, 4.35rem);
+    line-height: .98;
+    letter-spacing: -.035em;
+}
+.home-page .section-header--split .section-title { max-width: 12.5ch; }
+.home-page .section-header--split .section-description { max-width: 38rem; }
+
+/* The refinement layer accidentally turned the dark System Explorer light.
+   Restore the original technical surface so its authored text/tabs remain legible. */
+.home-page #flooring-solutions.home-systems {
+    color: var(--color-on-dark);
+    background: radial-gradient(circle at 16% 32%, rgb(22 107 162 / .32), transparent 30rem), #102736;
+}
+.home-page #flooring-solutions :is(.section-title, .system-panels h3) { color: #fff; }
+.home-page #flooring-solutions :is(.section-description, .system-panels p, .system-panels li) { color: #bdd0da; }
+.home-page #flooring-solutions .section-eyebrow { color: var(--color-accent); }
+.home-page #flooring-solutions .system-tabs button { color: #a9bfcb; border-color: rgb(255 255 255 / .14); }
+.home-page #flooring-solutions .system-tabs button strong { color: inherit; }
+.home-page #flooring-solutions .system-tabs button[aria-selected='true'] {
+    color: #fff;
+    background: rgb(101 203 227 / .14);
+    border-color: var(--color-accent);
+}
+.home-page #flooring-solutions .system-tabs button:not([aria-selected='true']):hover { color: #edf8fb; }
+
+/* Dark industry section: ensure global heading refinement does not overwrite dark-surface tokens. */
+.home-page #industries.bg-technical {
+    color: var(--color-on-dark);
+    background-color: var(--color-navy);
+    background-image:
+        linear-gradient(rgb(101 203 227 / .05) 1px, transparent 1px),
+        linear-gradient(90deg, rgb(101 203 227 / .05) 1px, transparent 1px),
+        radial-gradient(circle at 78% 36%, rgb(22 107 162 / .22), transparent 34rem);
+    background-size: 7.5rem 7.5rem, 7.5rem 7.5rem, auto;
+}
+.home-page #industries :is(.section-title, .home-industry-copy h3) { color: #f6fbfd; }
+.home-page #industries .section-description { color: #b8ccd7; }
+.home-page #industries .section-eyebrow { color: var(--color-accent); }
+.home-page #industries .home-selector-button { color: #aebfca; }
+.home-page #industries .home-selector-button:hover { color: #fff; background: rgb(255 255 255 / .035); }
+.home-page #industries .home-selector-button[aria-pressed='true'] { color: #fff; }
+.home-page #industries .home-industry-copy p { color: #c0d0d9; }
+
+/* Keep the visual-analysis headline dramatic without allowing it to swallow the whole viewport. */
+.home-page .assessment-lab .section-title { max-width: 11.5ch; font-size: clamp(3rem, 4.7vw, 4.65rem); }
+.home-page .assessment-lab .section-description { color: #526a78; }
+.home-page .assessment-lab-layout { margin-top: clamp(2.75rem, 5vw, 4.5rem); }
+
+/* Work journey: tighten excessive blank space while preserving the sticky story. */
+.home-page .home-work-heading { margin-bottom: clamp(2.5rem, 4vw, 4rem); }
+.home-page .home-work-visual { min-height: 31rem; max-height: 42rem; }
+.home-page .home-work-stage { min-height: 12rem; }
+
+/* Aftercare remains a statement section, not an oversized poster. */
+.home-page .home-care .section-title,
+.home-page [data-care-explorer] .section-title { font-size: clamp(2.9rem, 4.45vw, 4.45rem); max-width: 13ch; }
+.home-page [data-care-explorer] .section-description { max-width: 37rem; }
+
+/* Ensure reveal enhancement never leaves important copy permanently faded if a browser/observer edge case occurs. */
+.home-page .motion-ready :is(.section-header, .section-title, .section-description) { will-change: auto; }
+.home-page .bg-technical .section-header:not(.is-revealed) :is(.section-title, .section-description) { opacity: 1; }
+
+/* ---------------- Service pages: interactive engineered-layer scene ---------------- */
+.service-page .service-hero-media {
+    --detail-rx: 0deg;
+    --detail-ry: 0deg;
+    --detail-shift: 0px;
+    transform-style: preserve-3d;
+    transform: perspective(1200px) rotateX(var(--detail-rx)) rotateY(var(--detail-ry));
+    transition: transform 480ms cubic-bezier(.22,1,.36,1), box-shadow 480ms cubic-bezier(.22,1,.36,1);
+}
+.service-page .service-hero-media::before {
+    content: '';
+    position: absolute;
+    z-index: 2;
+    width: 62%;
+    height: 42%;
+    right: 8%;
+    top: 17%;
+    opacity: .9;
+    pointer-events: none;
+    transform-style: preserve-3d;
+    transform: perspective(900px) rotateX(64deg) rotateZ(-8deg) translate3d(0, var(--detail-shift), 28px);
+    background:
+        linear-gradient(145deg, rgb(101 203 227 / .94), rgb(23 107 162 / .9)) 0 0 / 100% 28% no-repeat,
+        linear-gradient(145deg, rgb(205 218 224 / .94), rgb(123 142 151 / .94)) 0 48% / 100% 28% no-repeat,
+        linear-gradient(145deg, rgb(86 100 108 / .96), rgb(43 56 64 / .96)) 0 96% / 100% 28% no-repeat;
+    filter: drop-shadow(0 24px 24px rgb(5 21 31 / .34));
+    transition: transform 650ms cubic-bezier(.22,1,.36,1), filter 650ms cubic-bezier(.22,1,.36,1);
+}
+.service-page .service-hero-media.is-exploded::before {
+    --detail-shift: -16px;
+    background:
+        linear-gradient(145deg, rgb(101 203 227 / .97), rgb(23 107 162 / .94)) 0 0 / 100% 22% no-repeat,
+        linear-gradient(145deg, rgb(205 218 224 / .96), rgb(123 142 151 / .96)) 0 49% / 100% 22% no-repeat,
+        linear-gradient(145deg, rgb(86 100 108 / .98), rgb(43 56 64 / .98)) 0 98% / 100% 22% no-repeat;
+    filter: drop-shadow(0 34px 28px rgb(5 21 31 / .42));
+}
+.service-page .service-hero-badge { z-index: 4; }
+.detail-layer-toggle {
+    position: absolute;
+    z-index: 5;
+    top: 1.25rem;
+    right: 1.25rem;
+    min-height: 2.8rem;
+    padding: .7rem .9rem;
+    border: 1px solid rgb(255 255 255 / .4);
+    background: rgb(8 34 49 / .82);
+    color: #fff;
+    font: 700 .75rem/1 var(--font-body);
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    backdrop-filter: blur(8px);
+    transition: background-color 220ms ease, transform 220ms ease;
+}
+.detail-layer-toggle:hover,
+.detail-layer-toggle[aria-pressed='true'] { background: #176ea6; transform: translateY(-2px); }
+.service-page .service-benefit,
+.service-page .service-assessment-step,
+.service-page .service-problem { transition: transform 260ms ease, background-color 260ms ease, border-color 260ms ease; }
+@media (hover:hover) and (pointer:fine) {
+    .service-page .service-benefit:hover,
+    .service-page .service-assessment-step:hover { transform: translateX(.45rem); }
+    .service-page .service-problem:hover { background: rgb(255 255 255 / .035); border-bottom-color: rgb(104 206 230 / .45); }
+}
+
+/* ---------------- Industry pages: interactive operating-environment scene ---------------- */
+.industry-page .industry-hero-media {
+    --industry-rx: 0deg;
+    --industry-ry: 0deg;
+    transform-style: preserve-3d;
+    transform: perspective(1200px) rotateX(var(--industry-rx)) rotateY(var(--industry-ry));
+    transition: transform 480ms cubic-bezier(.22,1,.36,1), box-shadow 480ms cubic-bezier(.22,1,.36,1);
+}
+.industry-page .industry-hero-media::before {
+    content: '';
+    position: absolute;
+    z-index: 2;
+    top: 17%;
+    right: 8%;
+    width: 60%;
+    height: 48%;
+    pointer-events: none;
+    opacity: .92;
+    transform: perspective(900px) rotateX(62deg) rotateZ(-7deg) translateZ(24px);
+    background:
+        linear-gradient(90deg, rgb(101 203 227 / .88) 0 24%, transparent 24% 27%, rgb(23 110 166 / .86) 27% 58%, transparent 58% 61%, rgb(239 184 33 / .9) 61% 100%),
+        repeating-linear-gradient(0deg, rgb(255 255 255 / .14) 0 1px, transparent 1px 42px);
+    border: 1px solid rgb(255 255 255 / .42);
+    box-shadow: 0 30px 45px rgb(5 21 31 / .32);
+    transition: clip-path 480ms cubic-bezier(.22,1,.36,1), transform 480ms cubic-bezier(.22,1,.36,1);
+    clip-path: inset(0 72% 0 0);
+}
+.industry-page .industry-hero-media[data-env-state='1']::before { clip-path: inset(0 42% 0 0); }
+.industry-page .industry-hero-media[data-env-state='2']::before { clip-path: inset(0 14% 0 0); }
+.industry-page .industry-hero-media[data-env-state='3']::before { clip-path: inset(0); transform: perspective(900px) rotateX(58deg) rotateZ(-5deg) translateZ(34px); }
+.industry-page .industry-hero-badge { z-index: 4; }
+.industry-visual-controls {
+    position: absolute;
+    z-index: 5;
+    top: 1.15rem;
+    left: 1.15rem;
+    right: 1.15rem;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    background: rgb(8 34 49 / .76);
+    border: 1px solid rgb(255 255 255 / .22);
+    backdrop-filter: blur(8px);
+}
+.industry-visual-controls button {
+    min-height: 2.8rem;
+    padding: .65rem .5rem;
+    border: 0;
+    border-right: 1px solid rgb(255 255 255 / .16);
+    background: transparent;
+    color: #bdd0da;
+    font: 700 .7rem/1.15 var(--font-body);
+    letter-spacing: .04em;
+}
+.industry-visual-controls button:last-child { border-right: 0; }
+.industry-visual-controls button:hover,
+.industry-visual-controls button[aria-pressed='true'] { color: #fff; background: rgb(23 110 166 / .78); }
+.industry-zone,
+.industry-solution { transition: transform 260ms ease, background-color 260ms ease; }
+@media (hover:hover) and (pointer:fine) {
+    .industry-zone:hover,
+    .industry-solution:hover { transform: translateX(.4rem); background: rgb(23 110 166 / .035); }
+}
+
+@media (max-width: 1199.98px) {
+    .nav-disclosure::after { display: none; }
+}
+
+@media (max-width: 767.98px) {
+    .home-page .home-main .section-title,
+    .home-page .home-main .home-heading-row h2,
+    .home-page .assessment-lab .section-title,
+    .home-page .home-care .section-title,
+    .home-page [data-care-explorer] .section-title {
+        font-size: clamp(2.45rem, 10.8vw, 3.55rem);
+    }
+    .home-page .home-work-visual { min-height: 24rem; max-height: none; }
+    .service-page .service-hero-media::before,
+    .industry-page .industry-hero-media::before { width: 72%; right: 4%; opacity: .72; }
+    .industry-visual-controls { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .service-page .service-hero-media,
+    .industry-page .industry-hero-media,
+    .service-page .service-hero-media::before,
+    .industry-page .industry-hero-media::before,
+    .service-page .service-benefit,
+    .industry-zone,
+    .industry-solution { transition: none !important; transform: none !important; }
+}
