@@ -96,5 +96,6 @@ if ($showSiteShell ?? true) {
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous" defer></script>
     <script src="<?= site_escape(asset_url('js/main.js')) ?>" defer></script>
     <script src="<?= site_escape(asset_url('js/experience-fixes.js')) ?>" defer></script>
+    <script src="<?= site_escape(asset_url('js/support-depth.js')) ?>" defer></script>
 </body>
 </html>
