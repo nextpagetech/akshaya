@@ -1,0 +1,17 @@
+/* Inner-page layout QA */
+.service-main .section > .container > .section-eyebrow + .section-title,
+.industry-main .section > .container > .section-eyebrow + .section-title{max-width:min(21ch,66rem);font-size:clamp(2.7rem,3.8vw,4.05rem);line-height:1;margin-top:.7rem}
+.service-main .section > .container > .section-description,
+.industry-main .section > .container > .section-description{max-width:52rem;margin-top:1.15rem}
+.service-main :is(.service-problem-grid,.service-benefits-grid,.service-suitability-grid,.service-process-grid),
+.industry-main :is(.industry-challenge-grid,.industry-zone-grid,.industry-solution-list,.industry-process-grid){margin-top:clamp(2rem,3vw,2.8rem)}
+.service-main :is(.service-intro-grid,.service-assessment-grid,.service-maintenance-grid,.service-final-grid) .section-title,
+.industry-main :is(.industry-intro-grid,.industry-assessment-grid,.industry-final-grid) .section-title{max-width:16ch;font-size:clamp(2.65rem,3.65vw,3.9rem);line-height:1}
+.service-main .service-intro-grid,.service-main .service-assessment-grid,.service-main .service-maintenance-grid,.service-main .service-final-grid,
+.industry-main .industry-intro-grid,.industry-main .industry-assessment-grid,.industry-main .industry-final-grid{grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);gap:clamp(2.75rem,5vw,5.75rem)}
+.service-main .section,.industry-main .section{padding-block:clamp(4.25rem,5.4vw,5.8rem)}
+.service-main .service-problems .section-title,.service-main .service-process .section-title,
+.industry-main .industry-challenges .section-title,.industry-main .industry-execution .section-title{max-width:min(20ch,64rem)}
+@media(max-width:1199.98px){.service-main .section > .container > .section-eyebrow + .section-title,.industry-main .section > .container > .section-eyebrow + .section-title{max-width:18ch}}
+@media(max-width:991.98px){.service-main .section,.industry-main .section{padding-block:4.5rem}.service-main :is(.service-intro-grid,.service-assessment-grid,.service-maintenance-grid,.service-final-grid),.industry-main :is(.industry-intro-grid,.industry-assessment-grid,.industry-final-grid){grid-template-columns:1fr;gap:2.5rem}.service-main :is(.service-intro-grid,.service-assessment-grid,.service-maintenance-grid,.service-final-grid) .section-title,.industry-main :is(.industry-intro-grid,.industry-assessment-grid,.industry-final-grid) .section-title{max-width:18ch}}
+@media(max-width:767.98px){.service-main .section,.industry-main .section{padding-block:3.75rem}.service-main .section > .container > .section-eyebrow + .section-title,.industry-main .section > .container > .section-eyebrow + .section-title,.service-main :is(.service-intro-grid,.service-assessment-grid,.service-maintenance-grid,.service-final-grid) .section-title,.industry-main :is(.industry-intro-grid,.industry-assessment-grid,.industry-final-grid) .section-title{max-width:100%;font-size:clamp(2.2rem,9.5vw,3.05rem);line-height:1.02}}
