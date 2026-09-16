@@ -1,0 +1,410 @@
+/* Home refinement layer — Akshaya Floor Solutions
+ * Purpose: strengthen typography, section rhythm and approved Home compositions
+ * without reopening the established header/footer architecture.
+ */
+
+.home-page {
+    --home-ink: #102838;
+    --home-navy: #102c3d;
+    --home-blue: #176ea6;
+    --home-cyan: #68cee6;
+    --home-soft: #eef5f8;
+    --home-line: #d8e5ec;
+    --home-signal: #f2b721;
+    --home-danger: #d6463b;
+}
+
+.home-page .home-main {
+    overflow: clip;
+}
+
+.home-page .home-main .section {
+    padding-block: clamp(6rem, 8vw, 8.75rem);
+}
+
+.home-page .home-main .section-eyebrow,
+.home-page .ae-hero-eyebrow,
+.home-page .home-detail-label {
+    font-family: var(--font-body);
+    font-size: .75rem;
+    font-weight: 700;
+    letter-spacing: .17em;
+    text-transform: uppercase;
+}
+
+.home-page .home-main .section-title,
+.home-page .home-main .home-heading-row h2 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(2.85rem, 5.25vw, 5rem);
+    line-height: .98;
+    letter-spacing: -.035em;
+    color: var(--home-ink);
+}
+
+.home-page .home-main .section-description {
+    max-width: 44rem;
+    font-family: var(--font-body);
+    font-size: clamp(1.05rem, 1.1vw, 1.18rem);
+    line-height: 1.7;
+    color: #526a78;
+}
+
+/* Hero — keep the approved composition, improve hierarchy and material feel. */
+.home-page .ae-hero {
+    position: relative;
+    isolation: isolate;
+    min-height: min(54rem, calc(100svh - 6.5rem));
+    display: grid;
+    align-items: center;
+    background:
+        radial-gradient(circle at 78% 30%, rgb(104 206 230 / .16), transparent 28rem),
+        linear-gradient(135deg, #f8fbfc 0%, #eef5f8 55%, #e7f1f5 100%);
+}
+
+.home-page .ae-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    opacity: .32;
+    background-image:
+        linear-gradient(rgb(23 110 166 / .07) 1px, transparent 1px),
+        linear-gradient(90deg, rgb(23 110 166 / .07) 1px, transparent 1px);
+    background-size: 64px 64px;
+    mask-image: linear-gradient(to right, #000 0 48%, transparent 82%);
+}
+
+.home-page .ae-hero-layout {
+    padding-block: clamp(4.5rem, 7vw, 7.25rem);
+}
+
+.home-page .ae-hero-copy {
+    position: relative;
+    z-index: 3;
+}
+
+.home-page .ae-hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: .75rem;
+    margin-bottom: 1.5rem;
+    color: var(--home-blue);
+}
+
+.home-page .ae-hero-eyebrow::before {
+    content: '';
+    width: 2.5rem;
+    height: 2px;
+    background: var(--home-cyan);
+}
+
+.home-page .ae-hero-title {
+    max-width: 11.5ch;
+    font-family: var(--font-display);
+    font-size: clamp(4rem, 6.7vw, 6.9rem);
+    font-weight: 600;
+    line-height: .88;
+    letter-spacing: -.045em;
+    color: var(--home-ink);
+}
+
+.home-page .ae-hero-title span {
+    display: block;
+}
+
+.home-page .ae-hero-title em {
+    position: relative;
+    color: var(--home-blue);
+    font-style: normal;
+}
+
+.home-page .ae-hero-title em::after {
+    content: '';
+    position: absolute;
+    left: .03em;
+    right: .03em;
+    bottom: .03em;
+    height: .06em;
+    background: var(--home-cyan);
+    transform-origin: left center;
+}
+
+.home-page .ae-hero-lead {
+    max-width: 38rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    font-size: clamp(1.05rem, 1.25vw, 1.2rem);
+    line-height: 1.7;
+    color: #526a78;
+}
+
+.home-page .ae-hero-actions {
+    gap: 1rem;
+}
+
+.home-page .ae-hero-primary,
+.home-page .ae-hero-secondary {
+    min-height: 3.2rem;
+    border-radius: .25rem;
+    font-size: .93rem;
+    font-weight: 700;
+}
+
+.home-page .ae-hero-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: .6rem;
+    padding: .65rem .15rem;
+    color: var(--home-ink);
+    text-decoration: none;
+    border-bottom: 1px solid rgb(16 40 56 / .25);
+}
+
+.home-page .ae-hero-secondary:hover {
+    color: var(--home-blue);
+    border-bottom-color: var(--home-blue);
+}
+
+.home-page .ae-hero-trust {
+    margin-top: 2rem;
+    gap: .7rem;
+    font-size: .78rem;
+    font-weight: 600;
+    letter-spacing: .02em;
+    color: #607786;
+}
+
+.home-page .ae-hero-trust i {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--home-cyan);
+}
+
+.home-page .ae-hero-scene {
+    filter: drop-shadow(0 30px 55px rgb(16 44 61 / .16));
+}
+
+.home-page .ae-hero-image {
+    border-radius: .35rem;
+    overflow: hidden;
+}
+
+.home-page .ae-hero-card,
+.home-page .ae-hero-layers {
+    border-radius: .35rem;
+    backdrop-filter: blur(12px);
+}
+
+/* Confidence ribbon — engineering credibility, not decorative counters. */
+.home-page .home-trust {
+    position: relative;
+    background:
+        linear-gradient(90deg, rgb(104 206 230 / .05) 1px, transparent 1px) 0 0 / 5rem 100%,
+        linear-gradient(120deg, #0e293a, #123b52);
+    color: #f5fbfd;
+}
+
+.home-page .home-trust-grid {
+    padding-block: clamp(2.75rem, 4.5vw, 4.25rem);
+}
+
+.home-page .home-trust-intro span {
+    font-size: .72rem;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--home-cyan);
+}
+
+.home-page .home-trust-intro strong {
+    margin-top: .55rem;
+    font-family: var(--font-display);
+    font-size: clamp(1.9rem, 2.6vw, 2.8rem);
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: -.025em;
+}
+
+.home-page .home-trust-item {
+    position: relative;
+    min-height: 5rem;
+    padding-block: .7rem;
+}
+
+.home-page .home-trust-number {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 4vw, 4.5rem);
+    font-weight: 600;
+    line-height: 1;
+    color: rgb(104 206 230 / .16);
+}
+
+.home-page .home-trust-item strong {
+    font-size: .9rem;
+    letter-spacing: .01em;
+}
+
+/* Diagnostic and explorer controls: more technical, less card-like. */
+.home-page :is(.diagnostic-tabs, .system-tabs, .operation-tabs) button,
+.home-page .home-selector-button {
+    border-radius: 0;
+}
+
+.home-page .diagnostic-tabs button,
+.home-page .system-tabs button,
+.home-page .operation-tabs button {
+    transition: color .24s ease, background-color .24s ease, border-color .24s ease, transform .24s ease;
+}
+
+.home-page .diagnostic-tabs button[aria-selected='true'],
+.home-page .system-tabs button[aria-selected='true'],
+.home-page .operation-tabs button[aria-selected='true'] {
+    transform: translateX(.35rem);
+}
+
+.home-page :is(.diagnostic-stage, .system-stage, .assessment-stage, .operation-scene) {
+    box-shadow: 0 30px 70px rgb(16 44 61 / .11);
+}
+
+/* Section rhythm: deliberate alternation instead of repeating white blocks. */
+.home-page .home-diagnostic,
+.home-page .home-assessment {
+    background: #fff;
+}
+
+.home-page #flooring-solutions,
+.home-page .home-industries-section {
+    background: var(--home-soft);
+}
+
+.home-page .home-operation {
+    background: #0e293a;
+    color: #f4fafc;
+}
+
+.home-page .home-operation .section-title,
+.home-page .home-operation .home-heading-row h2 {
+    color: #f4fafc;
+}
+
+.home-page .home-operation .section-description {
+    color: #bed0da;
+}
+
+/* Projects — editorial case-study feel. */
+.home-page .home-project {
+    border-radius: .35rem;
+    overflow: hidden;
+}
+
+.home-page .home-project::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(180deg, transparent 28%, rgb(9 28 40 / .82) 100%);
+}
+
+.home-page .home-project-copy {
+    position: relative;
+    z-index: 2;
+}
+
+.home-page .home-project-copy h3 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: -.025em;
+}
+
+/* Final conversion section. */
+.home-page .home-final-cta {
+    position: relative;
+    isolation: isolate;
+    background:
+        radial-gradient(circle at 82% 18%, rgb(104 206 230 / .22), transparent 24rem),
+        linear-gradient(130deg, #0e293a 0%, #124968 100%);
+}
+
+.home-page .home-final-cta::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    opacity: .25;
+    background-image:
+        linear-gradient(rgb(255 255 255 / .09) 1px, transparent 1px),
+        linear-gradient(90deg, rgb(255 255 255 / .09) 1px, transparent 1px);
+    background-size: 72px 72px;
+    mask-image: linear-gradient(90deg, transparent, #000 55%, #000);
+}
+
+.home-page .home-final-cta .section-title,
+.home-page .home-final-cta .home-heading-row h2 {
+    color: #f6fbfd;
+}
+
+.home-page .home-final-cta .section-description {
+    color: #c8d8e0;
+}
+
+@media (max-width: 991.98px) {
+    .home-page .ae-hero {
+        min-height: auto;
+    }
+
+    .home-page .ae-hero-title {
+        max-width: 10.5ch;
+        font-size: clamp(3.4rem, 9.5vw, 5.4rem);
+    }
+
+    .home-page .ae-hero-layout {
+        padding-block: 4.5rem 5.5rem;
+    }
+
+    .home-page .ae-hero-scene {
+        margin-top: 3rem;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .home-page .home-main .section {
+        padding-block: clamp(4.75rem, 15vw, 6rem);
+    }
+
+    .home-page .home-main .section-title,
+    .home-page .home-main .home-heading-row h2 {
+        font-size: clamp(2.55rem, 11vw, 3.65rem);
+        line-height: .98;
+    }
+
+    .home-page .ae-hero-title {
+        font-size: clamp(3.25rem, 14.5vw, 4.8rem);
+        line-height: .9;
+    }
+
+    .home-page .ae-hero-actions {
+        align-items: stretch;
+    }
+
+    .home-page .ae-hero-actions .btn {
+        width: 100%;
+    }
+
+    .home-page .ae-hero-secondary {
+        justify-content: center;
+    }
+
+    .home-page .ae-hero-trust {
+        flex-wrap: wrap;
+        row-gap: .45rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .home-page .diagnostic-tabs button[aria-selected='true'],
+    .home-page .system-tabs button[aria-selected='true'],
+    .home-page .operation-tabs button[aria-selected='true'] {
+        transform: none;
+    }
+}
