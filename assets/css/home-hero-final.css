@@ -1,0 +1,265 @@
+/* Final Home hero — matches the approved cinematic reference while keeping the shared site header untouched. */
+.home-page .ae-hero{
+  position:relative;
+  isolation:isolate;
+  min-height:clamp(34rem,48vw,46rem)!important;
+  display:flex!important;
+  align-items:stretch!important;
+  overflow:hidden;
+  background:#082338!important;
+  color:#fff;
+}
+.home-page .ae-hero::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  z-index:1;
+  opacity:1!important;
+  background:
+    linear-gradient(90deg,rgba(4,25,42,.94) 0%,rgba(4,25,42,.84) 25%,rgba(4,25,42,.40) 47%,rgba(4,25,42,.08) 68%,rgba(4,25,42,.30) 100%),
+    linear-gradient(180deg,rgba(0,18,31,.08),rgba(0,18,31,.22));
+  mask-image:none!important;
+  pointer-events:none;
+}
+.home-page .ae-hero::after{
+  content:'';
+  position:absolute;
+  inset:auto 0 0;
+  z-index:1;
+  height:25%;
+  background:linear-gradient(180deg,transparent,rgba(3,20,33,.48));
+  pointer-events:none;
+}
+.home-page .ae-hero-video-wrap{
+  position:absolute;
+  inset:0;
+  z-index:0;
+  overflow:hidden;
+  background:#0a293d url('https://images.pexels.com/videos/13422071/free-video-13422071.jpg?auto=compress&cs=tinysrgb&w=1920') center/cover no-repeat;
+}
+.home-page .ae-hero-video{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center 48%;
+  filter:saturate(.9) contrast(1.06) brightness(.88);
+}
+.home-page .ae-hero-layout{
+  position:relative;
+  z-index:3;
+  width:100%;
+  min-height:inherit;
+  display:flex!important;
+  align-items:center;
+  padding-top:clamp(3.2rem,5vw,5rem)!important;
+  padding-bottom:clamp(5.7rem,8vw,7rem)!important;
+}
+.home-page .ae-hero-copy{
+  width:min(44rem,56%);
+  padding-left:clamp(.4rem,1vw,1rem);
+  color:#fff;
+}
+.home-page .ae-hero-eyebrow{
+  display:block!important;
+  margin:0 0 .85rem!important;
+  color:#d8edf6!important;
+  font-size:clamp(.67rem,.8vw,.78rem)!important;
+  font-weight:800!important;
+  letter-spacing:.17em!important;
+  text-transform:uppercase;
+}
+.home-page .ae-hero-eyebrow::before{display:none!important}
+.home-page .ae-hero-title{
+  max-width:8.8ch!important;
+  margin:0!important;
+  color:#fff!important;
+  font-family:var(--font-display)!important;
+  font-size:clamp(3.45rem,5.7vw,6rem)!important;
+  font-weight:700!important;
+  line-height:.88!important;
+  letter-spacing:-.045em!important;
+  text-transform:uppercase;
+  text-wrap:balance;
+}
+.home-page .ae-hero-title span{display:inline!important}
+.home-page .ae-hero-title span::after{content:' '}
+.home-page .ae-hero-title em{color:inherit!important;font-style:normal!important}
+.home-page .ae-hero-title em::after{display:none!important}
+.home-page .ae-hero-lead{
+  max-width:31rem!important;
+  margin:1rem 0 1.35rem!important;
+  color:#e4edf2!important;
+  font-size:clamp(.98rem,1.08vw,1.12rem)!important;
+  line-height:1.45!important;
+}
+.home-page .ae-hero-actions{
+  display:flex!important;
+  align-items:center;
+  gap:1rem!important;
+  flex-wrap:wrap;
+}
+.home-page .ae-hero-primary{
+  min-height:3.2rem!important;
+  padding:.8rem 1.25rem!important;
+  border:1px solid #f2b721!important;
+  border-radius:.2rem!important;
+  background:#f2c229!important;
+  color:#0a2638!important;
+  box-shadow:0 10px 30px rgba(0,0,0,.16);
+}
+.home-page .ae-hero-primary:hover{background:#ffd13c!important;border-color:#ffd13c!important}
+.home-page .ae-hero-secondary{
+  display:inline-grid!important;
+  grid-template-columns:2.65rem auto;
+  grid-template-areas:'icon title' 'icon meta';
+  align-items:center;
+  column-gap:.72rem;
+  min-height:3.2rem!important;
+  padding:.15rem .25rem!important;
+  border:0!important;
+  color:#fff!important;
+  text-decoration:none!important;
+}
+.home-page .ae-hero-secondary::before{
+  content:'▶';
+  grid-area:icon;
+  width:2.55rem;
+  height:2.55rem;
+  display:grid;
+  place-items:center;
+  border:2px solid rgba(255,255,255,.84);
+  border-radius:50%;
+  color:#fff;
+  font-size:.78rem;
+  padding-left:.13rem;
+}
+.home-page .ae-hero-secondary::after{
+  content:'2 min';
+  grid-area:meta;
+  color:#c8d6de;
+  font-size:.74rem;
+  line-height:1;
+}
+.home-page .ae-hero-secondary .icon{display:none!important}
+.home-page .ae-hero-trust{display:none!important}
+.home-page .ae-hero-scene{display:none!important}
+.home-page .ae-hero-side-message{
+  position:absolute;
+  z-index:4;
+  top:18%;
+  right:clamp(1.5rem,5vw,5.5rem);
+  width:10rem;
+  padding:1.15rem 1.05rem 1.25rem;
+  border-left:1px solid rgba(255,255,255,.38);
+  background:linear-gradient(90deg,rgba(7,31,48,.08),rgba(7,31,48,.58));
+  color:#e9f2f6;
+  font-family:var(--font-display);
+  font-size:.8rem;
+  font-weight:700;
+  line-height:1.65;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+}
+.home-page .ae-hero-side-message::after{
+  content:'';
+  display:block;
+  width:2.4rem;
+  height:2px;
+  margin-top:1rem;
+  background:#d9e8ee;
+}
+.home-page .ae-hero-benefits{
+  position:absolute;
+  z-index:4;
+  right:clamp(1.3rem,4.6vw,5rem);
+  bottom:clamp(1.5rem,2.7vw,2.5rem);
+  display:flex;
+  align-items:stretch;
+  background:rgba(5,30,47,.20);
+  backdrop-filter:blur(4px);
+}
+.home-page .ae-hero-benefit{
+  min-width:8.8rem;
+  display:grid;
+  grid-template-columns:2.1rem auto;
+  align-items:center;
+  gap:.55rem;
+  padding:.72rem .95rem;
+  border-left:1px solid rgba(255,255,255,.26);
+  color:#fff;
+}
+.home-page .ae-hero-benefit:first-child{border-left:0}
+.home-page .ae-hero-benefit svg{
+  width:1.8rem;
+  height:1.8rem;
+  fill:none;
+  stroke:#fff;
+  stroke-width:1.7;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+.home-page .ae-hero-benefit span{
+  font-size:.68rem;
+  font-weight:800;
+  line-height:1.15;
+  letter-spacing:.05em;
+  text-transform:uppercase;
+}
+.home-page .ae-hero-video-status{
+  position:absolute;
+  z-index:4;
+  left:50%;
+  bottom:1.35rem;
+  transform:translateX(-50%);
+  display:flex;
+  align-items:center;
+  gap:.5rem;
+  color:rgba(255,255,255,.74);
+  font-size:.62rem;
+  font-weight:700;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+.home-page .ae-hero-video-status::before{
+  content:'';
+  width:.48rem;
+  height:.48rem;
+  border-radius:50%;
+  background:#65cbe3;
+  box-shadow:0 0 0 0 rgba(101,203,227,.5);
+  animation:hero-live-pulse 2s ease-out infinite;
+}
+@keyframes hero-live-pulse{70%{box-shadow:0 0 0 .7rem rgba(101,203,227,0)}}
+@media(max-width:991.98px){
+  .home-page .ae-hero{min-height:42rem!important}
+  .home-page .ae-hero::before{background:linear-gradient(90deg,rgba(4,25,42,.93),rgba(4,25,42,.66) 65%,rgba(4,25,42,.35))}
+  .home-page .ae-hero-copy{width:min(38rem,72%)}
+  .home-page .ae-hero-side-message{display:none}
+  .home-page .ae-hero-benefits{right:1.25rem;bottom:1.2rem}
+  .home-page .ae-hero-benefit{min-width:7.5rem;padding:.6rem .72rem}
+  .home-page .ae-hero-video-status{display:none}
+}
+@media(max-width:767.98px){
+  .home-page .ae-hero{min-height:40rem!important}
+  .home-page .ae-hero-video{object-position:62% center}
+  .home-page .ae-hero::before{background:linear-gradient(90deg,rgba(4,25,42,.95),rgba(4,25,42,.72) 78%,rgba(4,25,42,.5))}
+  .home-page .ae-hero-layout{align-items:flex-start;padding-top:4.2rem!important;padding-bottom:7.8rem!important}
+  .home-page .ae-hero-copy{width:100%;max-width:34rem}
+  .home-page .ae-hero-title{max-width:9ch!important;font-size:clamp(3rem,14vw,4.8rem)!important}
+  .home-page .ae-hero-lead{max-width:26rem!important}
+  .home-page .ae-hero-benefits{left:1rem;right:1rem;bottom:1rem;justify-content:stretch}
+  .home-page .ae-hero-benefit{flex:1;min-width:0;grid-template-columns:1fr;justify-items:center;text-align:center;padding:.58rem .3rem;gap:.25rem}
+  .home-page .ae-hero-benefit svg{width:1.35rem;height:1.35rem}
+  .home-page .ae-hero-benefit span{font-size:.56rem}
+}
+@media(max-width:479.98px){
+  .home-page .ae-hero-actions{gap:.7rem}
+  .home-page .ae-hero-primary{width:100%;justify-content:center}
+  .home-page .ae-hero-secondary{grid-template-columns:2.4rem auto}
+  .home-page .ae-hero-benefit{padding-inline:.15rem}
+}
+@media(prefers-reduced-motion:reduce){
+  .home-page .ae-hero-video-status::before{animation:none!important}
+}
