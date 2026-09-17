@@ -1,34 +1,75 @@
-/* Human-readable Home problem visuals. Real project photography remains the base; motion only highlights the selected issue. */
+/* Human-readable Home problem visuals. Photography remains primary; animation makes the selected problem unmistakable. */
 .home-page .diagnostic-stage{position:relative;overflow:hidden;min-height:34rem;background:#0f2b3b;border:1px solid #d8e5ec;box-shadow:0 26px 54px rgb(12 38 54/.12)}
 .home-page .diagnostic-stage>.diagnostic-floor,.home-page .diagnostic-stage>.diagnostic-readout{display:none!important}
-.home-page .problem-visual{position:absolute;inset:0;z-index:1;overflow:hidden;background:#173847;color:#fff}
-.home-page .problem-visual-image{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;filter:saturate(.9) contrast(1.02);transform:scale(1.035);transition:opacity .34s ease,transform 1.2s cubic-bezier(.22,1,.36,1)}
-.home-page .problem-visual::after{content:'';position:absolute;inset:0;z-index:2;background:linear-gradient(90deg,rgb(8 28 40/.78) 0%,rgb(8 28 40/.42) 39%,rgb(8 28 40/.08) 68%,rgb(8 28 40/.18) 100%);pointer-events:none}
-.home-page .problem-visual-copy{position:absolute;z-index:8;left:clamp(1.4rem,4vw,3rem);top:clamp(1.5rem,5vw,3.2rem);max-width:min(28rem,58%)}
+.home-page .problem-visual{position:absolute;inset:0;z-index:1;overflow:hidden;background:#173847;color:#fff;isolation:isolate}
+.home-page .problem-visual-image{position:absolute;inset:-2%;width:104%;height:104%;object-fit:cover;object-position:center;filter:saturate(.96) contrast(1.04);transform:scale(1.05);transition:opacity .32s ease}
+.home-page .problem-visual.is-animating .problem-visual-image{animation:problem-camera 7s ease-in-out infinite alternate}
+.home-page .problem-visual::before{content:'';position:absolute;z-index:1;inset:0;background:radial-gradient(circle at 68% 60%,transparent 0 20%,rgb(7 25 35/.08) 48%,rgb(7 25 35/.32) 100%);pointer-events:none}
+.home-page .problem-visual::after{content:'';position:absolute;inset:0;z-index:2;background:linear-gradient(90deg,rgb(8 28 40/.84) 0%,rgb(8 28 40/.52) 36%,rgb(8 28 40/.06) 64%,rgb(8 28 40/.18) 100%);pointer-events:none}
+.home-page .problem-visual-copy{position:absolute;z-index:10;left:clamp(1.4rem,4vw,3rem);top:clamp(1.5rem,5vw,3.2rem);max-width:min(28rem,58%)}
 .home-page .problem-visual-kicker{display:block;margin-bottom:.7rem;color:#9ee5f2;font-size:.72rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase}
 .home-page .problem-visual-title{margin:0 0 .65rem;color:#fff;font-family:var(--font-display);font-size:clamp(2rem,3.4vw,3.55rem);font-weight:600;line-height:.96;letter-spacing:-.035em}
 .home-page .problem-visual-text{margin:0;color:#d7e7ee;font-size:clamp(.93rem,1.25vw,1.08rem);line-height:1.58}
-.home-page .problem-visual-tag{position:absolute;z-index:9;right:clamp(1rem,3vw,2rem);bottom:clamp(1rem,3vw,2rem);display:flex;align-items:center;gap:.65rem;padding:.8rem 1rem;background:rgb(255 255 255/.96);color:#173847;border-radius:.35rem;box-shadow:0 16px 34px rgb(4 22 32/.26);font-weight:800;font-size:.82rem}
-.home-page .problem-visual-tag i{width:.65rem;height:.65rem;background:#e44d36;border-radius:50%;box-shadow:0 0 0 0 rgb(228 77 54/.38);animation:problem-pulse 2s ease-out infinite}
-.home-page .problem-visual-scene{position:absolute;z-index:6;inset:0;pointer-events:none}
+.home-page .problem-visual-tag{position:absolute;z-index:11;right:clamp(1rem,3vw,2rem);bottom:clamp(1rem,3vw,2rem);display:flex;align-items:center;gap:.65rem;padding:.8rem 1rem;background:rgb(255 255 255/.97);color:#173847;border-radius:.35rem;box-shadow:0 16px 34px rgb(4 22 32/.26);font-weight:800;font-size:.82rem}
+.home-page .problem-visual-tag i{width:.65rem;height:.65rem;background:#e44d36;border-radius:50%;box-shadow:0 0 0 0 rgb(228 77 54/.38);animation:problem-pulse 1.8s ease-out infinite}
+.home-page .problem-motion-cue{position:absolute;z-index:11;right:1.15rem;top:1.15rem;display:flex;align-items:center;gap:.45rem;padding:.45rem .65rem;background:rgb(8 31 45/.72);border:1px solid rgb(255 255 255/.24);backdrop-filter:blur(7px);font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;color:#eaf8fb}
+.home-page .problem-motion-cue span{width:.45rem;height:.45rem;border-radius:50%;background:#65cbe3;animation:problem-live 1.25s ease-in-out infinite}
+.home-page .problem-visual-scene{position:absolute;z-index:7;inset:0;pointer-events:none;overflow:hidden}
 .home-page .problem-visual-scene svg{position:absolute;inset:0;width:100%;height:100%}
-.home-page .pv-crack-path{fill:none;stroke:#ef4e35;stroke-width:7;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:560;stroke-dashoffset:560;filter:drop-shadow(0 0 5px rgb(239 78 53/.72));animation:problem-trace 4.8s ease-in-out infinite}
-.home-page .pv-crack-ring{fill:none;stroke:#fff;stroke-width:3;opacity:.92;transform-box:fill-box;transform-origin:center;animation:problem-ring 2.2s ease-out infinite}
-.home-page .pv-dust{position:absolute;width:.55rem;height:.55rem;border-radius:50%;background:rgb(225 231 233/.86);box-shadow:0 0 14px rgb(255 255 255/.25);animation:problem-dust 2.7s ease-in-out infinite}
-.home-page .pv-dust:nth-child(1){left:58%;bottom:23%}.home-page .pv-dust:nth-child(2){left:64%;bottom:28%;animation-delay:.45s}.home-page .pv-dust:nth-child(3){left:70%;bottom:22%;animation-delay:.9s}.home-page .pv-dust:nth-child(4){left:75%;bottom:31%;animation-delay:1.3s}.home-page .pv-peel{position:absolute;right:14%;bottom:12%;width:31%;height:28%;background:linear-gradient(145deg,#76cde0,#1b78a6);clip-path:polygon(0 18%,100% 0,82% 100%,16% 78%);box-shadow:0 24px 30px rgb(5 24 36/.3);transform-origin:82% 90%;animation:problem-peel 3.6s ease-in-out infinite}
-.home-page .pv-peel::after{content:'';position:absolute;right:0;bottom:0;width:43%;height:45%;background:#d4dcdf;clip-path:polygon(0 100%,100% 0,100% 100%)}
-.home-page .pv-grid{position:absolute;right:8%;bottom:9%;width:47%;height:40%;border:2px solid rgb(101 203 227/.86);background-image:linear-gradient(rgb(101 203 227/.55) 1px,transparent 1px),linear-gradient(90deg,rgb(101 203 227/.55) 1px,transparent 1px);background-size:2.4rem 2.4rem;transform:perspective(800px) rotateX(56deg) rotateZ(-6deg);box-shadow:0 0 28px rgb(101 203 227/.26);animation:problem-static 2.6s ease-in-out infinite}
-.home-page .pv-clean{position:absolute;right:5%;top:12%;width:7%;height:74%;background:linear-gradient(90deg,transparent,rgb(255 255 255/.9),transparent);filter:blur(1px);animation:problem-clean 3.5s ease-in-out infinite}
-.home-page .pv-water{position:absolute;right:9%;bottom:10%;width:48%;height:34%;background:radial-gradient(ellipse at 42% 62%,rgb(40 150 202/.7),transparent 44%),radial-gradient(ellipse at 67% 43%,rgb(101 203 227/.54),transparent 34%);filter:blur(.5px);animation:problem-water 3.5s ease-in-out infinite alternate}
-@keyframes problem-trace{0%,12%{stroke-dashoffset:560;opacity:.25}48%,78%{stroke-dashoffset:0;opacity:1}100%{stroke-dashoffset:0;opacity:.35}}
-@keyframes problem-ring{0%{transform:scale(.72);opacity:0}35%{opacity:1}100%{transform:scale(1.5);opacity:0}}
-@keyframes problem-pulse{70%{box-shadow:0 0 0 .65rem rgb(228 77 54/0)}}
-@keyframes problem-dust{0%{transform:translate(0,14px) scale(.6);opacity:0}30%{opacity:.85}100%{transform:translate(18px,-62px) scale(1.3);opacity:0}}
-@keyframes problem-peel{0%,100%{transform:rotateX(0deg) translateY(0)}50%{transform:rotateX(20deg) translateY(-10px)}}
-@keyframes problem-static{0%,100%{filter:brightness(1);opacity:.72}50%{filter:brightness(1.5);opacity:1}}
-@keyframes problem-clean{0%{translate:-580% 0;opacity:0}20%{opacity:.72}80%{opacity:.72}100%{translate:40% 0;opacity:0}}
-@keyframes problem-water{from{transform:scale(.9);opacity:.55}to{transform:scale(1.08);opacity:.9}}
-@media (hover:hover) and (pointer:fine){.home-page .diagnostic-stage:hover .problem-visual-image{transform:scale(1.055)}}
+.home-page .pv-effect-label{position:absolute;right:7%;bottom:18%;padding:.52rem .7rem;background:rgb(228 77 54/.94);color:#fff;border-radius:.3rem;font:800 .72rem/1 var(--font-body);letter-spacing:.03em;box-shadow:0 8px 18px rgb(4 22 32/.24);animation:problem-label 3.2s ease-in-out infinite}
+
+/* Floor crack — strong, clearly visible animated trace and callout. */
+.home-page .pv-crack-base{fill:none;stroke:rgb(48 31 28/.7);stroke-width:14;stroke-linecap:round;stroke-linejoin:round}
+.home-page .pv-crack-path{fill:none;stroke:#ff5b3d;stroke-width:8;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:760;stroke-dashoffset:760;filter:drop-shadow(0 0 7px rgb(255 91 61/.95));animation:problem-trace 4.4s ease-in-out infinite}
+.home-page .pv-crack-ring{fill:none;stroke:#fff;stroke-width:4;opacity:.95;transform-box:fill-box;transform-origin:center;animation:problem-ring 2s ease-out infinite}
+.home-page .pv-crack-ring-b{animation-delay:.7s}
+.home-page .pv-callout path{fill:none;stroke:#ff5b3d;stroke-width:3}.home-page .pv-callout rect{fill:#e84f35}.home-page .pv-callout text{fill:#fff;font:800 20px/1 var(--font-body)}
+.home-page .pv-callout{animation:problem-callout 4.4s ease-in-out infinite}
+
+/* Dust — obvious moving particles plus a visible surface haze. */
+.home-page .pv-dust-haze{position:absolute;right:5%;bottom:4%;width:54%;height:42%;background:radial-gradient(ellipse at 55% 75%,rgb(225 231 233/.58),transparent 62%);filter:blur(5px);animation:problem-haze 2.8s ease-in-out infinite alternate}
+.home-page .pv-dust{position:absolute;width:.75rem;height:.75rem;border-radius:50%;background:rgb(241 245 246/.94);box-shadow:0 0 18px rgb(255 255 255/.36);animation:problem-dust 2.5s ease-in-out infinite}
+.home-page .pv-dust-1{left:54%;bottom:17%}.home-page .pv-dust-2{left:59%;bottom:20%;animation-delay:.2s}.home-page .pv-dust-3{left:64%;bottom:16%;animation-delay:.45s}.home-page .pv-dust-4{left:69%;bottom:22%;animation-delay:.7s}.home-page .pv-dust-5{left:74%;bottom:18%;animation-delay:.95s}.home-page .pv-dust-6{left:79%;bottom:24%;animation-delay:1.15s}.home-page .pv-dust-7{left:61%;bottom:28%;animation-delay:1.35s}.home-page .pv-dust-8{left:72%;bottom:30%;animation-delay:1.55s}.home-page .pv-dust-9{left:82%;bottom:19%;animation-delay:1.75s}.home-page .pv-dust-10{left:67%;bottom:13%;animation-delay:1.95s}
+
+/* Peeling — visible lifted flap with exposed surface below. */
+.home-page .pv-peel-under{position:absolute;right:10%;bottom:7%;width:42%;height:30%;background:#c4c9c8;clip-path:polygon(0 15%,100% 0,84% 100%,14% 85%);box-shadow:inset 0 0 0 2px rgb(255 255 255/.35)}
+.home-page .pv-peel{position:absolute;right:10%;bottom:8%;width:42%;height:30%;background:linear-gradient(145deg,#63cbe0,#176f9f);clip-path:polygon(0 15%,100% 0,84% 100%,14% 85%);transform-origin:88% 88%;box-shadow:0 22px 30px rgb(5 24 36/.35);animation:problem-peel 3s ease-in-out infinite}
+.home-page .pv-peel-edge{position:absolute;right:11%;bottom:8%;width:15%;height:14%;background:linear-gradient(145deg,#cbe5eb,#eef5f7);clip-path:polygon(0 100%,100% 0,100% 100%);animation:problem-peel-edge 3s ease-in-out infinite}
+
+/* Static — pulsing grid plus moving current route. */
+.home-page .pv-grid{position:absolute;right:6%;bottom:7%;width:50%;height:43%;border:2px solid rgb(101 203 227/.92);background-image:linear-gradient(rgb(101 203 227/.62) 1px,transparent 1px),linear-gradient(90deg,rgb(101 203 227/.62) 1px,transparent 1px);background-size:2.25rem 2.25rem;transform:perspective(800px) rotateX(56deg) rotateZ(-6deg);box-shadow:0 0 34px rgb(101 203 227/.38);animation:problem-static 2s ease-in-out infinite}
+.home-page .pv-static-route{position:absolute;right:12%;bottom:26%;width:38%;height:4px;background:linear-gradient(90deg,#65cbe3,#fff2a6,#65cbe3);box-shadow:0 0 16px rgb(101 203 227/.9);transform:rotate(-8deg);animation:problem-route 1.25s linear infinite}
+.home-page .pv-static-pulse{position:absolute;width:2rem;height:2rem;border:3px solid #fff;border-radius:50%;box-shadow:0 0 18px rgb(101 203 227/.8);animation:problem-ring 1.9s ease-out infinite}.home-page .pv-static-pulse-a{right:35%;bottom:22%}.home-page .pv-static-pulse-b{right:17%;bottom:32%;animation-delay:.65s}
+
+/* Hygiene — visible moving clean band and sparkle feedback. */
+.home-page .pv-clean{position:absolute;right:-4%;top:0;width:13%;height:100%;background:linear-gradient(90deg,transparent,rgb(255 255 255/.95),transparent);filter:blur(1px);box-shadow:0 0 26px rgb(255 255 255/.28);animation:problem-clean 3.2s ease-in-out infinite}
+.home-page .pv-clean-shine{position:absolute;color:#fff;font-size:2rem;text-shadow:0 0 14px rgb(101 203 227/.75);animation:problem-shine 2.4s ease-in-out infinite}.home-page .pv-clean-shine-a{right:29%;bottom:24%}.home-page .pv-clean-shine-b{right:14%;bottom:36%;animation-delay:.8s}
+
+/* Water — spreading moisture plus droplets and ripples. */
+.home-page .pv-water{position:absolute;right:7%;bottom:6%;width:53%;height:38%;background:radial-gradient(ellipse at 42% 62%,rgb(40 150 202/.76),transparent 46%),radial-gradient(ellipse at 67% 43%,rgb(101 203 227/.62),transparent 38%);filter:blur(.5px);animation:problem-water 2.8s ease-in-out infinite alternate}
+.home-page .pv-drop{position:absolute;width:1rem;height:1.35rem;background:linear-gradient(#78d7ea,#176ea6);border-radius:55% 45% 60% 40%;transform:rotate(45deg);animation:problem-drop 1.7s ease-in infinite}.home-page .pv-drop-a{right:26%;top:23%}.home-page .pv-drop-b{right:18%;top:34%;animation-delay:.75s}
+.home-page .pv-ripple{position:absolute;border:3px solid rgb(124 220 239/.85);border-radius:50%;animation:problem-ripple 2s ease-out infinite}.home-page .pv-ripple-a{right:22%;bottom:20%;width:3rem;height:1.4rem}.home-page .pv-ripple-b{right:35%;bottom:14%;width:2.4rem;height:1.1rem;animation-delay:.75s}
+
+@keyframes problem-camera{0%{transform:scale(1.05) translate3d(0,0,0)}100%{transform:scale(1.095) translate3d(-1.2%,.7%,0)}}
+@keyframes problem-trace{0%,10%{stroke-dashoffset:760;opacity:.15}45%,72%{stroke-dashoffset:0;opacity:1}100%{stroke-dashoffset:0;opacity:.28}}
+@keyframes problem-ring{0%{transform:scale(.55);opacity:0}30%{opacity:1}100%{transform:scale(1.75);opacity:0}}
+@keyframes problem-callout{0%,27%{opacity:0;transform:translateY(8px)}42%,80%{opacity:1;transform:none}100%{opacity:0;transform:translateY(-3px)}}
+@keyframes problem-pulse{70%{box-shadow:0 0 0 .7rem rgb(228 77 54/0)}}
+@keyframes problem-live{50%{opacity:.28;transform:scale(.72)}}
+@keyframes problem-label{0%,18%,100%{opacity:0;transform:translateY(7px)}30%,78%{opacity:1;transform:none}}
+@keyframes problem-haze{from{opacity:.35;transform:scale(.9)}to{opacity:.82;transform:scale(1.08)}}
+@keyframes problem-dust{0%{transform:translate(0,18px) scale(.45);opacity:0}25%{opacity:.95}100%{transform:translate(24px,-92px) scale(1.45);opacity:0}}
+@keyframes problem-peel{0%,100%{transform:perspective(500px) rotateX(0deg) translateY(0)}45%,60%{transform:perspective(500px) rotateX(36deg) translateY(-18px)}}
+@keyframes problem-peel-edge{0%,100%{transform:translateY(0) scaleY(.4);opacity:.4}45%,60%{transform:translateY(-17px) scaleY(1);opacity:1}}
+@keyframes problem-static{0%,100%{filter:brightness(.9);opacity:.65}50%{filter:brightness(1.65);opacity:1}}
+@keyframes problem-route{0%{background-position:0 0;filter:brightness(.9)}50%{filter:brightness(1.8)}100%{background-position:120px 0;filter:brightness(.9)}}
+@keyframes problem-clean{0%{translate:-700% 0;opacity:0}18%{opacity:.85}78%{opacity:.85}100%{translate:50% 0;opacity:0}}
+@keyframes problem-shine{0%,100%{opacity:0;transform:scale(.5) rotate(0)}45%{opacity:1;transform:scale(1.15) rotate(45deg)}}
+@keyframes problem-water{from{transform:scale(.82);opacity:.48}to{transform:scale(1.12);opacity:.95}}
+@keyframes problem-drop{0%{translate:0 -28px;opacity:0}35%{opacity:1}85%,100%{translate:0 46px;opacity:0}}
+@keyframes problem-ripple{0%{transform:scale(.45);opacity:0}30%{opacity:1}100%{transform:scale(2.2);opacity:0}}
+
+@media (hover:hover) and (pointer:fine){.home-page .diagnostic-stage:hover .problem-visual-image{filter:saturate(1.02) contrast(1.06)}}
 @media (max-width:991.98px){.home-page .diagnostic-stage{min-height:30rem}.home-page .problem-visual-copy{max-width:70%}}
-@media (max-width:767.98px){.home-page .diagnostic-stage{min-height:27rem}.home-page .problem-visual-copy{left:1.1rem;top:1.2rem;max-width:82%}.home-page .problem-visual-title{font-size:clamp(1.8rem,9vw,2.65rem)}.home-page .problem-visual-text{font-size:.9rem}.home-page .problem-visual-tag{right:.8rem;bottom:.8rem;left:.8rem;justify-content:center}.home-page .problem-visual::after{background:linear-gradient(180deg,rgb(8 28 40/.72) 0 45%,rgb(8 28 40/.08) 72%,rgb(8 28 40/.34) 100%)}}
-@media (prefers-reduced-motion:reduce){.home-page .problem-visual-image,.home-page .pv-crack-path,.home-page .pv-crack-ring,.home-page .problem-visual-tag i,.home-page .pv-dust,.home-page .pv-peel,.home-page .pv-grid,.home-page .pv-clean,.home-page .pv-water{animation:none!important;transition:none!important}.home-page .pv-crack-path{stroke-dashoffset:0}}
+@media (max-width:767.98px){.home-page .diagnostic-stage{min-height:27rem}.home-page .problem-visual-copy{left:1.1rem;top:1.2rem;max-width:82%}.home-page .problem-visual-title{font-size:clamp(1.8rem,9vw,2.65rem)}.home-page .problem-visual-text{font-size:.9rem}.home-page .problem-visual-tag{right:.8rem;bottom:.8rem;left:.8rem;justify-content:center}.home-page .problem-motion-cue{display:none}.home-page .problem-visual::after{background:linear-gradient(180deg,rgb(8 28 40/.78) 0 42%,rgb(8 28 40/.08) 72%,rgb(8 28 40/.38) 100%)}.home-page .pv-effect-label{right:.8rem;bottom:5rem}.home-page .pv-callout{display:none}}
+@media (prefers-reduced-motion:reduce){.home-page .problem-visual-image,.home-page .problem-motion-cue span,.home-page .pv-crack-path,.home-page .pv-crack-ring,.home-page .pv-callout,.home-page .problem-visual-tag i,.home-page .pv-dust,.home-page .pv-dust-haze,.home-page .pv-peel,.home-page .pv-peel-edge,.home-page .pv-grid,.home-page .pv-static-route,.home-page .pv-static-pulse,.home-page .pv-clean,.home-page .pv-clean-shine,.home-page .pv-water,.home-page .pv-drop,.home-page .pv-ripple,.home-page .pv-effect-label{animation:none!important;transition:none!important}.home-page .pv-crack-path{stroke-dashoffset:0}.home-page .pv-effect-label{opacity:1}}
