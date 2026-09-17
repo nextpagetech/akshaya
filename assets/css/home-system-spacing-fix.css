@@ -1,4 +1,4 @@
-/* Final spacing correction for Home / Flooring Solutions. Loaded last on purpose. */
+/* Final spacing correction for Home / Flooring Solutions. Loaded late on purpose. */
 .home-page #flooring-solutions{
   padding-top:2.75rem!important;
   padding-bottom:3.5rem!important;
@@ -13,10 +13,7 @@
   margin:0!important;
   padding:0!important;
 }
-.home-page #flooring-solutions .section-header .section-eyebrow{
-  grid-area:eyebrow!important;
-  margin:0 0 .45rem!important;
-}
+.home-page #flooring-solutions .section-header .section-eyebrow{grid-area:eyebrow!important;margin:0 0 .45rem!important}
 .home-page #flooring-solutions .section-header .section-title{
   grid-area:title!important;
   margin:0!important;
@@ -38,17 +35,27 @@
   line-height:1.52!important;
 }
 .home-page #flooring-solutions .system-explorer-layout{
-  margin-top:1.05rem!important;
-  row-gap:.78rem!important;
+  margin-top:1rem!important;
+  row-gap:.72rem!important;
   column-gap:1.35rem!important;
+  align-items:start!important;
 }
 .home-page #flooring-solutions .system-tabs{margin:0!important;gap:.4rem!important}
 .home-page #flooring-solutions .system-tabs button{min-height:3.8rem!important;padding:.66rem .84rem!important}
-.home-page #flooring-solutions .system-visual,.home-page #flooring-solutions .system-panels{margin-top:0!important}
-.home-page #flooring-solutions .system-panels{padding:1.35rem 1.55rem!important}
+.home-page #flooring-solutions .system-visual,
+.home-page #flooring-solutions .system-panels{
+  margin-top:0!important;
+  align-self:start!important;
+  min-height:27rem!important;
+}
+.home-page #flooring-solutions .system-visual{height:27rem!important}
+.home-page #flooring-solutions .system-visual .system-media-card{inset:0!important;top:0!important;height:100%!important}
+.home-page #flooring-solutions .system-visual .system-photo-wrap{top:0!important}
+.home-page #flooring-solutions .system-panels{padding:1.35rem 1.55rem!important;height:27rem!important;overflow:auto!important}
 @media(max-width:1199.98px){
   .home-page #flooring-solutions .section-header.section-header--split{grid-template-columns:minmax(0,1.08fr) minmax(22rem,.92fr)!important;column-gap:2.5rem!important}
   .home-page #flooring-solutions .section-header .section-title{font-size:clamp(2.7rem,3.75vw,3.55rem)!important;white-space:normal!important;max-width:18ch!important}
+  .home-page #flooring-solutions .system-visual,.home-page #flooring-solutions .system-panels{min-height:25rem!important;height:25rem!important}
 }
 @media(max-width:991.98px){
   .home-page #flooring-solutions{padding-top:2.5rem!important;padding-bottom:3.1rem!important}
@@ -56,6 +63,7 @@
   .home-page #flooring-solutions .section-header .section-title{max-width:16ch!important;font-size:clamp(2.65rem,6.2vw,3.5rem)!important}
   .home-page #flooring-solutions .section-header .section-description{max-width:42rem!important;margin-top:.1rem!important}
   .home-page #flooring-solutions .system-explorer-layout{margin-top:.9rem!important;row-gap:.72rem!important}
+  .home-page #flooring-solutions .system-visual,.home-page #flooring-solutions .system-panels{height:auto!important;min-height:24rem!important}
 }
 @media(max-width:767.98px){
   .home-page #flooring-solutions{padding-top:2.15rem!important;padding-bottom:2.75rem!important}
