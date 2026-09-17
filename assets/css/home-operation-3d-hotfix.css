@@ -1,6 +1,7 @@
 /* Hotfix: keep the final Why Akshaya 3D experience in control of layout.
  * Loaded last so legacy operation/photo rules cannot collapse the scene or tabs.
  */
+.home-page .ae-hero-video-wrap{background:#0a293d!important}
 .home-page #why-akshaya .operation-layout{
   display:grid!important;
   grid-template-columns:minmax(0,1fr)!important;
