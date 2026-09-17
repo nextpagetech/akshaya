@@ -98,6 +98,7 @@ if ($showSiteShell ?? true) {
     <script src="<?= site_escape(asset_url('js/home-problem-visuals.js')) ?>" defer></script>
     <script src="<?= site_escape(asset_url('js/home-system-tabs.js')) ?>" defer></script>
     <script src="<?= site_escape(asset_url('js/home-industries-images.js')) ?>" defer></script>
+    <script src="<?= site_escape(asset_url('js/home-real-visuals.js')) ?>" defer></script>
     <script src="<?= site_escape(asset_url('js/inner-page-visual-story.js')) ?>" defer></script>
     <script src="<?= site_escape(asset_url('js/inner-page-meaningful-visuals.js')) ?>" defer></script>
 </body>
