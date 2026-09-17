@@ -1,142 +1,143 @@
-/* Home real-image enhancement.
- * This file is intentionally NON-LAYOUT: it must not redefine established section
- * backgrounds, colours, typography, grids, card surfaces, or component dimensions.
- * It only replaces decorative scene artwork with photographic layers and trims the
- * immediate heading-to-content gap in the four requested sections.
+/* Final Home visual pass.
+ * Scoped to the requested Home sections. Existing colour themes remain in control.
  */
 
-/* Real photo inserted inside an EXISTING visual canvas. */
-.home-page .has-real-photo{
+/* HERO — preserve the existing composition, replace only the visual with a cinematic cleaning scene. */
+.home-page .ae-hero-image .home-demo-media{
   position:relative!important;
   overflow:hidden!important;
+  background-image:url('https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=1900&q=84')!important;
+  background-position:center!important;
+  background-size:cover!important;
   isolation:isolate;
 }
-.home-page .has-real-photo > :not(.real-photo-fill){
-  opacity:0!important;
-  visibility:hidden!important;
-  pointer-events:none!important;
-}
-.home-page .real-photo-fill{
-  position:absolute;
-  inset:0;
-  z-index:20;
-  overflow:hidden;
-  background-position:center;
-  background-size:cover;
-  background-repeat:no-repeat;
-}
-.home-page .real-photo-fill::before{
+.home-page .ae-hero-image .home-demo-media>img{opacity:0!important}
+.home-page .ae-hero-image .home-demo-media::before{
   content:'';
   position:absolute;
-  inset:-2%;
+  inset:-4%;
+  z-index:0;
   background:inherit;
   background-position:center;
   background-size:cover;
-  transform:scale(1.02);
-  animation:home-photo-drift 10s ease-in-out infinite alternate;
+  animation:hero-live-pan 10s ease-in-out infinite alternate;
+}
+.home-page .ae-hero-image .home-demo-media::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  z-index:1;
+  background:
+    linear-gradient(90deg,rgba(7,27,39,.20),rgba(7,27,39,.02) 55%,rgba(7,27,39,.18)),
+    linear-gradient(180deg,rgba(255,255,255,.02),rgba(7,27,39,.22));
+  pointer-events:none;
+}
+.home-page .hero-live-sheen{position:absolute;inset:0;z-index:3;pointer-events:none;overflow:hidden}
+.home-page .hero-live-sheen::before{
+  content:'';position:absolute;left:-20%;top:0;width:17%;height:100%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.18),transparent);
+  transform:skewX(-14deg);animation:hero-live-sweep 5.8s ease-in-out infinite;
+}
+.home-page .hero-live-status{
+  position:absolute;right:1rem;bottom:1rem;z-index:4;padding:.48rem .64rem;
+  border:1px solid rgba(255,255,255,.28);background:rgba(7,31,45,.72);color:#fff;
+  font-size:.66rem;font-weight:750;letter-spacing:.1em;text-transform:uppercase;backdrop-filter:blur(7px)
+}
+
+/* Shared photographic layer mounted inside existing scene canvases. */
+.home-page .has-real-photo{position:relative!important;overflow:hidden!important;isolation:isolate}
+.home-page .has-real-photo > :not(.real-photo-fill){opacity:0!important;visibility:hidden!important;pointer-events:none!important}
+.home-page .real-photo-fill{
+  position:absolute;inset:0;z-index:20;overflow:hidden;
+  background-position:center;background-size:cover;background-repeat:no-repeat;
+}
+.home-page .real-photo-fill::before{
+  content:'';position:absolute;inset:-2%;background:inherit;background-position:center;background-size:cover;
+  transform:scale(1.02);animation:home-photo-drift 9s ease-in-out infinite alternate;
 }
 .home-page .real-photo-fill::after{
-  content:'';
-  position:absolute;
-  inset:0;
-  background:linear-gradient(180deg,rgba(7,30,43,.02) 44%,rgba(7,30,43,.48) 100%);
-  pointer-events:none;
+  content:'';position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(180deg,rgba(7,30,43,.02) 38%,rgba(7,30,43,.50) 100%);
 }
 .home-page .real-photo-label{
-  position:absolute;
-  left:1rem;
-  bottom:1rem;
-  z-index:3;
-  max-width:min(28rem,calc(100% - 2rem));
-  padding:.58rem .75rem;
-  border-left:3px solid var(--home-signal,#f2b721);
-  background:rgba(8,35,50,.80);
-  color:#fff;
-  font-size:.74rem;
-  font-weight:700;
-  line-height:1.4;
-  backdrop-filter:blur(7px);
+  position:absolute;left:1rem;bottom:1rem;z-index:5;max-width:min(30rem,calc(100% - 2rem));
+  padding:.58rem .75rem;border-left:3px solid var(--home-signal,#f2b721);
+  background:rgba(8,35,50,.82);color:#fff;font-size:.73rem;font-weight:700;line-height:1.4;backdrop-filter:blur(7px)
 }
-.home-page .real-photo-scan{
-  position:absolute;
-  inset:0;
-  z-index:2;
-  overflow:hidden;
-  pointer-events:none;
-}
-.home-page .real-photo-scan::before{
-  content:'';
-  position:absolute;
-  left:-22%;
-  top:0;
-  width:16%;
-  height:100%;
-  background:linear-gradient(90deg,transparent,rgba(255,255,255,.16),transparent);
-  transform:skewX(-15deg);
-  animation:home-photo-scan 6.4s ease-in-out infinite;
-}
+.home-page .real-photo-effect{position:absolute;inset:0;z-index:4;pointer-events:none;overflow:hidden}
+.home-page .real-photo-effect::before,.home-page .real-photo-effect::after{content:'';position:absolute;display:block}
 
-/* Industries: keep home-industries-redesign.css completely in control of layout/theme.
- * Only replace the old client/demo background inside its existing media box. */
-.home-page #industries .home-industry-panel .home-demo-media{
-  background-position:center!important;
-  background-size:cover!important;
-  background-repeat:no-repeat!important;
-}
-.home-page #industries .home-industry-panel .home-demo-media > img{
-  opacity:0!important;
+/* Contextual motion cues: small, meaningful, never dominant. */
+.home-page .fx-route::before{left:7%;right:7%;bottom:15%;height:4px;background:repeating-linear-gradient(90deg,#f2b721 0 34px,transparent 34px 54px);animation:fx-route 2.2s linear infinite;box-shadow:0 0 12px rgba(242,183,33,.45)}
+.home-page .fx-scan::before{left:-16%;top:0;width:14%;height:100%;background:linear-gradient(90deg,transparent,rgba(101,203,227,.33),transparent);transform:skewX(-13deg);animation:fx-scan 4.8s ease-in-out infinite}
+.home-page .fx-moisture::before{left:34%;bottom:22%;width:5rem;height:5rem;border:2px solid #65cbe3;border-radius:50%;animation:fx-ring 2.4s ease-out infinite}
+.home-page .fx-moisture::after{left:calc(34% + 2.25rem);bottom:calc(22% + 2.25rem);width:.5rem;height:.5rem;border-radius:50%;background:#65cbe3;box-shadow:0 0 18px #65cbe3}
+.home-page .fx-focus::before{left:18%;top:24%;width:34%;height:38%;border:2px solid rgba(101,203,227,.9);box-shadow:0 0 0 999px rgba(5,25,36,.10);animation:fx-focus 2.6s ease-in-out infinite}
+.home-page .fx-apply::before{left:-22%;bottom:7%;width:28%;height:46%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.28),rgba(101,203,227,.28),transparent);transform:skewX(-12deg);animation:fx-apply 4.5s ease-in-out infinite}
+.home-page .fx-team::before{right:9%;top:12%;width:3.2rem;height:3.2rem;border:2px solid #f2b721;border-radius:50%;box-shadow:0 0 0 0 rgba(242,183,33,.42);animation:fx-team 2.3s ease-out infinite}
+.home-page .fx-support::before{left:10%;right:10%;bottom:12%;height:3px;background:linear-gradient(90deg,transparent,#65cbe3,#f2b721,#65cbe3,transparent);animation:fx-support 3s ease-in-out infinite}
+.home-page .fx-clean::before{left:-18%;bottom:0;width:26%;height:38%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.34),transparent);transform:skewX(-15deg);animation:fx-clean 4.4s ease-in-out infinite}
+.home-page .fx-docs::before{right:8%;top:12%;width:4.4rem;height:5.4rem;border:2px solid rgba(255,255,255,.72);border-radius:.25rem;box-shadow:inset 0 -1.1rem 0 rgba(101,203,227,.14);animation:fx-docs 2.8s ease-in-out infinite}
+
+/* Industries — use the existing media box, with motion supplied by JS. */
+.home-page #industries .home-industry-panel .home-demo-media{background-position:center!important;background-size:cover!important;background-repeat:no-repeat!important}
+.home-page #industries .home-industry-panel .home-demo-media>img{opacity:0!important}
+.home-page #industries .home-industry-panel .home-demo-media::before{
+  content:'';position:absolute;inset:-2%;z-index:1;background:inherit;background-position:center;background-size:cover;
+  animation:home-photo-drift 9s ease-in-out infinite alternate;
 }
 .home-page #industries .industry-context-label{
-  position:absolute;
-  left:1rem;
-  bottom:1rem;
-  z-index:4;
-  max-width:calc(100% - 2rem);
-  padding:.56rem .72rem;
-  border-left:3px solid var(--home-signal,#f2b721);
-  background:rgba(8,35,50,.80);
-  color:#fff;
-  font-size:.73rem;
-  font-weight:700;
-  line-height:1.35;
-  backdrop-filter:blur(7px);
+  position:absolute;left:1rem;bottom:1rem;z-index:5;max-width:calc(100% - 2rem);padding:.56rem .72rem;
+  border-left:3px solid var(--home-signal,#f2b721);background:rgba(8,35,50,.82);color:#fff;
+  font-size:.72rem;font-weight:700;line-height:1.35;backdrop-filter:blur(7px)
 }
-.home-page #industries .home-industry-panel .home-demo-media::before{
-  content:'';
-  position:absolute;
-  inset:0;
-  z-index:2;
-  pointer-events:none;
-  background:linear-gradient(180deg,transparent 50%,rgba(7,31,44,.44));
-}
+.home-page #industries .industry-motion{position:absolute;inset:0;z-index:4;pointer-events:none;overflow:hidden}
+.home-page #industries .industry-motion::before{content:'';position:absolute;left:-18%;top:0;width:15%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.18),transparent);transform:skewX(-14deg);animation:fx-scan 5.4s ease-in-out infinite}
 
-/* Only local spacing correction requested by the user. No section padding changes. */
+/* Requested tighter vertical rhythm without changing section colour identities. */
+.home-page .home-operation,
+.home-page .assessment-lab,
+.home-page .home-work,
+.home-page .care-experience{padding-top:clamp(3.25rem,4.2vw,4.4rem)!important;padding-bottom:clamp(3.25rem,4.2vw,4.4rem)!important}
 .home-page .home-operation .section-header.section-header--split,
 .home-page .assessment-lab .section-header.section-header--split,
-.home-page .care-experience .section-header.section-header--split{
-  margin-bottom:clamp(1.6rem,2.3vw,2.2rem)!important;
-}
-.home-page .home-work .home-work-heading{
-  margin-bottom:clamp(1.6rem,2.3vw,2.2rem)!important;
-}
+.home-page .care-experience .section-header.section-header--split,
+.home-page .home-work .home-work-heading{margin-bottom:1.35rem!important}
+.home-page .operation-layout,.home-page .assessment-lab-layout,.home-page .home-work-layout,.home-page .care-layout{gap:1.15rem!important;align-items:start!important}
+.home-page .operation-scene-wrap,.home-page .care-stage{min-height:26rem!important}
+.home-page .assessment-lab-stage{min-height:27rem!important}
+.home-page .home-work-visual{min-height:28rem!important}
+.home-page .operation-interface,.home-page .care-interface{align-self:start!important}
 
-@keyframes home-photo-drift{
-  from{transform:scale(1.02) translate3d(0,0,0)}
-  to{transform:scale(1.06) translate3d(-.6%,.3%,0)}
-}
-@keyframes home-photo-scan{
-  0%,18%{transform:translateX(0) skewX(-15deg);opacity:0}
-  38%{opacity:.5}
-  76%,100%{transform:translateX(780%) skewX(-15deg);opacity:0}
-}
+@keyframes hero-live-pan{from{transform:scale(1.03) translate3d(0,0,0)}to{transform:scale(1.09) translate3d(-1.2%,.5%,0)}}
+@keyframes hero-live-sweep{0%,18%{transform:translateX(0) skewX(-14deg);opacity:0}38%{opacity:.55}76%,100%{transform:translateX(820%) skewX(-14deg);opacity:0}}
+@keyframes home-photo-drift{from{transform:scale(1.02) translate3d(0,0,0)}to{transform:scale(1.06) translate3d(-.7%,.35%,0)}}
+@keyframes fx-route{to{background-position:88px 0}}
+@keyframes fx-scan{0%,18%{transform:translateX(0) skewX(-13deg);opacity:0}40%{opacity:.6}78%,100%{transform:translateX(820%) skewX(-13deg);opacity:0}}
+@keyframes fx-ring{0%{transform:scale(.55);opacity:0}35%{opacity:.9}100%{transform:scale(1.45);opacity:0}}
+@keyframes fx-focus{50%{border-color:#f2b721;box-shadow:0 0 18px rgba(242,183,33,.38),0 0 0 999px rgba(5,25,36,.08)}}
+@keyframes fx-apply{0%,16%{transform:translateX(0) skewX(-12deg);opacity:0}42%{opacity:.7}80%,100%{transform:translateX(510%) skewX(-12deg);opacity:0}}
+@keyframes fx-team{75%{box-shadow:0 0 0 1.7rem rgba(242,183,33,0)}}
+@keyframes fx-support{0%,100%{opacity:.32;transform:scaleX(.74)}50%{opacity:.95;transform:scaleX(1)}}
+@keyframes fx-clean{0%,16%{transform:translateX(0) skewX(-15deg);opacity:0}45%{opacity:.65}82%,100%{transform:translateX(500%) skewX(-15deg);opacity:0}}
+@keyframes fx-docs{50%{transform:translateY(-4px);box-shadow:0 8px 22px rgba(101,203,227,.24)}}
 
 @media(max-width:991.98px){
-  .home-page .home-operation .section-header.section-header--split,
-  .home-page .assessment-lab .section-header.section-header--split,
-  .home-page .care-experience .section-header.section-header--split,
-  .home-page .home-work .home-work-heading{margin-bottom:1.45rem!important}
+  .home-page .home-operation,.home-page .assessment-lab,.home-page .home-work,.home-page .care-experience{padding-block:3rem!important}
+  .home-page .operation-scene-wrap,.home-page .care-stage{min-height:22rem!important}
+  .home-page .assessment-lab-stage,.home-page .home-work-visual{min-height:24rem!important}
+}
+@media(max-width:767.98px){
+  .home-page .home-operation,.home-page .assessment-lab,.home-page .home-work,.home-page .care-experience{padding-block:2.6rem!important}
+  .home-page .operation-scene-wrap,.home-page .care-stage{min-height:19rem!important}
+  .home-page .assessment-lab-stage,.home-page .home-work-visual{min-height:21rem!important}
 }
 @media(prefers-reduced-motion:reduce){
+  .home-page .ae-hero-image .home-demo-media::before,
+  .home-page .hero-live-sheen::before,
   .home-page .real-photo-fill::before,
-  .home-page .real-photo-scan::before{animation:none!important}
+  .home-page #industries .home-industry-panel .home-demo-media::before,
+  .home-page .real-photo-effect::before,
+  .home-page .real-photo-effect::after,
+  .home-page #industries .industry-motion::before{animation:none!important}
 }
