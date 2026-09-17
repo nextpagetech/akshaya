@@ -7,21 +7,60 @@
   const pexels = (id, w = 1800) => `https://images.pexels.com/photos/${id}/pexels-photo-${id}.jpeg?auto=compress&cs=tinysrgb&w=${w}`;
   const unsplash = (id, w = 1800) => `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=84`;
 
-  /* Hero: preserve markup/layout and add only the video-like motion layer/status. */
-  const heroMedia = home.querySelector('.ae-hero-image .home-demo-media');
-  if (heroMedia) {
-    if (!heroMedia.querySelector('.hero-live-sheen')) {
-      const sheen = document.createElement('span');
-      sheen.className = 'hero-live-sheen';
-      sheen.setAttribute('aria-hidden', 'true');
-      heroMedia.appendChild(sheen);
+  /* Final hero: use a real moving cleaning scene and reshape the existing hero into the approved reference composition. */
+  const hero = home.querySelector('.ae-hero');
+  if (hero && !hero.querySelector('.ae-hero-video-wrap')) {
+    const videoWrap = document.createElement('div');
+    videoWrap.className = 'ae-hero-video-wrap';
+    videoWrap.setAttribute('aria-hidden', 'true');
+    videoWrap.innerHTML = `
+      <video class="ae-hero-video" autoplay muted loop playsinline preload="metadata" poster="https://images.pexels.com/videos/13422071/free-video-13422071.jpg?auto=compress&cs=tinysrgb&w=1920">
+        <source src="https://videos.pexels.com/video-files/13422071/13422071-uhd_3840_2160_30fps.mp4" type="video/mp4">
+      </video>`;
+    hero.prepend(videoWrap);
+
+    const eyebrow = hero.querySelector('.ae-hero-eyebrow');
+    const title = hero.querySelector('.ae-hero-title');
+    const lead = hero.querySelector('.ae-hero-lead');
+    const primary = hero.querySelector('.ae-hero-primary');
+    const secondary = hero.querySelector('.ae-hero-secondary');
+
+    if (eyebrow) eyebrow.textContent = 'Industrial Flooring for a Stronger Tomorrow';
+    if (title) title.innerHTML = '<span>Floors That</span> <span>Power Industry</span>';
+    if (lead) lead.textContent = 'High-performance industrial flooring systems for safer, cleaner and more productive spaces.';
+    if (primary) primary.firstChild.textContent = 'Schedule Site Visit ';
+    if (secondary) {
+      secondary.href = '#flooring-solutions';
+      secondary.innerHTML = 'Watch Our Story';
     }
-    if (!heroMedia.querySelector('.hero-live-status')) {
-      const status = document.createElement('span');
-      status.className = 'hero-live-status';
-      status.textContent = 'Floor care in motion';
-      heroMedia.appendChild(status);
-    }
+
+    const side = document.createElement('div');
+    side.className = 'ae-hero-side-message';
+    side.innerHTML = 'Tougher<br>Cleaner<br>Safer<br>For a Brighter<br>Tomorrow';
+    hero.appendChild(side);
+
+    const benefits = document.createElement('div');
+    benefits.className = 'ae-hero-benefits';
+    benefits.setAttribute('aria-label', 'Flooring benefits');
+    benefits.innerHTML = `
+      <div class="ae-hero-benefit">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-2.7 7.9-7 10-4.3-2.1-7-5.5-7-10V6l7-3z"/><path d="M9 12l2 2 4-5"/></svg>
+        <span>Longer<br>Life</span>
+      </div>
+      <div class="ae-hero-benefit">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 2v3m0 14v3M4.9 4.9L7 7m10 10l2.1 2.1M2 12h3m14 0h3M4.9 19.1L7 17m10-10 2.1-2.1"/></svg>
+        <span>Lower<br>Maintenance</span>
+      </div>
+      <div class="ae-hero-benefit">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V10h4v10M10 20V6h4v14M16 20V3h4v17"/><path d="M3 7l5-3 4 2 7-4"/></svg>
+        <span>Higher<br>Productivity</span>
+      </div>`;
+    hero.appendChild(benefits);
+
+    const status = document.createElement('div');
+    status.className = 'ae-hero-video-status';
+    status.textContent = 'Floor care in motion';
+    hero.appendChild(status);
   }
 
   /* Industries: distinct, recognisable environments. */
@@ -90,7 +129,6 @@
     render();
   };
 
-  /* The floor is part of your operation. */
   bind({
     host: home.querySelector('.operation-scene-wrap'),
     target: home.querySelector('.operation-scene-wrap .operation-scene'),
@@ -103,7 +141,6 @@
     ]
   });
 
-  /* Understanding the floor — every tab has a different visual cue. */
   bind({
     host: home.querySelector('.assessment-lab-stage'),
     target: home.querySelector('.assessment-lab-stage .lab-scene'),
@@ -118,7 +155,6 @@
     ]
   });
 
-  /* How we work — process-specific imagery and motion. */
   bind({
     host: home.querySelector('.home-work-visual'),
     target: home.querySelector('.home-work-visual .floor-scene'),
@@ -135,7 +171,6 @@
     ]
   });
 
-  /* Support beyond the finished floor. */
   bind({
     host: home.querySelector('.care-stage'),
     target: home.querySelector('.care-stage .care-scene'),
