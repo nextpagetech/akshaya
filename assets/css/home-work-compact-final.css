@@ -12,6 +12,14 @@
   min-height:5.45rem!important;
 }
 
+.home-page .home-work-stage{
+  margin-bottom:4px!important;
+}
+
+.home-page .home-work-stage:last-child{
+  margin-bottom:0!important;
+}
+
 .home-page .home-work-stage button{
   grid-template-columns:3.7rem minmax(0,1fr) .35rem!important;
   gap:.85rem!important;
