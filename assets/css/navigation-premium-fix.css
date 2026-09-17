@@ -1,50 +1,220 @@
-/* Premium desktop navigation refinement — Industries now matches the visual quality of Services. */
+/* Premium desktop navigation refinement — Services and Industries share one visual standard. */
 @media (min-width:1200px){
   /* Keep a continuous hoverable bridge between trigger and floating panel. */
   .nav-disclosure{position:static;overflow:visible}
   .mega-panel{overflow:visible visible}
-  .mega-panel::before{content:'';position:absolute;left:0;right:0;top:-1rem;height:1rem;background:transparent;pointer-events:auto}
+  .mega-panel::before{content:'';position:absolute;left:0;right:0;top:-1.25rem;height:1.25rem;background:transparent;pointer-events:auto}
+  .nav-disclosure>.mega-toggle::before{content:'';position:absolute;left:0;right:0;bottom:-1.4rem;height:1.4rem;pointer-events:auto}
   .mega-panel{transition:opacity 160ms var(--ease-out),transform 180ms var(--ease-out),box-shadow 180ms var(--ease-out)}
   .mega-panel:not([hidden]){opacity:1;transform:translateY(0)}
 
-  /* Shared panel finish. */
-  .mega-panel--services,.mega-panel--industries{background:linear-gradient(180deg,#fff 0%,#fbfdfe 100%);border-color:#d8e5ec;border-top:3px solid var(--color-primary);box-shadow:0 28px 70px rgb(12 38 54/.18)}
+  /* Shared floating panel finish. */
+  .mega-panel--services,.mega-panel--industries{
+    background:#fff;
+    border:1px solid #d8e5ec;
+    border-top:3px solid var(--color-primary);
+    box-shadow:0 28px 70px rgb(12 38 54/.18);
+  }
 
-  /* Industries gets the same editorial left rail + useful card grid as Services. */
-  .mega-panel--industries{display:grid;grid-template-columns:minmax(14rem,17rem) minmax(0,1fr);gap:clamp(1.5rem,2.4vw,2.5rem);padding:clamp(1.5rem,2.3vw,2.25rem)}
-  .mega-panel--industries .industry-menu-heading{position:relative;display:block;margin:0;padding:0 clamp(1.4rem,2vw,2rem) 0 0;border:0;border-right:1px solid var(--color-border);align-self:stretch}
-  .mega-panel--industries .industry-menu-heading::after{content:'';display:block;width:100%;height:8.5rem;margin-top:1.35rem;background:linear-gradient(145deg,rgb(101 203 227/.18),transparent 45%),linear-gradient(135deg,#17394c,#0d2637);box-shadow:inset 0 0 0 1px rgb(255 255 255/.08);clip-path:polygon(0 14%,100% 0,100% 86%,0 100%)}
-  .mega-panel--industries .industry-menu-heading::before{content:'';position:absolute;left:1rem;bottom:2.2rem;width:68%;height:3.7rem;z-index:1;border:1px solid rgb(101 203 227/.48);background:repeating-linear-gradient(90deg,rgb(101 203 227/.24) 0 1px,transparent 1px 26px),repeating-linear-gradient(0deg,rgb(101 203 227/.18) 0 1px,transparent 1px 22px);transform:skewY(-7deg);box-shadow:0 14px 25px rgb(4 20 30/.22)}
-  .mega-panel--industries .industry-menu-heading .section-eyebrow{margin:0 0 .75rem;color:var(--color-primary);font-size:.69rem;letter-spacing:.17em}
-  .mega-panel--industries .industry-menu-heading p{margin:0;max-width:14rem;color:var(--color-text);font-family:var(--font-display);font-size:clamp(1.35rem,1.5vw,1.75rem);font-weight:600;line-height:1.08;letter-spacing:-.025em}
+  /* Industries: same dark editorial rail language as Services. */
+  .mega-panel--industries{
+    display:grid;
+    grid-template-columns:minmax(19rem,29%) minmax(0,1fr);
+    gap:0;
+    padding:0;
+    min-height:31rem;
+    overflow:hidden;
+    border-radius:0 0 .75rem .75rem;
+  }
+  .mega-panel--industries .industry-menu-heading{
+    position:relative;
+    isolation:isolate;
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    min-width:0;
+    margin:0;
+    padding:3.1rem 2.8rem 2.7rem;
+    border:0;
+    background:
+      radial-gradient(circle at 80% 22%,rgb(101 203 227/.17),transparent 17rem),
+      linear-gradient(145deg,#1b597a 0%,#123b54 55%,#102d40 100%);
+    overflow:hidden;
+  }
+  .mega-panel--industries .industry-menu-heading::after{
+    content:'';
+    position:absolute;
+    z-index:-1;
+    left:3rem;
+    right:2.4rem;
+    bottom:4.6rem;
+    height:8.8rem;
+    border:1px solid rgb(101 203 227/.5);
+    background:
+      linear-gradient(90deg,transparent 32%,rgb(255 211 34/.82) 32% 33%,transparent 33% 66%,rgb(101 203 227/.72) 66% 67%,transparent 67%),
+      linear-gradient(rgb(101 203 227/.18) 1px,transparent 1px),
+      linear-gradient(90deg,rgb(101 203 227/.18) 1px,transparent 1px),
+      linear-gradient(145deg,rgb(101 203 227/.1),rgb(255 255 255/.015));
+    background-size:auto,2.25rem 2.25rem,2.25rem 2.25rem,auto;
+    transform:perspective(650px) rotateX(59deg) rotateZ(-6deg);
+    transform-origin:center;
+    box-shadow:0 28px 42px rgb(3 18 27/.38),inset 0 0 0 1px rgb(255 255 255/.05);
+  }
+  .mega-panel--industries .industry-menu-heading::before{
+    content:'';
+    position:absolute;
+    z-index:-1;
+    left:4.5rem;
+    right:4rem;
+    bottom:7.4rem;
+    height:7rem;
+    border:1px solid rgb(255 255 255/.24);
+    background:linear-gradient(135deg,rgb(101 203 227/.16),rgb(23 110 166/.04));
+    transform:perspective(650px) rotateX(59deg) rotateZ(-6deg) translateY(-2.6rem);
+    box-shadow:0 22px 30px rgb(3 18 27/.22);
+  }
+  .mega-panel--industries .industry-menu-heading .section-eyebrow{
+    margin:0 0 1.3rem;
+    color:#67d2ea;
+    font-family:var(--font-body);
+    font-size:.78rem;
+    font-weight:800;
+    letter-spacing:.18em;
+  }
+  .mega-panel--industries .industry-menu-heading .section-eyebrow::before{
+    content:'';
+    display:inline-block;
+    width:.55rem;
+    height:.55rem;
+    margin-right:.65rem;
+    background:#ffd322;
+    transform:rotate(45deg);
+    vertical-align:.02em;
+  }
+  .mega-panel--industries .industry-menu-heading p{
+    margin:0;
+    max-width:9.5ch;
+    color:#fff;
+    font-family:'Barlow Semi Condensed',var(--font-display);
+    font-size:clamp(2.1rem,2.15vw,2.8rem);
+    font-weight:600;
+    line-height:1.03;
+    letter-spacing:-.035em;
+    text-wrap:balance;
+  }
+  .mega-panel--industries .industry-menu-heading p::after{
+    content:'Floor requirements change with traffic, hygiene, equipment and operating conditions.';
+    display:block;
+    max-width:18rem;
+    margin-top:1.55rem;
+    color:#bfd3de;
+    font-family:var(--font-body);
+    font-size:.91rem;
+    font-weight:400;
+    line-height:1.65;
+    letter-spacing:0;
+  }
 
-  .mega-panel--industries .industry-menu-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.7rem .8rem;align-content:start}
-  .mega-panel--industries .industry-menu-group{min-width:0;padding:.75rem;border:1px solid transparent;transition:background-color 180ms ease,border-color 180ms ease,transform 180ms ease,box-shadow 180ms ease}
-  .mega-panel--industries .industry-menu-group:hover{background:#f6fafc;border-color:#dce9ef;transform:translateY(-2px);box-shadow:0 12px 26px rgb(14 41 58/.06)}
-  .mega-panel--industries .menu-group-title{display:flex;align-items:center;gap:.6rem;min-height:auto;margin:0 0 .45rem;padding:.2rem .25rem .65rem;border-bottom:1px solid #e1ebf0;color:var(--color-text);font-size:.78rem;font-weight:700;letter-spacing:.02em}
-  .mega-panel--industries .menu-group-title span{display:grid;place-items:center;flex:0 0 1.8rem;height:1.8rem;background:var(--color-primary-light);color:var(--color-primary);font-family:var(--font-display);font-size:.72rem;border-radius:.2rem}
-  .mega-panel--industries .industry-menu-group ul{display:grid;gap:.15rem}
-  .mega-panel--industries .industry-menu-group a{position:relative;min-height:2.6rem;padding:.58rem 1.7rem .58rem .55rem;border-radius:.25rem;color:#526a78;font-size:.79rem;font-weight:600;line-height:1.25;transition:background-color 160ms ease,color 160ms ease,transform 160ms ease}
-  .mega-panel--industries .industry-menu-group a::after{content:'→';position:absolute;right:.55rem;top:50%;translate:0 -50%;opacity:0;color:var(--color-primary);transition:opacity 160ms ease,translate 160ms ease}
-  .mega-panel--industries .industry-menu-group a:hover,.mega-panel--industries .industry-menu-group a:focus-visible{background:#eef6fa;color:var(--color-primary);transform:translateX(2px)}
+  /* Industry groups are real content cards, not plain text columns. */
+  .mega-panel--industries .industry-menu-grid{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:1rem;
+    align-content:start;
+    padding:2.65rem 2.3rem 2.35rem;
+    background:linear-gradient(180deg,#fff 0%,#fbfdfe 100%);
+  }
+  .mega-panel--industries .industry-menu-group{
+    min-width:0;
+    padding:1rem 1.05rem .8rem;
+    border:1px solid #e0eaf0;
+    border-radius:.5rem;
+    background:#fff;
+    box-shadow:0 8px 24px rgb(14 41 58/.035);
+    transition:background-color 180ms ease,border-color 180ms ease,transform 180ms ease,box-shadow 180ms ease;
+  }
+  .mega-panel--industries .industry-menu-group:hover{
+    background:#fbfdfe;
+    border-color:#cfe2eb;
+    transform:translateY(-2px);
+    box-shadow:0 14px 30px rgb(14 41 58/.075);
+  }
+  .mega-panel--industries .menu-group-title{
+    display:flex;
+    align-items:center;
+    gap:.8rem;
+    min-height:3.2rem;
+    margin:0 0 .45rem;
+    padding:.15rem .1rem .75rem;
+    border-bottom:1px solid #e1ebf0;
+    color:#153042;
+    font-family:'Barlow Semi Condensed',var(--font-display);
+    font-size:1.04rem;
+    font-weight:700;
+    line-height:1.15;
+    letter-spacing:-.01em;
+  }
+  .mega-panel--industries .menu-group-title span{
+    display:grid;
+    place-items:center;
+    flex:0 0 2.35rem;
+    height:2.35rem;
+    background:#e8f4fa;
+    color:#11689f;
+    font-family:'Barlow Semi Condensed',var(--font-display);
+    font-size:.86rem;
+    font-weight:700;
+    border-radius:.25rem;
+  }
+  .mega-panel--industries .industry-menu-group ul{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.25rem .45rem}
+  .mega-panel--industries .industry-menu-group a{
+    position:relative;
+    display:flex;
+    align-items:center;
+    min-height:2.85rem;
+    padding:.66rem 1.65rem .66rem .7rem;
+    border:1px solid transparent;
+    border-radius:.3rem;
+    color:#526b7a;
+    font-family:var(--font-body);
+    font-size:.84rem;
+    font-weight:650;
+    line-height:1.28;
+    transition:background-color 160ms ease,color 160ms ease,border-color 160ms ease,transform 160ms ease;
+  }
+  .mega-panel--industries .industry-menu-group a::after{
+    content:'→';
+    position:absolute;
+    right:.65rem;
+    top:50%;
+    translate:0 -50%;
+    opacity:.25;
+    color:#176ea6;
+    font-size:1rem;
+    transition:opacity 160ms ease,translate 160ms ease;
+  }
+  .mega-panel--industries .industry-menu-group a:hover,.mega-panel--industries .industry-menu-group a:focus-visible{
+    background:#eef7fb;
+    border-color:#d5e8f0;
+    color:#0f679d;
+    transform:translateX(2px);
+  }
   .mega-panel--industries .industry-menu-group a:hover::after,.mega-panel--industries .industry-menu-group a:focus-visible::after{opacity:1;translate:2px -50%}
-  .mega-panel--industries .industry-menu-group a[aria-current='page']{background:var(--color-primary-light);color:var(--color-primary-dark);box-shadow:inset 3px 0 var(--color-primary)}
+  .mega-panel--industries .industry-menu-group a[aria-current='page']{background:#e8f3fa;color:#10517d;box-shadow:inset 3px 0 #176ea6}
 
-  /* Make Services hover feel equally stable and polished. */
+  /* Services hover stability/polish remains aligned with Industries. */
   .mega-panel--services .service-menu-link{border:1px solid transparent}
   .mega-panel--services .service-menu-link:hover,.mega-panel--services .service-menu-link:focus-visible{border-color:#dce9ef;background:#f4f9fb;transform:translateX(2px)}
   .mega-panel--services .service-menu-link,.mega-panel--services .service-menu-link>.icon{transition:background-color 160ms ease,color 160ms ease,border-color 160ms ease,transform 160ms ease}
   .mega-panel--services .service-menu-link:hover>.icon{transform:translateX(3px)}
-
-  /* Prevent accidental closing while moving through the trigger/panel seam. */
-  .nav-disclosure>.mega-toggle::before{bottom:-1.35rem;height:1.35rem}
 }
 
 @media (min-width:1200px) and (max-width:1365.98px){
-  .mega-panel--industries{grid-template-columns:13rem minmax(0,1fr);gap:1.25rem}
-  .mega-panel--industries .industry-menu-grid{gap:.5rem}
-  .mega-panel--industries .industry-menu-group{padding:.55rem}
-  .mega-panel--industries .industry-menu-group a{font-size:.75rem}
+  .mega-panel--industries{grid-template-columns:17rem minmax(0,1fr)}
+  .mega-panel--industries .industry-menu-heading{padding:2.5rem 2rem}
+  .mega-panel--industries .industry-menu-grid{padding:2rem 1.5rem;gap:.75rem}
+  .mega-panel--industries .industry-menu-group{padding:.8rem}
+  .mega-panel--industries .industry-menu-group a{font-size:.78rem}
 }
 
 @media (prefers-reduced-motion:reduce){
