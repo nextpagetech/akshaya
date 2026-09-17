@@ -1,0 +1,74 @@
+/* Final alignment correction for Home / Flooring Solutions.
+ * Scope is intentionally limited to the system explorer so no approved section styling is affected.
+ */
+.home-page #flooring-solutions .system-explorer-layout{
+  display:grid!important;
+  grid-template-columns:minmax(0,1.05fr) minmax(21rem,.95fr)!important;
+  grid-template-rows:auto auto!important;
+  grid-template-areas:"tabs tabs" "media content"!important;
+  align-items:start!important;
+  row-gap:.78rem!important;
+}
+
+.home-page #flooring-solutions .system-interface{
+  display:contents!important;
+}
+
+.home-page #flooring-solutions .system-tabs{
+  grid-area:tabs!important;
+  grid-row:1!important;
+  grid-column:1 / -1!important;
+  margin:0!important;
+}
+
+.home-page #flooring-solutions .system-visual,
+.home-page #flooring-solutions .system-visual.js-depth-enter{
+  grid-area:media!important;
+  grid-row:2!important;
+  grid-column:1!important;
+  align-self:start!important;
+  justify-self:stretch!important;
+  margin:0!important;
+  top:auto!important;
+  inset-block-start:auto!important;
+  translate:none!important;
+  transform:none!important;
+  opacity:1!important;
+}
+
+.home-page #flooring-solutions .system-panels{
+  grid-area:content!important;
+  grid-row:2!important;
+  grid-column:2!important;
+  align-self:start!important;
+  margin:0!important;
+  translate:none!important;
+  transform:none!important;
+}
+
+/* Keep both halves beginning on exactly the same horizontal line. */
+.home-page #flooring-solutions .system-visual,
+.home-page #flooring-solutions .system-panels{
+  min-height:29.5rem!important;
+}
+
+@media(max-width:991.98px){
+  .home-page #flooring-solutions .system-explorer-layout{
+    grid-template-columns:1fr!important;
+    grid-template-rows:auto auto auto!important;
+    grid-template-areas:"tabs" "media" "content"!important;
+  }
+  .home-page #flooring-solutions .system-tabs{
+    grid-column:1!important;
+    grid-row:1!important;
+  }
+  .home-page #flooring-solutions .system-visual,
+  .home-page #flooring-solutions .system-visual.js-depth-enter{
+    grid-column:1!important;
+    grid-row:2!important;
+  }
+  .home-page #flooring-solutions .system-panels{
+    grid-column:1!important;
+    grid-row:3!important;
+  }
+}
