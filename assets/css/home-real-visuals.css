@@ -1,231 +1,142 @@
-/* Home real-visual enhancement.
- * IMPORTANT: this layer must not redefine established section backgrounds, colour themes,
- * typography systems or main grid compositions. It only replaces the requested abstract
- * visual canvases and trims local excess spacing.
+/* Home real-image enhancement.
+ * This file is intentionally NON-LAYOUT: it must not redefine established section
+ * backgrounds, colours, typography, grids, card surfaces, or component dimensions.
+ * It only replaces decorative scene artwork with photographic layers and trims the
+ * immediate heading-to-content gap in the four requested sections.
  */
 
-/* Flooring Solutions: preserve the existing section design; only protect the intended title break. */
-.home-page #flooring-solutions #solutions-title{
-  max-width:none!important;
-  overflow-wrap:normal!important;
-  word-break:normal!important;
-  hyphens:none!important;
-}
-@media (min-width:992px){
-  .home-page #flooring-solutions #solutions-title{white-space:nowrap!important}
-}
-.home-page #flooring-solutions .system-explorer-layout{margin-top:1rem!important}
-
-/* Shared photo layer used inside the existing visual containers. */
-.home-page .real-scene{
-  position:relative;
-  width:100%;
-  height:100%;
-  min-height:inherit;
-  overflow:hidden;
+/* Real photo inserted inside an EXISTING visual canvas. */
+.home-page .has-real-photo{
+  position:relative!important;
+  overflow:hidden!important;
   isolation:isolate;
+}
+.home-page .has-real-photo > :not(.real-photo-fill){
+  opacity:0!important;
+  visibility:hidden!important;
+  pointer-events:none!important;
+}
+.home-page .real-photo-fill{
+  position:absolute;
+  inset:0;
+  z-index:20;
+  overflow:hidden;
   background-position:center;
   background-size:cover;
   background-repeat:no-repeat;
 }
-.home-page .real-scene::before{
+.home-page .real-photo-fill::before{
   content:'';
   position:absolute;
   inset:-2%;
-  z-index:0;
   background:inherit;
   background-position:center;
   background-size:cover;
   transform:scale(1.02);
-  animation:home-real-drift 10s ease-in-out infinite alternate;
+  animation:home-photo-drift 10s ease-in-out infinite alternate;
 }
-.home-page .real-scene::after{
+.home-page .real-photo-fill::after{
   content:'';
   position:absolute;
   inset:0;
-  z-index:1;
+  background:linear-gradient(180deg,rgba(7,30,43,.02) 44%,rgba(7,30,43,.48) 100%);
   pointer-events:none;
-  background:linear-gradient(180deg,rgba(7,30,43,.03) 42%,rgba(7,30,43,.55) 100%);
 }
-.home-page .real-scene-label{
+.home-page .real-photo-label{
   position:absolute;
   left:1rem;
   bottom:1rem;
-  z-index:4;
+  z-index:3;
   max-width:min(28rem,calc(100% - 2rem));
-  padding:.62rem .78rem;
+  padding:.58rem .75rem;
   border-left:3px solid var(--home-signal,#f2b721);
-  background:rgba(8,35,50,.82);
+  background:rgba(8,35,50,.80);
   color:#fff;
-  font-size:.76rem;
+  font-size:.74rem;
   font-weight:700;
   line-height:1.4;
-  backdrop-filter:blur(8px);
+  backdrop-filter:blur(7px);
 }
-.home-page .real-scene-motion{
+.home-page .real-photo-scan{
   position:absolute;
   inset:0;
-  z-index:3;
+  z-index:2;
+  overflow:hidden;
   pointer-events:none;
 }
-.home-page .real-scene-motion::before{
+.home-page .real-photo-scan::before{
   content:'';
   position:absolute;
   left:-22%;
   top:0;
   width:16%;
   height:100%;
-  background:linear-gradient(90deg,transparent,rgba(255,255,255,.18),transparent);
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.16),transparent);
   transform:skewX(-15deg);
-  animation:home-real-scan 6s ease-in-out infinite;
+  animation:home-photo-scan 6.4s ease-in-out infinite;
 }
 
-/* Industries: retain home-industries-redesign.css background/layout and only replace media. */
+/* Industries: keep home-industries-redesign.css completely in control of layout/theme.
+ * Only replace the old client/demo background inside its existing media box. */
 .home-page #industries .home-industry-panel .home-demo-media{
-  position:relative;
-  overflow:hidden;
-  background-image:none!important;
+  background-position:center!important;
+  background-size:cover!important;
+  background-repeat:no-repeat!important;
 }
-.home-page #industries .home-industry-panel .home-demo-media>img{opacity:0!important}
-.home-page #industries .industry-real-photo{
-  position:absolute;
-  inset:0;
-  z-index:2;
-  overflow:hidden;
-  background-position:center;
-  background-size:cover;
-  background-repeat:no-repeat;
+.home-page #industries .home-industry-panel .home-demo-media > img{
+  opacity:0!important;
 }
-.home-page #industries .industry-real-photo::before{
-  content:'';
-  position:absolute;
-  inset:-2%;
-  background:inherit;
-  background-position:center;
-  background-size:cover;
-  transform:scale(1.02);
-  animation:home-real-drift 10s ease-in-out infinite alternate;
-}
-.home-page #industries .industry-real-photo::after{
-  content:'';
-  position:absolute;
-  inset:0;
-  background:linear-gradient(180deg,transparent 48%,rgba(7,31,44,.55));
-}
-.home-page #industries .industry-photo-label{
+.home-page #industries .industry-context-label{
   position:absolute;
   left:1rem;
   bottom:1rem;
   z-index:4;
   max-width:calc(100% - 2rem);
-  padding:.58rem .72rem;
+  padding:.56rem .72rem;
   border-left:3px solid var(--home-signal,#f2b721);
-  background:rgba(8,35,50,.82);
+  background:rgba(8,35,50,.80);
   color:#fff;
-  font-size:.74rem;
+  font-size:.73rem;
   font-weight:700;
   line-height:1.35;
+  backdrop-filter:blur(7px);
 }
-.home-page #industries .industry-photo-motion{
-  position:absolute;
-  inset:0;
-  z-index:3;
-  pointer-events:none;
-}
-.home-page #industries .industry-photo-motion::before{
+.home-page #industries .home-industry-panel .home-demo-media::before{
   content:'';
   position:absolute;
-  left:-20%;
-  top:0;
-  width:16%;
-  height:100%;
-  background:linear-gradient(90deg,transparent,rgba(255,255,255,.16),transparent);
-  transform:skewX(-15deg);
-  animation:home-real-scan 6.2s ease-in-out infinite;
+  inset:0;
+  z-index:2;
+  pointer-events:none;
+  background:linear-gradient(180deg,transparent 50%,rgba(7,31,44,.44));
 }
 
-/* Keep established section backgrounds/colours. Only tighten the local header-to-content gap. */
+/* Only local spacing correction requested by the user. No section padding changes. */
 .home-page .home-operation .section-header.section-header--split,
 .home-page .assessment-lab .section-header.section-header--split,
 .home-page .care-experience .section-header.section-header--split{
-  margin-bottom:clamp(1.5rem,2.4vw,2.25rem)!important;
+  margin-bottom:clamp(1.6rem,2.3vw,2.2rem)!important;
 }
 .home-page .home-work .home-work-heading{
-  margin-bottom:clamp(1.5rem,2.4vw,2.25rem)!important;
+  margin-bottom:clamp(1.6rem,2.3vw,2.2rem)!important;
 }
 
-/* Operation: replace only the old abstract scene, keep the established dark section and layout. */
-.home-page .operation-scene-wrap{position:relative!important;overflow:hidden!important}
-.home-page .operation-scene-wrap>.operation-scene{visibility:hidden!important;pointer-events:none!important}
-.home-page .operation-scene-wrap>.real-scene{
-  position:absolute;
-  inset:0;
-  z-index:1;
-}
-.home-page .operation-readout{position:relative;z-index:5}
-
-/* Floor analysis: photography inside the existing analysis canvas without recolouring the section. */
-.home-page .assessment-lab-stage{position:relative!important;overflow:hidden!important}
-.home-page .assessment-lab-stage>.lab-scene{visibility:hidden!important;pointer-events:none!important}
-.home-page .assessment-lab-stage>.real-scene{
-  position:absolute;
-  inset:0;
-  z-index:1;
-}
-.home-page .assessment-lab-stage>.lab-readout,
-.home-page .assessment-lab-stage>.assessment-lab-panels{
-  position:relative;
-  z-index:5;
-}
-.home-page .assessment-lab-panels{
-  background:linear-gradient(90deg,rgba(255,255,255,.95),rgba(255,255,255,.9))!important;
-  backdrop-filter:blur(5px);
-}
-
-/* How We Work: real journey image occupies the existing visual only. */
-.home-page .home-work-visual{position:relative!important;overflow:hidden!important}
-.home-page .home-work-visual>.floor-scene{visibility:hidden!important;pointer-events:none!important}
-.home-page .home-work-visual>.real-scene{
-  position:absolute;
-  inset:0;
-  z-index:1;
-}
-.home-page .home-work-readout,
-.home-page .home-work-visual-note{
-  position:relative;
-  z-index:5;
-}
-
-/* Care: real aftercare imagery inside the existing care-stage styling. */
-.home-page .care-stage{position:relative!important;overflow:hidden!important}
-.home-page .care-stage>.care-scene{visibility:hidden!important;pointer-events:none!important}
-.home-page .care-stage>.real-scene{
-  position:absolute;
-  inset:0;
-  z-index:1;
-}
-.home-page .care-readout{position:relative;z-index:5}
-
-@keyframes home-real-drift{
+@keyframes home-photo-drift{
   from{transform:scale(1.02) translate3d(0,0,0)}
-  to{transform:scale(1.065) translate3d(-.7%,.35%,0)}
+  to{transform:scale(1.06) translate3d(-.6%,.3%,0)}
 }
-@keyframes home-real-scan{
-  0%,15%{transform:translateX(0) skewX(-15deg);opacity:0}
-  35%{opacity:.55}
-  75%,100%{transform:translateX(780%) skewX(-15deg);opacity:0}
+@keyframes home-photo-scan{
+  0%,18%{transform:translateX(0) skewX(-15deg);opacity:0}
+  38%{opacity:.5}
+  76%,100%{transform:translateX(780%) skewX(-15deg);opacity:0}
 }
 
 @media(max-width:991.98px){
-  .home-page #flooring-solutions #solutions-title{white-space:normal!important}
   .home-page .home-operation .section-header.section-header--split,
   .home-page .assessment-lab .section-header.section-header--split,
   .home-page .care-experience .section-header.section-header--split,
-  .home-page .home-work .home-work-heading{margin-bottom:1.5rem!important}
+  .home-page .home-work .home-work-heading{margin-bottom:1.45rem!important}
 }
 @media(prefers-reduced-motion:reduce){
-  .home-page .real-scene::before,
-  .home-page #industries .industry-real-photo::before,
-  .home-page .real-scene-motion::before,
-  .home-page #industries .industry-photo-motion::before{animation:none!important}
+  .home-page .real-photo-fill::before,
+  .home-page .real-photo-scan::before{animation:none!important}
 }
