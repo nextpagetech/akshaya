@@ -1,148 +1,130 @@
-/* Home visual clarity pass: real-world imagery + restrained GIF-like motion. Loaded last. */
+/* Home real-visual enhancement.
+ * IMPORTANT: this layer must not redefine established section backgrounds, colour themes,
+ * typography systems or main grid compositions. It only replaces the requested abstract
+ * visual canvases and trims local excess spacing.
+ */
 
-/* Flooring Solutions: keep the authored two-line heading intact and remove the last large gap. */
-.home-page #flooring-solutions .section-header.section-header--split{
-  grid-template-columns:minmax(0,1.15fr) minmax(25rem,.85fr)!important;
-}
+/* Flooring Solutions: preserve the existing section design; only protect the intended title break. */
 .home-page #flooring-solutions #solutions-title{
-  width:auto!important;
   max-width:none!important;
-  white-space:nowrap!important;
-  font-size:clamp(3rem,3.75vw,4.1rem)!important;
+  overflow-wrap:normal!important;
+  word-break:normal!important;
+  hyphens:none!important;
+}
+@media (min-width:992px){
+  .home-page #flooring-solutions #solutions-title{white-space:nowrap!important}
 }
 .home-page #flooring-solutions .system-explorer-layout{margin-top:1rem!important}
 
-/* Shared photographic scene. */
+/* Shared photo layer used inside the existing visual containers. */
 .home-page .real-scene{
   position:relative;
-  min-height:100%;
+  width:100%;
+  height:100%;
+  min-height:inherit;
   overflow:hidden;
   isolation:isolate;
-  background:#d8e2e6 center/cover no-repeat;
+  background-position:center;
+  background-size:cover;
+  background-repeat:no-repeat;
 }
 .home-page .real-scene::before{
   content:'';
   position:absolute;
   inset:-2%;
-  z-index:-2;
+  z-index:0;
   background:inherit;
-  background-size:cover;
   background-position:center;
-  transform:scale(1.025);
-  animation:real-scene-drift 9s ease-in-out infinite alternate;
+  background-size:cover;
+  transform:scale(1.02);
+  animation:home-real-drift 10s ease-in-out infinite alternate;
 }
 .home-page .real-scene::after{
   content:'';
   position:absolute;
   inset:0;
-  z-index:-1;
-  background:linear-gradient(180deg,rgba(6,24,34,.06) 30%,rgba(6,24,34,.62) 100%);
+  z-index:1;
+  pointer-events:none;
+  background:linear-gradient(180deg,rgba(7,30,43,.03) 42%,rgba(7,30,43,.55) 100%);
 }
 .home-page .real-scene-label{
   position:absolute;
   left:1rem;
   bottom:1rem;
-  z-index:3;
-  max-width:26rem;
-  padding:.65rem .8rem;
-  border-left:3px solid #f2b721;
-  background:rgba(8,35,50,.84);
+  z-index:4;
+  max-width:min(28rem,calc(100% - 2rem));
+  padding:.62rem .78rem;
+  border-left:3px solid var(--home-signal,#f2b721);
+  background:rgba(8,35,50,.82);
   color:#fff;
   font-size:.76rem;
   font-weight:700;
-  line-height:1.35;
-  letter-spacing:.035em;
+  line-height:1.4;
   backdrop-filter:blur(8px);
 }
 .home-page .real-scene-motion{
   position:absolute;
   inset:0;
-  z-index:2;
+  z-index:3;
   pointer-events:none;
 }
 .home-page .real-scene-motion::before{
   content:'';
   position:absolute;
-  left:-20%;
+  left:-22%;
   top:0;
-  width:18%;
+  width:16%;
   height:100%;
-  background:linear-gradient(90deg,transparent,rgba(255,255,255,.22),transparent);
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.18),transparent);
   transform:skewX(-15deg);
-  animation:real-scan 5.4s ease-in-out infinite;
-}
-.home-page .real-scene-motion::after{
-  content:'';
-  position:absolute;
-  left:10%;
-  right:10%;
-  bottom:12%;
-  height:3px;
-  background:linear-gradient(90deg,transparent,#65cbe3 18%,#f2b721 52%,#65cbe3 82%,transparent);
-  box-shadow:0 0 16px rgba(101,203,227,.7);
-  opacity:.68;
-  animation:real-route 3.2s ease-in-out infinite;
+  animation:home-real-scan 6s ease-in-out infinite;
 }
 
-/* INDUSTRIES — override old demo/client media entirely. */
-.home-page #industries{
-  padding-block:3.7rem!important;
-  background:linear-gradient(180deg,#f7fafb 0%,#eef4f6 100%)!important;
+/* Industries: retain home-industries-redesign.css background/layout and only replace media. */
+.home-page #industries .home-industry-panel .home-demo-media{
+  position:relative;
+  overflow:hidden;
+  background-image:none!important;
 }
-.home-page #industries .section-header.section-header--split{margin-bottom:1.55rem!important}
-.home-page #industries .section-header .section-title{font-size:clamp(2.85rem,4vw,4rem)!important;max-width:15ch!important}
-.home-page #industries .home-industries{grid-template-columns:12.75rem minmax(0,1fr)!important;gap:1.15rem!important}
-.home-page #industries .home-selector-options{padding:.72rem!important;border-radius:.7rem!important;box-shadow:none!important;background:#fff!important}
-.home-page #industries .home-selector-options::before{margin:.15rem .3rem .5rem!important}
-.home-page #industries .home-selector-button{min-height:3.15rem!important;padding:.58rem .62rem!important;border-radius:.45rem!important}
-.home-page #industries .home-industry-panel{
-  grid-template-columns:minmax(0,1.25fr) minmax(20rem,.75fr)!important;
-  min-height:30rem!important;
-  border-radius:.7rem!important;
-  box-shadow:0 18px 44px rgba(22,55,70,.09)!important;
-}
-.home-page #industries .home-industry-panel .home-media{
-  position:relative!important;
-  min-height:30rem!important;
-  background:#cfdadd!important;
-}
-.home-page #industries .home-industry-panel .home-demo-media{background-image:none!important;transform:none!important}
 .home-page #industries .home-industry-panel .home-demo-media>img{opacity:0!important}
 .home-page #industries .industry-real-photo{
   position:absolute;
   inset:0;
   z-index:2;
-  background:center/cover no-repeat;
   overflow:hidden;
+  background-position:center;
+  background-size:cover;
+  background-repeat:no-repeat;
 }
 .home-page #industries .industry-real-photo::before{
   content:'';
   position:absolute;
   inset:-2%;
   background:inherit;
-  background-size:cover;
   background-position:center;
-  transform:scale(1.025);
-  animation:real-scene-drift 9s ease-in-out infinite alternate;
+  background-size:cover;
+  transform:scale(1.02);
+  animation:home-real-drift 10s ease-in-out infinite alternate;
 }
 .home-page #industries .industry-real-photo::after{
   content:'';
   position:absolute;
   inset:0;
-  background:linear-gradient(180deg,transparent 45%,rgba(6,31,44,.58));
+  background:linear-gradient(180deg,transparent 48%,rgba(7,31,44,.55));
 }
 .home-page #industries .industry-photo-label{
   position:absolute;
-  z-index:4;
   left:1rem;
   bottom:1rem;
+  z-index:4;
+  max-width:calc(100% - 2rem);
   padding:.58rem .72rem;
-  border-left:3px solid #f2b721;
+  border-left:3px solid var(--home-signal,#f2b721);
   background:rgba(8,35,50,.82);
   color:#fff;
-  font-size:.75rem;
-  font-weight:750;
-  letter-spacing:.04em;
+  font-size:.74rem;
+  font-weight:700;
+  line-height:1.35;
 }
 .home-page #industries .industry-photo-motion{
   position:absolute;
@@ -153,113 +135,97 @@
 .home-page #industries .industry-photo-motion::before{
   content:'';
   position:absolute;
-  left:-18%;top:0;width:16%;height:100%;
-  background:linear-gradient(90deg,transparent,rgba(255,255,255,.2),transparent);
+  left:-20%;
+  top:0;
+  width:16%;
+  height:100%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.16),transparent);
   transform:skewX(-15deg);
-  animation:real-scan 5.8s ease-in-out infinite;
+  animation:home-real-scan 6.2s ease-in-out infinite;
 }
-.home-page #industries .home-industry-copy{padding:1.65rem 1.8rem!important;justify-content:center!important}
-.home-page #industries .home-industry-copy h3{font-size:clamp(1.9rem,2.5vw,2.65rem)!important}
-.home-page #industries .home-detail-label{margin-top:.8rem!important}
-.home-page #industries .home-more-industries{margin-top:.9rem!important}
 
-/* Four home sections requested for real visuals and tighter vertical rhythm. */
-.home-page :is(.home-operation,.assessment-lab,.home-work,.care-experience){padding-block:3.7rem!important}
-.home-page :is(.home-operation,.assessment-lab,.care-experience) .section-header.section-header--split{margin-bottom:1.35rem!important}
-.home-page .home-work .home-work-heading{margin-bottom:1.35rem!important}
-.home-page :is(.home-operation,.assessment-lab,.home-work,.care-experience) .section-title{font-size:clamp(2.85rem,4.15vw,4.15rem)!important;line-height:.98!important}
-.home-page :is(.home-operation,.assessment-lab,.home-work,.care-experience) .section-description{margin-top:.65rem!important}
-
-/* 04 / Operation: actual operating environment on the left. */
-.home-page .home-operation{background:#fff!important}
-.home-page .operation-layout{grid-template-columns:minmax(0,1.12fr) minmax(20rem,.88fr)!important;gap:1.25rem!important}
-.home-page .operation-scene-wrap{position:relative!important;min-height:29rem!important;overflow:hidden!important;border-radius:.65rem!important;background:#0c2b3d!important}
-.home-page .operation-scene-wrap>.operation-scene{display:none!important}
-.home-page .operation-scene-wrap>.real-scene{position:absolute;inset:0;min-height:0}
-.home-page .operation-readout{position:absolute!important;left:1rem!important;top:1rem!important;z-index:5!important;background:rgba(7,33,47,.84)!important;backdrop-filter:blur(8px)}
-.home-page .operation-interface{align-self:stretch!important;padding:1.15rem!important;border:1px solid #dce6ea;border-radius:.65rem;background:#f7fafb}
-.home-page .operation-tabs{gap:.4rem!important}
-.home-page .operation-tabs button{min-height:3.65rem!important}
-
-/* 05 / Floor Analysis: inspector/lab visual + content together. */
-.home-page .assessment-lab{background:#eef4f6!important}
-.home-page .assessment-lab-layout{grid-template-columns:13.5rem minmax(0,1fr)!important;gap:1rem!important}
-.home-page .assessment-rail{gap:.35rem!important}
-.home-page .assessment-rail button{min-height:3.55rem!important;padding:.62rem .7rem!important}
-.home-page .assessment-lab-stage{
-  position:relative!important;
-  display:grid!important;
-  grid-template-columns:minmax(0,1.08fr) minmax(18rem,.92fr)!important;
-  min-height:29rem!important;
-  overflow:hidden!important;
-  border:1px solid #d6e2e7!important;
-  border-radius:.65rem!important;
-  background:#fff!important;
+/* Keep established section backgrounds/colours. Only tighten the local header-to-content gap. */
+.home-page .home-operation .section-header.section-header--split,
+.home-page .assessment-lab .section-header.section-header--split,
+.home-page .care-experience .section-header.section-header--split{
+  margin-bottom:clamp(1.5rem,2.4vw,2.25rem)!important;
 }
-.home-page .assessment-lab-stage>.lab-scene{display:none!important}
-.home-page .assessment-lab-stage>.real-scene{grid-column:1;grid-row:1;min-height:29rem}
-.home-page .assessment-lab-stage>.lab-readout{position:absolute!important;left:1rem!important;top:1rem!important;z-index:6!important;background:rgba(7,33,47,.84)!important;backdrop-filter:blur(8px)}
-.home-page .assessment-lab-panels{grid-column:2;grid-row:1;z-index:3;display:flex!important;align-items:center!important;padding:1.6rem!important;background:#fff!important}
-.home-page .assessment-lab-panels article{width:100%}
-
-/* 06 / How We Work: real process imagery replaces client project photos and abstract slab. */
-.home-page .home-work{background:#102c3d!important;color:#fff!important}
-.home-page .home-work .section-title{color:#fff!important}
-.home-page .home-work .section-description{color:#bcd0d9!important}
-.home-page .home-work-layout{gap:1.2rem!important}
-.home-page .home-work-visual{position:relative!important;min-height:32rem!important;background:#0a2534!important;border-radius:.65rem!important;overflow:hidden!important}
-.home-page .home-work-visual::before,.home-page .home-work-visual::after{display:none!important}
-.home-page .home-work-visual>.floor-scene{display:none!important}
-.home-page .home-work-visual>.real-scene{position:absolute;inset:0;min-height:0}
-.home-page .home-work-readout{position:absolute!important;left:1rem!important;top:1rem!important;z-index:6!important}
-.home-page .home-work-visual-note{position:absolute!important;left:1rem!important;right:1rem!important;bottom:.9rem!important;z-index:6!important;margin:0!important;padding:.58rem .72rem!important;background:rgba(7,33,47,.75)!important;color:#dbe9ee!important;backdrop-filter:blur(8px)}
-.home-page .home-work-stage button{padding-block:.72rem!important}
-
-/* 10 / Care: finished-floor support shown with people/facility imagery. */
-.home-page .care-experience{background:#f7fafb!important}
-.home-page .care-layout{grid-template-columns:minmax(0,1.08fr) minmax(20rem,.92fr)!important;gap:1.2rem!important}
-.home-page .care-stage{position:relative!important;min-height:28rem!important;overflow:hidden!important;border-radius:.65rem!important;background:#0a2534!important}
-.home-page .care-stage>.care-scene{display:none!important}
-.home-page .care-stage>.real-scene{position:absolute;inset:0;min-height:0}
-.home-page .care-readout{position:absolute!important;left:1rem!important;top:1rem!important;z-index:6!important;background:rgba(7,33,47,.84)!important;backdrop-filter:blur(8px)}
-.home-page .care-interface{padding:1.15rem!important;border:1px solid #dbe6ea!important;border-radius:.65rem!important;background:#fff!important}
-.home-page .care-tabs{gap:.38rem!important}
-.home-page .care-tabs button{min-height:3.55rem!important}
-
-@keyframes real-scene-drift{from{transform:scale(1.025) translate3d(0,0,0)}to{transform:scale(1.075) translate3d(-.8%,.5%,0)}}
-@keyframes real-scan{0%,14%{transform:translateX(0) skewX(-15deg);opacity:0}35%{opacity:.65}72%,100%{transform:translateX(760%) skewX(-15deg);opacity:0}}
-@keyframes real-route{0%,100%{opacity:.28;transform:scaleX(.72)}50%{opacity:.95;transform:scaleX(1)}}
-
-@media(max-width:1199.98px){
-  .home-page #flooring-solutions #solutions-title{font-size:clamp(2.7rem,4vw,3.65rem)!important}
-  .home-page #industries .home-industries{grid-template-columns:11.5rem minmax(0,1fr)!important}
+.home-page .home-work .home-work-heading{
+  margin-bottom:clamp(1.5rem,2.4vw,2.25rem)!important;
 }
+
+/* Operation: replace only the old abstract scene, keep the established dark section and layout. */
+.home-page .operation-scene-wrap{position:relative!important;overflow:hidden!important}
+.home-page .operation-scene-wrap>.operation-scene{visibility:hidden!important;pointer-events:none!important}
+.home-page .operation-scene-wrap>.real-scene{
+  position:absolute;
+  inset:0;
+  z-index:1;
+}
+.home-page .operation-readout{position:relative;z-index:5}
+
+/* Floor analysis: photography inside the existing analysis canvas without recolouring the section. */
+.home-page .assessment-lab-stage{position:relative!important;overflow:hidden!important}
+.home-page .assessment-lab-stage>.lab-scene{visibility:hidden!important;pointer-events:none!important}
+.home-page .assessment-lab-stage>.real-scene{
+  position:absolute;
+  inset:0;
+  z-index:1;
+}
+.home-page .assessment-lab-stage>.lab-readout,
+.home-page .assessment-lab-stage>.assessment-lab-panels{
+  position:relative;
+  z-index:5;
+}
+.home-page .assessment-lab-panels{
+  background:linear-gradient(90deg,rgba(255,255,255,.95),rgba(255,255,255,.9))!important;
+  backdrop-filter:blur(5px);
+}
+
+/* How We Work: real journey image occupies the existing visual only. */
+.home-page .home-work-visual{position:relative!important;overflow:hidden!important}
+.home-page .home-work-visual>.floor-scene{visibility:hidden!important;pointer-events:none!important}
+.home-page .home-work-visual>.real-scene{
+  position:absolute;
+  inset:0;
+  z-index:1;
+}
+.home-page .home-work-readout,
+.home-page .home-work-visual-note{
+  position:relative;
+  z-index:5;
+}
+
+/* Care: real aftercare imagery inside the existing care-stage styling. */
+.home-page .care-stage{position:relative!important;overflow:hidden!important}
+.home-page .care-stage>.care-scene{visibility:hidden!important;pointer-events:none!important}
+.home-page .care-stage>.real-scene{
+  position:absolute;
+  inset:0;
+  z-index:1;
+}
+.home-page .care-readout{position:relative;z-index:5}
+
+@keyframes home-real-drift{
+  from{transform:scale(1.02) translate3d(0,0,0)}
+  to{transform:scale(1.065) translate3d(-.7%,.35%,0)}
+}
+@keyframes home-real-scan{
+  0%,15%{transform:translateX(0) skewX(-15deg);opacity:0}
+  35%{opacity:.55}
+  75%,100%{transform:translateX(780%) skewX(-15deg);opacity:0}
+}
+
 @media(max-width:991.98px){
-  .home-page #flooring-solutions #solutions-title{white-space:normal!important;max-width:16ch!important}
-  .home-page #industries .home-industries{grid-template-columns:1fr!important}
-  .home-page #industries .home-selector-options{grid-template-columns:repeat(4,minmax(0,1fr))!important}
-  .home-page #industries .home-selector-options::before{grid-column:1/-1}
-  .home-page #industries .home-industry-panel{grid-template-columns:1fr!important}
-  .home-page #industries .home-industry-panel .home-media{min-height:22rem!important}
-  .home-page :is(.home-operation,.assessment-lab,.home-work,.care-experience){padding-block:3.15rem!important}
-  .home-page .operation-layout,.home-page .care-layout{grid-template-columns:1fr!important}
-  .home-page .assessment-lab-layout{grid-template-columns:1fr!important}
-  .home-page .assessment-rail{grid-template-columns:repeat(3,minmax(0,1fr))!important}
-  .home-page .assessment-lab-stage{grid-template-columns:1fr!important}
-  .home-page .assessment-lab-stage>.real-scene{grid-column:1;grid-row:1;min-height:22rem}
-  .home-page .assessment-lab-panels{grid-column:1;grid-row:2;padding:1.3rem!important}
-  .home-page .home-work-visual{min-height:27rem!important}
-}
-@media(max-width:767.98px){
-  .home-page #industries{padding-block:2.9rem!important}
-  .home-page #industries .home-selector-options{grid-template-columns:1fr 1fr!important}
-  .home-page #industries .home-industry-panel .home-media{min-height:18rem!important}
-  .home-page :is(.home-operation,.assessment-lab,.home-work,.care-experience){padding-block:2.8rem!important}
-  .home-page :is(.home-operation,.assessment-lab,.home-work,.care-experience) .section-title{font-size:clamp(2.35rem,9vw,3.05rem)!important}
-  .home-page .operation-scene-wrap,.home-page .care-stage{min-height:21rem!important}
-  .home-page .assessment-rail{grid-template-columns:1fr 1fr!important}
-  .home-page .home-work-visual{min-height:23rem!important}
+  .home-page #flooring-solutions #solutions-title{white-space:normal!important}
+  .home-page .home-operation .section-header.section-header--split,
+  .home-page .assessment-lab .section-header.section-header--split,
+  .home-page .care-experience .section-header.section-header--split,
+  .home-page .home-work .home-work-heading{margin-bottom:1.5rem!important}
 }
 @media(prefers-reduced-motion:reduce){
-  .home-page .real-scene::before,.home-page .industry-real-photo::before,.home-page .real-scene-motion::before,.home-page .real-scene-motion::after,.home-page .industry-photo-motion::before{animation:none!important}
+  .home-page .real-scene::before,
+  .home-page #industries .industry-real-photo::before,
+  .home-page .real-scene-motion::before,
+  .home-page #industries .industry-photo-motion::before{animation:none!important}
 }
