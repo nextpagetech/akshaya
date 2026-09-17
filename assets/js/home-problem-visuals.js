@@ -64,6 +64,7 @@
     </div>
     <div class="problem-visual-scene" aria-hidden="true"></div>
     <div class="problem-visual-tag"><i aria-hidden="true"></i><span></span></div>
+    <div class="problem-motion-cue" aria-hidden="true"><span></span><b>Live visual</b></div>
   `;
   stage.prepend(visual);
 
@@ -74,12 +75,18 @@
   const fx = visual.querySelector('.problem-visual-scene');
 
   const effectMarkup = {
-    crack: `<svg viewBox="0 0 900 560" preserveAspectRatio="none"><path class="pv-crack-path" d="M150 390 L225 355 L292 382 L350 320 L410 348 L470 292 L530 330 L598 268 L655 305 L725 246"/><circle class="pv-crack-ring" cx="598" cy="268" r="34"/></svg>`,
-    dust: `<span class="pv-dust"></span><span class="pv-dust"></span><span class="pv-dust"></span><span class="pv-dust"></span>`,
-    peel: `<span class="pv-peel"></span>`,
-    static: `<span class="pv-grid"></span>`,
-    clean: `<span class="pv-clean"></span>`,
-    water: `<span class="pv-water"></span>`
+    crack: `<svg viewBox="0 0 900 560" preserveAspectRatio="none">
+      <path class="pv-crack-base" d="M124 424 L206 378 L279 405 L344 338 L411 372 L475 307 L542 350 L608 282 L675 320 L748 258"/>
+      <path class="pv-crack-path" d="M124 424 L206 378 L279 405 L344 338 L411 372 L475 307 L542 350 L608 282 L675 320 L748 258"/>
+      <circle class="pv-crack-ring pv-crack-ring-a" cx="475" cy="307" r="34"/>
+      <circle class="pv-crack-ring pv-crack-ring-b" cx="608" cy="282" r="34"/>
+      <g class="pv-callout"><path d="M614 262 L700 190"/><rect x="690" y="145" width="155" height="48" rx="7"/><text x="711" y="175">Floor crack</text></g>
+    </svg>`,
+    dust: `<span class="pv-dust-haze"></span>${Array.from({length: 10}, (_, i) => `<span class="pv-dust pv-dust-${i + 1}"></span>`).join('')}<span class="pv-effect-label">Dust rising from surface</span>`,
+    peel: `<span class="pv-peel-under"></span><span class="pv-peel"></span><span class="pv-peel-edge"></span><span class="pv-effect-label">Coating lifting</span>`,
+    static: `<span class="pv-grid"></span><span class="pv-static-pulse pv-static-pulse-a"></span><span class="pv-static-pulse pv-static-pulse-b"></span><span class="pv-static-route"></span><span class="pv-effect-label">Static-control zone</span>`,
+    clean: `<span class="pv-clean"></span><span class="pv-clean-shine pv-clean-shine-a">✦</span><span class="pv-clean-shine pv-clean-shine-b">✦</span><span class="pv-effect-label">Cleaning sweep</span>`,
+    water: `<span class="pv-water"></span><span class="pv-drop pv-drop-a"></span><span class="pv-drop pv-drop-b"></span><span class="pv-ripple pv-ripple-a"></span><span class="pv-ripple pv-ripple-b"></span><span class="pv-effect-label">Moisture spreading</span>`
   };
 
   let current = -1;
@@ -89,16 +96,20 @@
     current = index;
     const scene = scenes[index];
 
+    visual.classList.remove('is-animating');
     img.style.opacity = '0';
     window.setTimeout(() => {
       img.src = asset(scene.image);
-      img.alt = `${scene.title} flooring reference`; 
+      img.alt = `${scene.title} flooring reference`;
       title.textContent = scene.title;
       text.textContent = scene.text;
       tag.textContent = scene.tag;
+      visual.dataset.effect = scene.effect;
       fx.innerHTML = effectMarkup[scene.effect] || '';
+      void visual.offsetWidth;
+      visual.classList.add('is-animating');
       requestAnimationFrame(() => { img.style.opacity = '1'; });
-    }, 120);
+    }, 100);
   };
 
   const observer = new MutationObserver(render);
