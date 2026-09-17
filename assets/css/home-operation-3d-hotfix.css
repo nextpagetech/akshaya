@@ -1,0 +1,143 @@
+/* Hotfix: keep the final Why Akshaya 3D experience in control of layout.
+ * Loaded last so legacy operation/photo rules cannot collapse the scene or tabs.
+ */
+.home-page #why-akshaya .operation-layout{
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr)!important;
+  grid-template-rows:auto auto auto!important;
+  width:100%!important;
+  max-width:none!important;
+  min-width:0!important;
+  gap:1rem!important;
+  margin:0!important;
+}
+.home-page #why-akshaya .operation-interface{
+  display:contents!important;
+  width:auto!important;
+  max-width:none!important;
+}
+.home-page #why-akshaya .operation-tabs{
+  position:relative!important;
+  grid-column:1/-1!important;
+  grid-row:1!important;
+  display:grid!important;
+  grid-template-columns:repeat(4,minmax(0,1fr))!important;
+  width:100%!important;
+  max-width:none!important;
+  min-width:0!important;
+  margin:0!important;
+  padding:0!important;
+  gap:.6rem!important;
+  overflow:visible!important;
+}
+.home-page #why-akshaya .operation-tabs button{
+  position:relative!important;
+  display:grid!important;
+  grid-template-columns:2.2rem minmax(0,1fr) 1rem!important;
+  align-items:center!important;
+  width:100%!important;
+  min-width:0!important;
+  max-width:none!important;
+  min-height:5rem!important;
+  margin:0!important;
+  padding:.9rem 1rem!important;
+  overflow:hidden!important;
+  white-space:normal!important;
+}
+.home-page #why-akshaya .operation-tabs button span,
+.home-page #why-akshaya .operation-tabs button strong,
+.home-page #why-akshaya .operation-tabs button i{
+  position:relative!important;
+  inset:auto!important;
+  transform:none!important;
+  min-width:0!important;
+}
+.home-page #why-akshaya .operation-tabs button strong{
+  display:block!important;
+  line-height:1.22!important;
+  overflow-wrap:normal!important;
+  word-break:normal!important;
+}
+.home-page #why-akshaya .operation-scene-wrap,
+.home-page #why-akshaya .operation-scene-wrap.js-depth-enter{
+  position:relative!important;
+  grid-column:1/-1!important;
+  grid-row:2!important;
+  width:100%!important;
+  max-width:none!important;
+  min-width:0!important;
+  min-height:clamp(31rem,48vw,43rem)!important;
+  margin:0!important;
+  inset:auto!important;
+  translate:none!important;
+  transform:none!important;
+  opacity:1!important;
+  visibility:visible!important;
+}
+.home-page #why-akshaya .operation-scene{
+  position:absolute!important;
+  inset:0!important;
+  width:100%!important;
+  max-width:none!important;
+  height:100%!important;
+  min-height:0!important;
+  margin:0!important;
+  opacity:1!important;
+  visibility:visible!important;
+  transform:none!important;
+}
+/* The old photographic enhancement used this class on the same scene. The final
+ * 3D scene intentionally replaces it, so never let that layer hide the 3D world. */
+.home-page #why-akshaya .operation-scene.has-real-photo>.real-photo-fill{
+  display:none!important;
+}
+.home-page #why-akshaya .operation-scene.has-real-photo>.operation-3d-world,
+.home-page #why-akshaya .operation-scene>.operation-3d-world{
+  display:block!important;
+  position:absolute!important;
+  inset:0!important;
+  width:100%!important;
+  height:100%!important;
+  opacity:1!important;
+  visibility:visible!important;
+  pointer-events:auto!important;
+}
+.home-page #why-akshaya .operation-panels{
+  position:relative!important;
+  grid-column:1/-1!important;
+  grid-row:3!important;
+  width:100%!important;
+  max-width:none!important;
+  min-width:0!important;
+  margin:0!important;
+}
+.home-page #why-akshaya .operation-interface>.link-arrow{
+  position:relative!important;
+  grid-column:1!important;
+  grid-row:3!important;
+  justify-self:end!important;
+  align-self:center!important;
+}
+@media(max-width:991.98px){
+  .home-page #why-akshaya .operation-tabs{
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    margin:0!important;
+    padding:0!important;
+  }
+  .home-page #why-akshaya .operation-scene-wrap,
+  .home-page #why-akshaya .operation-scene-wrap.js-depth-enter{min-height:30rem!important}
+}
+@media(max-width:767.98px){
+  .home-page #why-akshaya .operation-tabs{
+    display:flex!important;
+    width:100%!important;
+    overflow-x:auto!important;
+    gap:.55rem!important;
+  }
+  .home-page #why-akshaya .operation-tabs button{
+    flex:0 0 16rem!important;
+    width:16rem!important;
+  }
+  .home-page #why-akshaya .operation-scene-wrap,
+  .home-page #why-akshaya .operation-scene-wrap.js-depth-enter{min-height:24rem!important}
+}
