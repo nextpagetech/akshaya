@@ -1,0 +1,79 @@
+/* Final compact correction for Home / How We Work. */
+.home-page .home-work-heading{
+  margin-bottom:1.45rem!important;
+}
+
+.home-page .home-work-layout{
+  gap:clamp(1.5rem,3vw,3rem)!important;
+}
+
+.home-page .home-work-stage,
+.home-page .home-work-stage button{
+  min-height:5.45rem!important;
+}
+
+.home-page .home-work-stage button{
+  grid-template-columns:3.7rem minmax(0,1fr) .35rem!important;
+  gap:.85rem!important;
+  padding:.45rem 0!important;
+}
+
+.home-page .home-work-number{
+  width:3.6rem!important;
+  height:3.6rem!important;
+  font-size:1.18rem!important;
+}
+
+.home-page .home-work-stage-copy strong{
+  font-size:clamp(1.02rem,1.25vw,1.25rem)!important;
+}
+
+.home-page .home-work-stage-copy small{
+  margin-top:.28rem!important;
+  font-size:.86rem!important;
+  line-height:1.35!important;
+  max-width:24rem!important;
+}
+
+.home-page .home-work-stages::before{
+  left:1.8rem!important;
+  top:1.8rem!important;
+  bottom:1.8rem!important;
+}
+
+.home-page .home-work-visual .floor-scene{
+  height:clamp(24rem,32vw,30rem)!important;
+}
+
+.home-page .home-work-video-meta{
+  bottom:.85rem!important;
+  left:1rem!important;
+  right:1rem!important;
+  padding:.82rem .95rem!important;
+}
+
+.home-page .home-work-video-title{
+  font-size:clamp(1.15rem,1.5vw,1.5rem)!important;
+}
+
+.home-page .home-work-video-caption{
+  font-size:.84rem!important;
+  line-height:1.38!important;
+}
+
+@media(max-width:991.98px){
+  .home-page .home-work-stage,
+  .home-page .home-work-stage button{
+    min-height:5.15rem!important;
+  }
+}
+
+@media(max-width:575.98px){
+  .home-page .home-work-stage,
+  .home-page .home-work-stage button{
+    min-height:4.9rem!important;
+  }
+  .home-page .home-work-visual .floor-scene{
+    height:20.5rem!important;
+  }
+}
