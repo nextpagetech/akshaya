@@ -1,0 +1,34 @@
+/* Human-readable Home problem visuals. Real project photography remains the base; motion only highlights the selected issue. */
+.home-page .diagnostic-stage{position:relative;overflow:hidden;min-height:34rem;background:#0f2b3b;border:1px solid #d8e5ec;box-shadow:0 26px 54px rgb(12 38 54/.12)}
+.home-page .diagnostic-stage>.diagnostic-floor,.home-page .diagnostic-stage>.diagnostic-readout{display:none!important}
+.home-page .problem-visual{position:absolute;inset:0;z-index:1;overflow:hidden;background:#173847;color:#fff}
+.home-page .problem-visual-image{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;filter:saturate(.9) contrast(1.02);transform:scale(1.035);transition:opacity .34s ease,transform 1.2s cubic-bezier(.22,1,.36,1)}
+.home-page .problem-visual::after{content:'';position:absolute;inset:0;z-index:2;background:linear-gradient(90deg,rgb(8 28 40/.78) 0%,rgb(8 28 40/.42) 39%,rgb(8 28 40/.08) 68%,rgb(8 28 40/.18) 100%);pointer-events:none}
+.home-page .problem-visual-copy{position:absolute;z-index:8;left:clamp(1.4rem,4vw,3rem);top:clamp(1.5rem,5vw,3.2rem);max-width:min(28rem,58%)}
+.home-page .problem-visual-kicker{display:block;margin-bottom:.7rem;color:#9ee5f2;font-size:.72rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase}
+.home-page .problem-visual-title{margin:0 0 .65rem;color:#fff;font-family:var(--font-display);font-size:clamp(2rem,3.4vw,3.55rem);font-weight:600;line-height:.96;letter-spacing:-.035em}
+.home-page .problem-visual-text{margin:0;color:#d7e7ee;font-size:clamp(.93rem,1.25vw,1.08rem);line-height:1.58}
+.home-page .problem-visual-tag{position:absolute;z-index:9;right:clamp(1rem,3vw,2rem);bottom:clamp(1rem,3vw,2rem);display:flex;align-items:center;gap:.65rem;padding:.8rem 1rem;background:rgb(255 255 255/.96);color:#173847;border-radius:.35rem;box-shadow:0 16px 34px rgb(4 22 32/.26);font-weight:800;font-size:.82rem}
+.home-page .problem-visual-tag i{width:.65rem;height:.65rem;background:#e44d36;border-radius:50%;box-shadow:0 0 0 0 rgb(228 77 54/.38);animation:problem-pulse 2s ease-out infinite}
+.home-page .problem-visual-scene{position:absolute;z-index:6;inset:0;pointer-events:none}
+.home-page .problem-visual-scene svg{position:absolute;inset:0;width:100%;height:100%}
+.home-page .pv-crack-path{fill:none;stroke:#ef4e35;stroke-width:7;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:560;stroke-dashoffset:560;filter:drop-shadow(0 0 5px rgb(239 78 53/.72));animation:problem-trace 4.8s ease-in-out infinite}
+.home-page .pv-crack-ring{fill:none;stroke:#fff;stroke-width:3;opacity:.92;transform-box:fill-box;transform-origin:center;animation:problem-ring 2.2s ease-out infinite}
+.home-page .pv-dust{position:absolute;width:.55rem;height:.55rem;border-radius:50%;background:rgb(225 231 233/.86);box-shadow:0 0 14px rgb(255 255 255/.25);animation:problem-dust 2.7s ease-in-out infinite}
+.home-page .pv-dust:nth-child(1){left:58%;bottom:23%}.home-page .pv-dust:nth-child(2){left:64%;bottom:28%;animation-delay:.45s}.home-page .pv-dust:nth-child(3){left:70%;bottom:22%;animation-delay:.9s}.home-page .pv-dust:nth-child(4){left:75%;bottom:31%;animation-delay:1.3s}.home-page .pv-peel{position:absolute;right:14%;bottom:12%;width:31%;height:28%;background:linear-gradient(145deg,#76cde0,#1b78a6);clip-path:polygon(0 18%,100% 0,82% 100%,16% 78%);box-shadow:0 24px 30px rgb(5 24 36/.3);transform-origin:82% 90%;animation:problem-peel 3.6s ease-in-out infinite}
+.home-page .pv-peel::after{content:'';position:absolute;right:0;bottom:0;width:43%;height:45%;background:#d4dcdf;clip-path:polygon(0 100%,100% 0,100% 100%)}
+.home-page .pv-grid{position:absolute;right:8%;bottom:9%;width:47%;height:40%;border:2px solid rgb(101 203 227/.86);background-image:linear-gradient(rgb(101 203 227/.55) 1px,transparent 1px),linear-gradient(90deg,rgb(101 203 227/.55) 1px,transparent 1px);background-size:2.4rem 2.4rem;transform:perspective(800px) rotateX(56deg) rotateZ(-6deg);box-shadow:0 0 28px rgb(101 203 227/.26);animation:problem-static 2.6s ease-in-out infinite}
+.home-page .pv-clean{position:absolute;right:5%;top:12%;width:7%;height:74%;background:linear-gradient(90deg,transparent,rgb(255 255 255/.9),transparent);filter:blur(1px);animation:problem-clean 3.5s ease-in-out infinite}
+.home-page .pv-water{position:absolute;right:9%;bottom:10%;width:48%;height:34%;background:radial-gradient(ellipse at 42% 62%,rgb(40 150 202/.7),transparent 44%),radial-gradient(ellipse at 67% 43%,rgb(101 203 227/.54),transparent 34%);filter:blur(.5px);animation:problem-water 3.5s ease-in-out infinite alternate}
+@keyframes problem-trace{0%,12%{stroke-dashoffset:560;opacity:.25}48%,78%{stroke-dashoffset:0;opacity:1}100%{stroke-dashoffset:0;opacity:.35}}
+@keyframes problem-ring{0%{transform:scale(.72);opacity:0}35%{opacity:1}100%{transform:scale(1.5);opacity:0}}
+@keyframes problem-pulse{70%{box-shadow:0 0 0 .65rem rgb(228 77 54/0)}}
+@keyframes problem-dust{0%{transform:translate(0,14px) scale(.6);opacity:0}30%{opacity:.85}100%{transform:translate(18px,-62px) scale(1.3);opacity:0}}
+@keyframes problem-peel{0%,100%{transform:rotateX(0deg) translateY(0)}50%{transform:rotateX(20deg) translateY(-10px)}}
+@keyframes problem-static{0%,100%{filter:brightness(1);opacity:.72}50%{filter:brightness(1.5);opacity:1}}
+@keyframes problem-clean{0%{translate:-580% 0;opacity:0}20%{opacity:.72}80%{opacity:.72}100%{translate:40% 0;opacity:0}}
+@keyframes problem-water{from{transform:scale(.9);opacity:.55}to{transform:scale(1.08);opacity:.9}}
+@media (hover:hover) and (pointer:fine){.home-page .diagnostic-stage:hover .problem-visual-image{transform:scale(1.055)}}
+@media (max-width:991.98px){.home-page .diagnostic-stage{min-height:30rem}.home-page .problem-visual-copy{max-width:70%}}
+@media (max-width:767.98px){.home-page .diagnostic-stage{min-height:27rem}.home-page .problem-visual-copy{left:1.1rem;top:1.2rem;max-width:82%}.home-page .problem-visual-title{font-size:clamp(1.8rem,9vw,2.65rem)}.home-page .problem-visual-text{font-size:.9rem}.home-page .problem-visual-tag{right:.8rem;bottom:.8rem;left:.8rem;justify-content:center}.home-page .problem-visual::after{background:linear-gradient(180deg,rgb(8 28 40/.72) 0 45%,rgb(8 28 40/.08) 72%,rgb(8 28 40/.34) 100%)}}
+@media (prefers-reduced-motion:reduce){.home-page .problem-visual-image,.home-page .pv-crack-path,.home-page .pv-crack-ring,.home-page .problem-visual-tag i,.home-page .pv-dust,.home-page .pv-peel,.home-page .pv-grid,.home-page .pv-clean,.home-page .pv-water{animation:none!important;transition:none!important}.home-page .pv-crack-path{stroke-dashoffset:0}}
