@@ -4,7 +4,13 @@
   const section = document.querySelector('.home-page #why-akshaya');
   const wrap = section?.querySelector('.operation-scene-wrap');
   const scene = wrap?.querySelector('.operation-scene');
-  if (!section || !wrap || !scene || scene.querySelector('.operation-3d-world')) return;
+  if (!section || !wrap || !scene) return;
+
+  /* The older photographic enhancement used the same scene node. The final Why
+   * Akshaya treatment is intentionally 3D, so remove that competing layer first. */
+  scene.classList.remove('has-real-photo');
+  scene.querySelectorAll(':scope > .real-photo-fill').forEach((node) => node.remove());
+  if (scene.querySelector('.operation-3d-world')) return;
 
   const world = document.createElement('div');
   world.className = 'operation-3d-world';
