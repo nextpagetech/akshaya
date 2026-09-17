@@ -14,7 +14,7 @@
     videoWrap.className = 'ae-hero-video-wrap';
     videoWrap.setAttribute('aria-hidden', 'true');
     videoWrap.innerHTML = `
-      <video class="ae-hero-video" autoplay muted loop playsinline preload="metadata" poster="https://images.pexels.com/videos/13422071/free-video-13422071.jpg?auto=compress&cs=tinysrgb&w=1920">
+      <video class="ae-hero-video" autoplay muted loop playsinline preload="metadata">
         <source src="https://videos.pexels.com/video-files/13422071/13422071-uhd_3840_2160_30fps.mp4" type="video/mp4">
       </video>`;
     hero.prepend(videoWrap);
@@ -155,21 +155,8 @@
     ]
   });
 
-  bind({
-    host: home.querySelector('.home-work-visual'),
-    target: home.querySelector('.home-work-visual .floor-scene'),
-    attribute: 'data-active-stage',
-    states: [
-      { src: unsplash('photo-1565793298595-6a879b1d9492'), alt: 'Industrial facility being surveyed before flooring work.', label: 'Site Survey · understand the working area and operational constraints', effect: 'fx-scan' },
-      { src: unsplash('photo-1586528116311-ad8dd3c8310d'), alt: 'Industrial floor surface ready for technical evaluation.', label: 'Surface Testing · evaluate the existing floor', effect: 'fx-focus' },
-      { src: pexels(2280571), alt: 'Technical testing process representing moisture assessment.', label: 'Moisture Testing · check relevant site conditions', effect: 'fx-moisture' },
-      { src: unsplash('photo-1450101499163-c8848c66ca85'), alt: 'Technical recommendation and specification review.', label: 'Recommendation · agree system approach and scope', effect: 'fx-docs' },
-      { src: pexels(3862365), alt: 'Small controlled application area used for review.', label: 'Mock-up · review a sample where the project calls for it', effect: 'fx-focus' },
-      { src: pexels(3862365), alt: 'Industrial site application work in progress.', label: 'Installation · coordinated preparation and application', effect: 'fx-apply' },
-      { src: unsplash('photo-1586528116311-ad8dd3c8310d'), alt: 'Finished industrial floor prepared for inspection.', label: 'Inspection · review completed work', effect: 'fx-scan' },
-      { src: unsplash('photo-1521737604893-d14cc237f11d'), alt: 'Team discussing maintenance guidance and project follow-up.', label: 'Aftercare · maintenance guidance and warranty communication', effect: 'fx-support' }
-    ]
-  });
+  /* How We Work uses a dedicated video layer (home-work-video-final.js).
+   * Do not mount a competing static photo in this scene. */
 
   bind({
     host: home.querySelector('.care-stage'),
