@@ -1,8 +1,9 @@
 <?php
 $pageTitle = 'Flooring Projects';
 $pageDescription = 'Explore Akshaya flooring project case studies across industrial and commercial environments, filterable by flooring solution.';
-$bodyClass = 'support-page projects-page';
+$bodyClass = 'support-page support-v2 projects-page';
 $assetPrefix = '.';
+$showFooterCta = false;
 require_once __DIR__ . '/includes/header.php';
 
 $visitUrl = site_escape(site_url('schedule-visit.php'));
