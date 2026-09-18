@@ -100,6 +100,7 @@ if ($showSiteShell ?? true) {
     <script src="<?= site_escape(asset_url('js/home-industries-video-grid.js')) ?>" defer></script>
     <script src="<?= site_escape(asset_url('js/home-operation-illustrations-final.js')) ?>" defer></script>
     <script src="<?= site_escape(asset_url('js/home-assessment-illustrations-final.js')) ?>" defer></script>
+    <script src="<?= site_escape(asset_url('js/home-care-illustrations-final.js')) ?>" defer></script>
     <script src="<?= site_escape(asset_url('js/home-workflow-3d-final.js')) ?>" defer></script>
     <script src="<?= site_escape(asset_url('js/inner-page-visual-story.js')) ?>" defer></script>
     <script src="<?= site_escape(asset_url('js/inner-page-meaningful-visuals.js')) ?>" defer></script>
