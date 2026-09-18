@@ -69,15 +69,29 @@ $method = [
         <div class="container">
             <span class="section-eyebrow">02 / Case-study method</span>
             <h2 class="section-title" id="project-method">Every published project explains more than a photograph.</h2>
-            <div class="method-stepper">
+            <div class="method-stepper method-stepper--premium">
                 <div class="method-tabs" role="tablist" aria-label="Case-study method stages">
                     <?php foreach ($method as $i => [$num, $label, $desc]): ?>
-                    <button class="method-tab" type="button" role="tab" aria-selected="<?= $i === 0 ? 'true' : 'false' ?>"><span><?= site_escape($num) ?></span><strong><?= site_escape($label) ?></strong></button>
+                    <button class="method-tab" type="button" role="tab" aria-selected="<?= $i === 0 ? 'true' : 'false' ?>">
+                        <span><?= site_escape($num) ?></span>
+                        <strong><?= site_escape($label) ?></strong>
+                        <small><?= $i === 0 ? 'Problem context' : ($i === 1 ? 'Site findings' : ($i === 2 ? 'System direction' : 'Completed work')) ?></small>
+                    </button>
                     <?php endforeach; ?>
                 </div>
                 <div class="method-panels">
                     <?php foreach ($method as $i => [$num, $label, $desc]): ?>
-                    <div class="method-panel<?= $i === 0 ? ' is-active' : '' ?>"><p><?= site_escape($desc) ?></p></div>
+                    <div class="method-panel<?= $i === 0 ? ' is-active' : '' ?>">
+                        <div class="method-panel-index"><?= site_escape($num) ?></div>
+                        <div class="method-panel-copy">
+                            <span>Case-study stage</span>
+                            <h3><?= site_escape($label) ?></h3>
+                            <p><?= site_escape($desc) ?></p>
+                        </div>
+                        <div class="method-panel-visual" aria-hidden="true">
+                            <i></i><i></i><i></i><i></i>
+                        </div>
+                    </div>
                     <?php endforeach; ?>
                 </div>
             </div>
