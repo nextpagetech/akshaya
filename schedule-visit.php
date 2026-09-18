@@ -55,17 +55,7 @@ $backIcon = '<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m
                 </div>
             </section>
 
-            <section class="visit-v3-help visit-v3-help--compact" aria-labelledby="visit-help-title">
-                <div>
-                    <span class="visit-v3-section-no">Prefer to talk first?</span>
-                    <h2 id="visit-help-title">Call or WhatsApp the team.</h2>
-                    <p>We can first understand the requirement and then guide you on whether a site visit is the right next step.</p>
-                </div>
-                <div class="visit-v3-help-actions">
-                    <a class="btn btn-primary" href="<?= $phoneUrl ?>">Call Our Team</a>
-                    <a class="btn btn-outline" href="<?= $whatsappUrl ?>" target="_blank" rel="noopener noreferrer">WhatsApp Us</a>
-                </div>
-            </section>
+
         </div>
 
         <aside class="visit-v3-form-column" id="visit-request" aria-labelledby="visit-form-title">
