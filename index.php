@@ -3,7 +3,7 @@
 $pageTitle = 'Commercial & Industrial Flooring Solutions';
 $pageDescription = 'Explore flooring and surface protection with Akshaya Enterprises. Discover solutions for your operating requirements and arrange a technical site visit.';
 $bodyClass = 'home-page';
-$compactFooterCta = true; // Home already closes with a full assessment CTA.
+$showFooterCta = false; // Home already closes with a dedicated site-assessment CTA.
 $assetPrefix = '.';
 require_once __DIR__ . '/includes/header.php';
 
@@ -214,7 +214,7 @@ $journey = [
 
     <!-- 08 / Scroll-led floor transformation. Visuals are illustrative and contain no measured claims. -->
     <section class="section home-work" id="how-we-work" aria-labelledby="work-title" data-work-journey><div class="container">
-        <div class="home-work-heading js-reveal"><span class="section-eyebrow">06 / How We Work</span><h2 class="section-title" id="work-title">A clear path.<br>From first visit to aftercare.</h2><p class="section-description">See how we assess, prepare and transform the floor through each stage.</p></div>
+        <div class="home-work-heading js-reveal"><span class="section-eyebrow">06 / How We Work</span><h2 class="section-title" id="work-title">A clear path. From first visit to aftercare.</h2><p class="section-description">See how we assess, prepare and transform the floor through each stage.</p></div>
         <div class="home-work-layout">
             <ol class="home-work-stages" aria-label="Project stages"><?php foreach ($journey as $i => [$label, $description]): ?><li class="home-work-stage<?= $i === 0 ? ' is-active' : '' ?>" data-work-stage="<?= $i ?>">
                 <button type="button" aria-controls="work-floor-visual" aria-pressed="<?= $i === 0 ? 'true' : 'false' ?>"><span class="home-work-number"><?= sprintf('%02d', $i + 1) ?></span><span class="home-work-stage-copy"><strong><?= site_escape($label) ?></strong><small><?= site_escape($description) ?></small></span><i aria-hidden="true"></i></button>
