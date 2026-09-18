@@ -75,13 +75,15 @@
   const fx = visual.querySelector('.problem-visual-scene');
 
   const effectMarkup = {
-    crack: `<svg viewBox="0 0 900 560" preserveAspectRatio="none">
-      <path class="pv-crack-base" d="M124 424 L206 378 L279 405 L344 338 L411 372 L475 307 L542 350 L608 282 L675 320 L748 258"/>
-      <path class="pv-crack-path" d="M124 424 L206 378 L279 405 L344 338 L411 372 L475 307 L542 350 L608 282 L675 320 L748 258"/>
-      <circle class="pv-crack-ring pv-crack-ring-a" cx="475" cy="307" r="34"/>
-      <circle class="pv-crack-ring pv-crack-ring-b" cx="608" cy="282" r="34"/>
-      <g class="pv-callout"><path d="M614 262 L700 190"/><rect x="690" y="145" width="155" height="48" rx="7"/><text x="711" y="175">Floor crack</text></g>
-    </svg>`,
+    crack: `<div class="pv-crack-tile">
+      <span class="pv-crack-crevice"></span>
+      <span class="pv-crack-slab pv-crack-slab-left"></span>
+      <span class="pv-crack-slab pv-crack-slab-right"></span>
+      <svg class="pv-crack-line" viewBox="0 0 100 100" preserveAspectRatio="none">
+        <path d="M50 0 L58 14 L42 28 L60 42 L40 56 L58 70 L44 84 L50 100" vector-effect="non-scaling-stroke"/>
+      </svg>
+      <span class="pv-crack-dust pv-crack-dust-1"></span><span class="pv-crack-dust pv-crack-dust-2"></span><span class="pv-crack-dust pv-crack-dust-3"></span>
+    </div><span class="pv-effect-label">Crack widening — check substrate</span>`,
     dust: `<span class="pv-dust-haze"></span>${Array.from({length: 10}, (_, i) => `<span class="pv-dust pv-dust-${i + 1}"></span>`).join('')}<span class="pv-effect-label">Dust rising from surface</span>`,
     peel: `<span class="pv-peel-under"></span><span class="pv-peel"></span><span class="pv-peel-edge"></span><span class="pv-effect-label">Coating lifting</span>`,
     static: `<span class="pv-grid"></span><span class="pv-static-pulse pv-static-pulse-a"></span><span class="pv-static-pulse pv-static-pulse-b"></span><span class="pv-static-route"></span><span class="pv-effect-label">Static-control zone</span>`,
