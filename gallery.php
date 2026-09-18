@@ -1,7 +1,7 @@
 <?php
 $pageTitle = 'Project Gallery';
 $pageDescription = 'Browse and filter Akshaya flooring project and execution photographs.';
-$bodyClass = 'support-page gallery-page';
+$bodyClass = 'support-page support-v2 gallery-page';
 $assetPrefix = '.';
 require_once __DIR__ . '/includes/header.php';
 
