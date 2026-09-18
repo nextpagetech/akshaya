@@ -78,11 +78,24 @@ $journey = [
             <span class="section-eyebrow">04 / How a project moves forward</span>
             <h2 class="section-title" id="about-journey">From first visit to aftercare.</h2>
             <p class="section-description">Expand a stage to see what happens at that point in the relationship.</p>
-            <div class="journey-track">
+            <div class="journey-track journey-track--premium">
                 <?php foreach ($journey as $i => [$label, $desc]): ?>
                 <div class="journey-step" aria-expanded="false">
-                    <button class="journey-step-head" type="button"><span class="num"><?= sprintf('%02d', $i + 1) ?></span><strong><?= site_escape($label) ?></strong><?= $chevron ?></button>
-                    <div class="journey-panel"><p><?= site_escape($desc) ?></p></div>
+                    <button class="journey-step-head" type="button">
+                        <span class="num"><?= sprintf('%02d', $i + 1) ?></span>
+                        <span class="journey-step-title"><strong><?= site_escape($label) ?></strong><small><?= $i === 0 ? 'Assess' : ($i === 1 ? 'Define' : ($i === 2 ? 'Agree' : ($i === 3 ? 'Execute' : 'Support'))) ?></small></span>
+                        <span class="journey-step-icon" aria-hidden="true"><?= $chevron ?></span>
+                    </button>
+                    <div class="journey-panel">
+                        <div class="journey-panel-copy">
+                            <span class="journey-panel-kicker">Stage <?= sprintf('%02d', $i + 1) ?></span>
+                            <h3><?= site_escape($label) ?></h3>
+                            <p><?= site_escape($desc) ?></p>
+                        </div>
+                        <div class="journey-panel-visual" aria-hidden="true">
+                            <i></i><i></i><i></i>
+                        </div>
+                    </div>
                 </div>
                 <?php endforeach; ?>
             </div>
