@@ -14,6 +14,7 @@ if ($showSiteShell ?? true) {
 ?>
     <?php if ($showSiteShell ?? true): ?>
     <footer class="site-footer bg-technical" id="site-footer">
+        <?php if ($showFooterCta ?? true): ?>
         <section class="footer-cta section technical-grid<?= $footerCtaCompact ? ' footer-cta--compact' : '' ?>" aria-labelledby="footer-cta-title">
             <div class="container footer-cta-inner">
                 <div class="footer-cta-copy">
@@ -29,6 +30,7 @@ if ($showSiteShell ?? true) {
                 </div>
             </div>
         </section>
+        <?php endif; ?>
 
         <div class="container footer-main">
             <div class="footer-grid">
