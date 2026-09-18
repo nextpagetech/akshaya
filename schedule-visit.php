@@ -1,8 +1,9 @@
 <?php
 $pageTitle = 'Schedule Site Visit';
 $pageDescription = 'Request a flooring site visit with Akshaya Floor Solutions and share your facility, floor condition, area and preferred schedule.';
-$bodyClass = 'support-page visit-page';
+$bodyClass = 'support-page support-v2 visit-page';
 $assetPrefix = '.';
+$showFooterCta = false;
 require_once __DIR__ . '/includes/reusable-components.php';
 require_once __DIR__ . '/includes/form-handler.php';
 
