@@ -6,11 +6,16 @@
   const scene = wrap?.querySelector('.operation-scene');
   if (!section || !wrap || !scene) return;
 
+  const scriptSrc = document.currentScript?.src || '';
+  const assetBase = scriptSrc
+    ? new URL('../images/home/operations/', scriptSrc)
+    : new URL('assets/images/home/operations/', document.baseURI);
+
   const items = [
-    ['Minimum Production Disruption','assets/images/home/operations/minimum-production-disruption.svg'],
-    ['Quality-Controlled Execution','assets/images/home/operations/quality-controlled-execution.svg'],
-    ['Trained Application Team','assets/images/home/operations/trained-application-team.svg'],
-    ['Support Beyond Installation','assets/images/home/operations/support-beyond-installation.svg']
+    ['Minimum Production Disruption','minimum-production-disruption.svg'],
+    ['Quality-Controlled Execution','quality-controlled-execution.svg'],
+    ['Trained Application Team','trained-application-team.svg'],
+    ['Support Beyond Installation','support-beyond-installation.svg']
   ];
 
   scene.classList.remove('has-real-photo');
@@ -22,11 +27,20 @@
   scene.appendChild(stage);
 
   const img = stage.querySelector('img');
+  img.addEventListener('error', () => {
+    stage.classList.add('has-load-error');
+    img.removeAttribute('src');
+    img.alt = 'Illustration unavailable';
+  });
+  img.addEventListener('load', () => {
+    stage.classList.remove('has-load-error');
+  });
 
   const render = () => {
     const raw = Number(wrap.getAttribute('data-operation-state'));
     const index = Number.isFinite(raw) ? Math.max(0, Math.min(items.length - 1, raw)) : 0;
-    const [title, src] = items[index];
+    const [title, file] = items[index];
+    const src = new URL(file, assetBase).href;
 
     img.style.animation = 'none';
     img.src = src;
