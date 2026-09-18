@@ -32,67 +32,34 @@ $backIcon = '<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m
 ?>
 
 <main class="visit-v3-main" id="main-content">
-    <div class="container-wide visit-v3-shell">
+    <div class="container-wide visit-v3-shell visit-v3-shell--compact">
         <div class="visit-v3-content">
-            <section class="visit-v3-hero" aria-labelledby="visit-title">
+            <section class="visit-v3-hero visit-v3-hero--compact" aria-labelledby="visit-title">
                 <span class="visit-v3-kicker">Schedule a Technical Site Visit</span>
                 <h1 id="visit-title">Let us understand the <em>floor first.</em></h1>
-                <p class="visit-v3-lead">A useful flooring recommendation starts with the actual site — the substrate, visible damage, moisture condition, traffic, cleaning requirement, access and available shutdown window.</p>
+                <p class="visit-v3-lead">Share what is happening on the existing floor, how the area is used and when the work can be accessed. You do not need to know the flooring system before requesting a visit.</p>
                 <div class="visit-v3-actions">
-                    <a class="btn btn-primary" href="#visit-request">Start Request <?= $arrow ?></a>
+                    <a class="btn btn-primary" href="#visit-request">Request Site Visit <?= $arrow ?></a>
                     <a class="visit-v3-contact-link" href="<?= $phoneUrl ?>">Call <?= site_escape($siteConfig['phone']) ?></a>
                 </div>
+            </section>
 
-                <div class="visit-v3-hero-visual" aria-hidden="true">
-                    <div class="visit-v3-floor-plane">
-                        <span class="visit-v3-scan"></span>
-                        <i class="visit-v3-point p1"></i>
-                        <i class="visit-v3-point p2"></i>
-                        <i class="visit-v3-point p3"></i>
-                        <span class="visit-v3-route"></span>
-                    </div>
-                    <div class="visit-v3-visual-label"><span>Assessment before recommendation</span><strong>Surface · Moisture · Use · Access</strong></div>
+            <section class="visit-v3-essentials" aria-labelledby="visit-essential-title">
+                <span class="visit-v3-section-no">What helps us assess the site</span>
+                <h2 id="visit-essential-title">Four things are enough to start.</h2>
+                <div class="visit-v3-essential-list">
+                    <article><span>01</span><div><strong>Current floor condition</strong><p>Cracks, dusting, peeling, wear, water ingress or another visible issue.</p></div></article>
+                    <article><span>02</span><div><strong>How the area is used</strong><p>Production, warehouse movement, hygiene, static control or another operating need.</p></div></article>
+                    <article><span>03</span><div><strong>Approximate area</strong><p>A rough size is enough for the first discussion.</p></div></article>
+                    <article><span>04</span><div><strong>Access / shutdown window</strong><p>Any known timing or operational restrictions around the work area.</p></div></article>
                 </div>
             </section>
 
-            <section class="visit-v3-section" aria-labelledby="visit-assess-title">
-                <span class="visit-v3-section-no">01 / What we assess</span>
-                <h2 id="visit-assess-title">The visit is about the floor and how the facility uses it.</h2>
-                <div class="visit-v3-assessment-grid">
-                    <article><span>01</span><strong>Surface condition</strong><p>Existing coating, visible cracks, dusting, contamination and repair areas are reviewed.</p></article>
-                    <article><span>02</span><strong>Moisture / site condition</strong><p>Relevant site conditions are checked before any flooring direction is finalised.</p></article>
-                    <article><span>03</span><strong>Operating environment</strong><p>Traffic, cleaning, exposure, hygiene and other operating requirements are discussed.</p></article>
-                    <article><span>04</span><strong>Execution constraints</strong><p>Access, shutdown windows and phased working requirements are considered before planning.</p></article>
-                </div>
-            </section>
-
-            <section class="visit-v3-section visit-v3-process" aria-labelledby="visit-process-title">
-                <span class="visit-v3-section-no">02 / What happens next</span>
-                <h2 id="visit-process-title">A clear path after the visit.</h2>
-                <div class="visit-v3-process-track">
-                    <article class="is-active"><span>01</span><div><strong>Site Visit</strong><p>Review the actual floor and operating context.</p></div></article>
-                    <article><span>02</span><div><strong>Technical Direction</strong><p>Discuss the system route based on the assessment.</p></div></article>
-                    <article><span>03</span><div><strong>Commercial Proposal</strong><p>Commercial scope follows the agreed technical direction.</p></div></article>
-                    <article><span>04</span><div><strong>Execution Planning</strong><p>Sequence work around access and shutdown constraints.</p></div></article>
-                </div>
-            </section>
-
-            <section class="visit-v3-section visit-v3-prepare" aria-labelledby="visit-prepare-title">
-                <span class="visit-v3-section-no">03 / Helpful before the visit</span>
-                <h2 id="visit-prepare-title">You do not need a flooring specification ready.</h2>
-                <div class="visit-v3-prepare-grid">
-                    <div><strong>Facility use</strong><span>What happens in the area every day?</span></div>
-                    <div><strong>Approximate area</strong><span>A rough size is enough for the first discussion.</span></div>
-                    <div><strong>Current problem</strong><span>Cracks, dusting, wear, peeling, water or another issue.</span></div>
-                    <div><strong>Available work window</strong><span>Share known shutdown or access limitations.</span></div>
-                </div>
-            </section>
-
-            <section class="visit-v3-help" aria-labelledby="visit-help-title">
+            <section class="visit-v3-help visit-v3-help--compact" aria-labelledby="visit-help-title">
                 <div>
-                    <span class="visit-v3-section-no">Need help before submitting?</span>
-                    <h2 id="visit-help-title">Speak with the team first.</h2>
-                    <p>If the requirement is still unclear, you can call or WhatsApp and discuss the floor before filling the request.</p>
+                    <span class="visit-v3-section-no">Prefer to talk first?</span>
+                    <h2 id="visit-help-title">Call or WhatsApp the team.</h2>
+                    <p>We can first understand the requirement and then guide you on whether a site visit is the right next step.</p>
                 </div>
                 <div class="visit-v3-help-actions">
                     <a class="btn btn-primary" href="<?= $phoneUrl ?>">Call Our Team</a>
@@ -106,7 +73,7 @@ $backIcon = '<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m
                 <div class="visit-v3-form-head">
                     <span>Site Visit Request</span>
                     <h2 id="visit-form-title">Share the project context.</h2>
-                    <p>Complete the four short steps. Nothing is submitted until the final review.</p>
+                    <p>Complete four short steps. Nothing is submitted until the final review.</p>
                 </div>
 
                 <form class="support-form visit-v3-form" method="post" action="#visit-request" novalidate data-visit-form>
