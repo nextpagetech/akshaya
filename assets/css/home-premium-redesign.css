@@ -1,0 +1,120 @@
+/* Premium home redesign: trust strip continuity, featured-project card fix,
+ * and typography polish. Loaded last so it wins the cascade without !important. */
+
+/* -- 01 / Trust strip: read as a continuation of the hero, not a floating bar. -- */
+.home-page .ae-hero { position: relative; z-index: 2; padding-bottom: clamp(2.5rem, 5vw, 4rem); }
+.home-page .home-trust {
+    position: relative;
+    margin-top: 0;
+    padding-block: clamp(1.75rem, 3vw, 2.5rem) 0;
+}
+.home-page .home-trust::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgb(101 203 227 / .45), transparent);
+}
+.home-page .home-trust-grid { padding-block: 0 clamp(1.75rem, 3vw, 2.5rem); }
+.home-page .home-trust-intro { gap: .2rem; }
+.home-page .home-trust-item { border-left-color: rgb(255 255 255 / .16); }
+
+/* -- 02 / Featured Projects: consistent premium editorial cards. -- */
+.home-page #featured-projects { padding-block: clamp(3rem, 6vw, 5.5rem); }
+.home-page .home-heading-row { align-items: flex-end; }
+
+.home-page .home-projects-grid { grid-template-columns: minmax(0, 1.25fr) minmax(0, .95fr); grid-auto-rows: 1fr; }
+.home-page .home-project {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    min-height: 24rem;
+    isolation: isolate;
+    transition: transform 320ms var(--ease-out), box-shadow 320ms var(--ease-out);
+}
+.home-page .home-project--featured { grid-row: span 2; min-height: 32rem; }
+.home-page .home-project .home-media,
+.home-page .home-project .home-demo-media {
+    position: absolute;
+    inset: 0;
+    height: 100%;
+    border-radius: 0;
+}
+.home-page .home-project .home-media img { width: 100%; height: 100%; object-fit: cover; transition: transform 650ms var(--ease-out); }
+.home-page .home-project:hover .home-media img { transform: scale(1.045); }
+.home-page .home-project:hover { transform: translateY(-4px); box-shadow: 0 30px 60px rgb(16 44 61 / .18); }
+
+.home-page .home-project::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background: linear-gradient(180deg, rgb(9 28 40 / .05) 0%, rgb(9 28 40 / .32) 42%, rgb(9 28 40 / .92) 100%);
+}
+.home-page .home-project-copy {
+    position: relative;
+    z-index: 2;
+    padding: clamp(1.35rem, 2.6vw, 2.25rem);
+    color: #fff;
+}
+.home-page .home-project-copy p { color: rgb(255 255 255 / .82); }
+.home-page .home-development-label {
+    display: inline-flex;
+    align-items: center;
+    gap: .4rem;
+    padding: .3rem .65rem;
+    border: 1px solid rgb(255 255 255 / .32);
+    border-radius: 999px;
+    color: rgb(255 255 255 / .92);
+    font-size: .68rem;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    background: rgb(255 255 255 / .08);
+    backdrop-filter: blur(6px);
+}
+.home-page .home-project-copy h3 { margin-top: .75rem; color: #fff; }
+.home-page .home-project-facts { color: rgb(255 255 255 / .88); }
+.home-page .home-project-facts dt { color: rgb(255 255 255 / .65); font-weight: 600; }
+.home-page .home-project-facts dd { color: #fff; }
+.home-page .home-project .link-arrow { color: #fff; }
+.home-page .home-project .link-arrow svg { stroke: #fff; }
+
+@media (max-width: 991.98px) {
+    .home-page .home-projects-grid { grid-template-columns: 1fr; grid-auto-rows: auto; }
+    .home-page .home-project, .home-page .home-project--featured { grid-row: auto; min-height: 22rem; }
+}
+@media (max-width: 575.98px) {
+    .home-page .home-project, .home-page .home-project--featured { min-height: 19rem; }
+    .home-page .home-project-copy { padding: 1.15rem; }
+}
+
+/* -- 02b / Industries panel: restore the real project photo the redesign pass
+ * accidentally cleared (a later same-specificity `background:` shorthand
+ * was winning over home-client-media.css's background-image). -- */
+.home-page #industries .home-industry-panel .home-media.home-demo-media,
+.home-page #industries .home-industry-panel .home-media.home-demo-media::before { background-size: cover; background-position: center; background-repeat: no-repeat; }
+.home-page #industry-manufacturing .home-media.home-demo-media { background-image: url('../../website_assets/Amritha Tools/IMG-20190714-WA0024.jpg'); }
+.home-page #industry-pharma .home-media.home-demo-media { background-image: url('../../website_assets/Amritha Tools/IMG-20190714-WA0025.jpg'); }
+.home-page #industry-food-beverage .home-media.home-demo-media { background-image: url('../../website_assets/Amritha Tools/IMG-20190721-WA0003.jpg'); }
+.home-page #industry-electronics .home-media.home-demo-media { background-image: url('../../website_assets/Amritha Tools/IMG-20190721-WA0004.jpg'); }
+.home-page #industry-automobile .home-media.home-demo-media { background-image: url('../../website_assets/Amritha Tools/IMG-20190726-WA0040.jpg'); }
+.home-page #industry-warehouses-logistics .home-media.home-demo-media { background-image: url('../../website_assets/Amritha Tools/IMG-20190726-WA0041.jpg'); }
+.home-page #industry-hospitals-healthcare .home-media.home-demo-media { background-image: url('../../website_assets/Amritha Tools/IMG-20190727-WA0007.jpg'); }
+.home-page #industry-data-centres .home-media.home-demo-media { background-image: url('../../website_assets/Amritha Tools/IMG-20190727-WA0008.jpg'); }
+
+/* -- 02c / Industry copy panel: centered flex content could be taller than the
+ * fixed-height card and overflow past its top, clipped by the card's
+ * overflow:hidden. Align from the top and allow scroll as a safety net. -- */
+.home-page #industries .home-industry-copy {
+    margin: 0;
+    justify-content: center;
+    overflow-y: auto;
+    max-height: 100%;
+}
+
+/* -- 03 / Typography polish so headings read as deliberately branded, not default. -- */
+.home-page .section-eyebrow, .section-eyebrow { font-family: var(--font-body); }
+.home-page .section-title, .home-page h1, .home-page h2, .home-page h3 { letter-spacing: -.02em; }
