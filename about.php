@@ -1,8 +1,9 @@
 <?php
 $pageTitle = 'About Akshaya Floor Solutions';
 $pageDescription = 'Learn how Akshaya approaches industrial flooring through site assessment, trained application manpower, quality-controlled execution and project-specific recommendations.';
-$bodyClass = 'support-page about-page';
+$bodyClass = 'support-page support-v2 about-page';
 $assetPrefix = '.';
+$showFooterCta = false;
 require_once __DIR__ . '/includes/header.php';
 
 $visitUrl = site_escape(site_url('schedule-visit.php'));
