@@ -1,0 +1,240 @@
+/* Final How We Work 3D workflow animations — self-contained and scoped only to #how-we-work. */
+.home-page #how-we-work .home-work-visual .floor-scene{
+  position:relative!important;
+  height:clamp(25rem,34vw,32rem)!important;
+  overflow:hidden!important;
+  border:1px solid #d8e5eb!important;
+  border-radius:.8rem!important;
+  background:linear-gradient(180deg,#fbfdfe,#eef5f8)!important;
+  box-shadow:0 18px 46px rgba(20,58,77,.10)!important;
+}
+.home-page #how-we-work .home-work-visual .floor-scene>:not(.workflow-3d-layer){display:none!important}
+.home-page #how-we-work .workflow-3d-layer{
+  position:absolute;inset:0;z-index:10;overflow:hidden;
+  color:#12364a;font-family:var(--font-body);
+  background:
+    radial-gradient(circle at 80% 15%,rgba(83,196,226,.12),transparent 22rem),
+    linear-gradient(180deg,#fbfdff,#edf4f7);
+  perspective:1100px;
+}
+.home-page #how-we-work .workflow-stage-kicker{
+  position:absolute;left:1.2rem;top:1rem;z-index:20;
+  display:flex;align-items:center;gap:.55rem;
+  color:#146f9d;font-size:.67rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase
+}
+.home-page #how-we-work .workflow-stage-kicker b{
+  display:grid;place-items:center;width:2rem;height:2rem;border-radius:.3rem;
+  background:#0e78ad;color:#fff;font-size:.72rem
+}
+.home-page #how-we-work .workflow-caption{
+  position:absolute;left:1.2rem;right:1.2rem;bottom:1rem;z-index:20;
+  padding:.78rem .92rem;border-left:3px solid #f2b721;border-radius:.2rem;
+  background:rgba(255,255,255,.9);box-shadow:0 12px 24px rgba(26,65,83,.09);
+  backdrop-filter:blur(8px)
+}
+.home-page #how-we-work .workflow-caption strong{display:block;font-family:var(--font-display);font-size:1.14rem;color:#0f3144}
+.home-page #how-we-work .workflow-caption span{display:block;margin-top:.22rem;color:#5e7380;font-size:.78rem;line-height:1.4}
+.home-page #how-we-work .workflow-world{
+  position:absolute;left:5%;right:5%;top:13%;bottom:15%;
+  transform-style:preserve-3d;transform:rotateX(58deg) rotateZ(-25deg);
+}
+.home-page #how-we-work .workflow-floor{
+  position:absolute;left:8%;right:5%;top:12%;bottom:6%;
+  border:1px solid #c3d3da;border-radius:.35rem;
+  background:
+    linear-gradient(90deg,transparent 49.5%,rgba(46,99,121,.07) 50%,transparent 50.5%),
+    linear-gradient(transparent 49.5%,rgba(46,99,121,.07) 50%,transparent 50.5%),
+    linear-gradient(135deg,#eef1f2,#dfe6e9);
+  background-size:5rem 5rem,5rem 5rem,auto;
+  box-shadow:1.3rem 1.3rem 0 #cbd7dc,1.3rem 1.3rem 2rem rgba(28,58,72,.16);
+}
+.home-page #how-we-work .workflow-floor::after{
+  content:'';position:absolute;inset:0;border-radius:inherit;
+  background:linear-gradient(120deg,rgba(255,255,255,.58),transparent 34%,rgba(61,173,214,.08) 70%,transparent)
+}
+.home-page #how-we-work .workflow-worker{
+  position:absolute;z-index:8;width:2.2rem;height:4.5rem;
+  transform:rotateX(-58deg) rotateZ(25deg);transform-origin:bottom center;
+}
+.home-page #how-we-work .workflow-worker::before{
+  content:'';position:absolute;left:.62rem;top:0;width:.9rem;height:.9rem;border-radius:50%;
+  background:#f0c6a5;box-shadow:0 -.25rem 0 .1rem #f6f7f8;
+}
+.home-page #how-we-work .workflow-worker::after{
+  content:'';position:absolute;left:.34rem;top:.86rem;width:1.5rem;height:2.7rem;border-radius:.25rem;
+  background:linear-gradient(#dfff31 0 42%,#173d59 42%);box-shadow:inset 0 .55rem rgba(255,255,255,.16)
+}
+.home-page #how-we-work .workflow-worker i{
+  position:absolute;left:.6rem;bottom:0;width:.25rem;height:1.5rem;background:#173d59;box-shadow:.8rem 0 #173d59
+}
+.home-page #how-we-work .workflow-device{
+  position:absolute;border:2px solid #1a5c7b;background:#0d3044;color:#77d7ef;border-radius:.18rem;
+  box-shadow:0 .4rem .7rem rgba(0,0,0,.12)
+}
+.home-page #how-we-work .workflow-label{
+  position:absolute;z-index:14;padding:.32rem .48rem;border-radius:.25rem;
+  background:#fff;border:1px solid #b7ced8;color:#18465e;
+  font-size:.58rem;font-weight:800;line-height:1;box-shadow:0 .3rem .7rem rgba(24,70,94,.1);
+  transform:rotateX(-58deg) rotateZ(25deg)
+}
+.home-page #how-we-work .workflow-line{position:absolute;height:3px;background:#28aee0;box-shadow:0 0 12px rgba(40,174,224,.45);transform-origin:left center}
+.home-page #how-we-work .workflow-pulse{
+  position:absolute;width:1.7rem;height:1.7rem;border:2px solid #22b4e4;border-radius:50%;
+  animation:wf-pulse 1.5s ease-out infinite
+}
+.home-page #how-we-work .workflow-check{
+  position:absolute;display:grid;place-items:center;width:1.5rem;height:1.5rem;border-radius:50%;
+  background:#31a56d;color:#fff;font-size:.85rem;font-weight:900;
+  box-shadow:0 0 0 0 rgba(49,165,109,.35);animation:wf-check 1.7s ease-out infinite
+}
+.home-page #how-we-work .workflow-3d-layer.is-changing{animation:wf-enter .45s ease both}
+
+/* 01 Site survey */
+.home-page #how-we-work [data-wf-scene='survey'] .wf-worker-a{left:19%;top:26%}
+.home-page #how-we-work [data-wf-scene='survey'] .wf-laser{
+  left:38%;top:34%;width:3rem;height:4rem;border:2px solid #1d5e7c;background:#123c52;border-radius:.25rem;
+  transform:rotateX(-58deg) rotateZ(25deg)
+}
+.home-page #how-we-work [data-wf-scene='survey'] .wf-laser::before{
+  content:'';position:absolute;left:1.35rem;top:3rem;width:18rem;height:2px;background:#ef4b49;
+  transform-origin:left center;animation:wf-laser 2.1s ease-in-out infinite
+}
+.home-page #how-we-work [data-wf-scene='survey'] .wf-measure-a{left:46%;top:49%;width:13rem}
+.home-page #how-we-work [data-wf-scene='survey'] .wf-measure-b{left:30%;top:67%;width:9rem}
+.home-page #how-we-work [data-wf-scene='survey'] .wf-crack{
+  position:absolute;left:51%;top:53%;width:14rem;height:3px;background:#6f7a7f;
+  transform:rotate(18deg);clip-path:polygon(0 42%,15% 0,28% 75%,43% 20%,60% 90%,73% 20%,100% 65%,100% 100%,0 100%)
+}
+
+/* 02 Surface testing */
+.home-page #how-we-work [data-wf-scene='surface'] .wf-worker-a{left:58%;top:20%}
+.home-page #how-we-work [data-wf-scene='surface'] .wf-grinder{
+  position:absolute;left:48%;top:51%;width:5rem;height:3.1rem;border-radius:50% 50% 40% 40%;
+  background:#1c6790;border:.35rem solid #bdcbd1;box-shadow:0 .5rem 0 #5d727c;
+  animation:wf-grinder 2s ease-in-out infinite
+}
+.home-page #how-we-work [data-wf-scene='surface'] .wf-grinder::after{
+  content:'';position:absolute;left:3.6rem;top:-3.4rem;width:.45rem;height:4.4rem;background:#49616c;transform:rotate(-22deg);transform-origin:bottom
+}
+.home-page #how-we-work [data-wf-scene='surface'] .wf-dust{
+  position:absolute;left:34%;top:54%;width:14rem;height:5rem;
+  background:radial-gradient(circle,rgba(185,199,205,.72) 0 8%,transparent 9%) 0 0/1.4rem 1.4rem;
+  animation:wf-dust 1.7s linear infinite
+}
+
+/* 03 moisture */
+.home-page #how-we-work [data-wf-scene='moisture'] .wf-worker-a{left:30%;top:24%}
+.home-page #how-we-work [data-wf-scene='moisture'] .wf-meter{
+  left:57%;top:42%;width:4rem;height:5rem;padding:.5rem;border:2px solid #1a6791;background:#11425e;border-radius:.35rem;
+  transform:rotateX(-58deg) rotateZ(25deg)
+}
+.home-page #how-we-work [data-wf-scene='moisture'] .wf-meter::before{
+  content:'4.2%';display:grid;place-items:center;height:100%;background:#eaf9ff;color:#0e5e89;font-weight:900;font-size:1rem
+}
+.home-page #how-we-work [data-wf-scene='moisture'] .wf-pulse{left:50%;top:58%}
+.home-page #how-we-work [data-wf-scene='moisture'] .wf-drop{
+  position:absolute;left:62%;top:34%;width:1.5rem;height:2rem;background:#29b5ed;
+  border-radius:60% 40% 65% 35%;transform:rotate(45deg);animation:wf-drop 1.6s ease-in-out infinite
+}
+
+/* 04 recommendation */
+.home-page #how-we-work [data-wf-scene='recommendation'] .wf-worker-a{left:18%;top:25%}
+.home-page #how-we-work [data-wf-scene='recommendation'] .wf-worker-b{left:69%;top:28%}
+.home-page #how-we-work [data-wf-scene='recommendation'] .wf-board{
+  position:absolute;left:40%;top:26%;width:16rem;height:10rem;padding:.7rem;
+  border:1px solid #aac0ca;background:#fff;box-shadow:0 .7rem 1rem rgba(29,70,88,.12);
+  transform:rotateX(-58deg) rotateZ(25deg)
+}
+.home-page #how-we-work [data-wf-scene='recommendation'] .wf-board::before{
+  content:'SYSTEM SELECTION';display:block;color:#0e5f8a;font-weight:900;font-size:.7rem;margin-bottom:.5rem
+}
+.home-page #how-we-work [data-wf-scene='recommendation'] .wf-board::after{
+  content:'';display:block;height:6rem;background:
+    linear-gradient(#6f93a5 0 0) 10% 15%/80% .35rem no-repeat,
+    linear-gradient(#65cbe3 0 0) 10% 38%/62% .35rem no-repeat,
+    linear-gradient(#f2b721 0 0) 10% 61%/72% .35rem no-repeat,
+    linear-gradient(#dde7eb,#c7d4da)
+}
+
+/* 05 mockup */
+.home-page #how-we-work [data-wf-scene='mockup'] .wf-worker-a{left:20%;top:30%}
+.home-page #how-we-work [data-wf-scene='mockup'] .wf-sample-grid{
+  position:absolute;left:42%;top:36%;width:15rem;height:11rem;display:grid;grid-template-columns:1fr 1fr;gap:.35rem;
+  transform:rotateX(-58deg) rotateZ(25deg)
+}
+.home-page #how-we-work [data-wf-scene='mockup'] .wf-sample-grid i{display:block;border:1px solid #a8bbc4;background:#d9e0e3}
+.home-page #how-we-work [data-wf-scene='mockup'] .wf-sample-grid i:nth-child(2){background:#89a9b8}
+.home-page #how-we-work [data-wf-scene='mockup'] .wf-sample-grid i:nth-child(3){background:#e9edf0}
+.home-page #how-we-work [data-wf-scene='mockup'] .wf-sample-grid i:nth-child(4){background:#6c94a7}
+.home-page #how-we-work [data-wf-scene='mockup'] .wf-sample-grid::after{
+  content:'';position:absolute;inset:-.45rem;border:2px solid #f2b721;animation:wf-outline 1.7s ease-in-out infinite
+}
+
+/* 06 installation */
+.home-page #how-we-work [data-wf-scene='installation'] .wf-worker-a{left:25%;top:23%}
+.home-page #how-we-work [data-wf-scene='installation'] .wf-worker-b{left:67%;top:31%}
+.home-page #how-we-work [data-wf-scene='installation'] .wf-coat{
+  position:absolute;left:22%;top:42%;width:28rem;height:11rem;border-radius:.3rem;
+  background:linear-gradient(90deg,#8aaec0 0 54%,rgba(138,174,192,.15) 54%);overflow:hidden
+}
+.home-page #how-we-work [data-wf-scene='installation'] .wf-coat::after{
+  content:'';position:absolute;left:-35%;top:0;width:35%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.65),transparent);
+  animation:wf-coat 2s ease-in-out infinite
+}
+
+/* 07 inspection */
+.home-page #how-we-work [data-wf-scene='inspection'] .wf-worker-a{left:22%;top:28%}
+.home-page #how-we-work [data-wf-scene='inspection'] .wf-inspect-line{
+  position:absolute;left:38%;top:30%;width:3px;height:15rem;background:#55cce8;box-shadow:0 0 14px rgba(85,204,232,.6);
+  animation:wf-inspection 1.8s ease-in-out infinite alternate
+}
+.home-page #how-we-work [data-wf-scene='inspection'] .wf-check-1{left:48%;top:42%}
+.home-page #how-we-work [data-wf-scene='inspection'] .wf-check-2{left:59%;top:57%;animation-delay:.4s}
+.home-page #how-we-work [data-wf-scene='inspection'] .wf-check-3{left:70%;top:38%;animation-delay:.8s}
+
+/* 08 warranty */
+.home-page #how-we-work [data-wf-scene='warranty'] .wf-worker-a{left:18%;top:28%}
+.home-page #how-we-work [data-wf-scene='warranty'] .wf-worker-b{left:68%;top:29%}
+.home-page #how-we-work [data-wf-scene='warranty'] .wf-certificate{
+  position:absolute;left:42%;top:27%;width:13rem;height:9rem;padding:.75rem;border:1px solid #c3d0d6;background:#fff;
+  box-shadow:0 .7rem 1rem rgba(34,74,92,.12);transform:rotateX(-58deg) rotateZ(25deg)
+}
+.home-page #how-we-work [data-wf-scene='warranty'] .wf-certificate::before{content:'WARRANTY';display:block;text-align:center;color:#174a64;font-weight:900;font-size:.85rem}
+.home-page #how-we-work [data-wf-scene='warranty'] .wf-certificate::after{
+  content:'';position:absolute;right:.9rem;bottom:.9rem;width:2rem;height:2rem;border-radius:50%;background:#f2b721;
+  box-shadow:0 0 0 0 rgba(242,183,33,.38);animation:wf-seal 1.8s ease-out infinite
+}
+.home-page #how-we-work [data-wf-scene='warranty'] .wf-care-icons{
+  position:absolute;left:46%;top:58%;display:flex;gap:.5rem;transform:rotateX(-58deg) rotateZ(25deg)
+}
+.home-page #how-we-work [data-wf-scene='warranty'] .wf-care-icons i{
+  display:grid;place-items:center;width:2.3rem;height:2.3rem;border-radius:.35rem;background:#e9f6fb;border:1px solid #9fc9d9;color:#0d6f9d;font-style:normal;font-size:.9rem
+}
+
+@keyframes wf-enter{from{opacity:.35;transform:scale(.985)}to{opacity:1;transform:none}}
+@keyframes wf-pulse{0%{transform:scale(.4);opacity:0}35%{opacity:1}100%{transform:scale(1.7);opacity:0}}
+@keyframes wf-check{75%{box-shadow:0 0 0 1rem rgba(49,165,109,0)}}
+@keyframes wf-laser{0%,100%{transform:rotate(-18deg)}50%{transform:rotate(18deg)}}
+@keyframes wf-grinder{0%,100%{transform:translateX(-1.5rem)}50%{transform:translateX(1.5rem)}}
+@keyframes wf-dust{to{background-position:2.8rem 1.4rem}}
+@keyframes wf-drop{0%,100%{transform:translateY(0) rotate(45deg)}50%{transform:translateY(.6rem) rotate(45deg)}}
+@keyframes wf-outline{50%{box-shadow:0 0 0 .45rem rgba(242,183,33,.13)}}
+@keyframes wf-coat{0%{left:-35%}100%{left:110%}}
+@keyframes wf-inspection{from{left:38%}to{left:76%}}
+@keyframes wf-seal{75%{box-shadow:0 0 0 1.1rem rgba(242,183,33,0)}}
+
+@media(max-width:991.98px){
+  .home-page #how-we-work .home-work-visual .floor-scene{height:25rem!important}
+  .home-page #how-we-work .workflow-world{left:0;right:0}
+}
+@media(max-width:575.98px){
+  .home-page #how-we-work .home-work-visual .floor-scene{height:21rem!important}
+  .home-page #how-we-work .workflow-stage-kicker{left:.8rem;top:.7rem}
+  .home-page #how-we-work .workflow-caption{left:.8rem;right:.8rem;bottom:.7rem;padding:.65rem .75rem}
+  .home-page #how-we-work .workflow-caption span{font-size:.7rem}
+  .home-page #how-we-work .workflow-world{transform:scale(.78) rotateX(58deg) rotateZ(-25deg);transform-origin:center}
+}
+@media(prefers-reduced-motion:reduce){
+  .home-page #how-we-work .workflow-3d-layer *,
+  .home-page #how-we-work .workflow-3d-layer{animation:none!important}
+}
