@@ -105,5 +105,6 @@ if ($showSiteShell ?? true) {
     <script src="<?= site_escape(asset_url('js/home-assessment-video-final.js')) ?>" defer></script>
     <script src="<?= site_escape(asset_url('js/inner-page-visual-story.js')) ?>" defer></script>
     <script src="<?= site_escape(asset_url('js/inner-page-meaningful-visuals.js')) ?>" defer></script>
+    <script src="<?= site_escape(asset_url('js/premium-support.js')) ?>" defer></script>
 </body>
 </html>
