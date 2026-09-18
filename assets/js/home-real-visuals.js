@@ -141,19 +141,7 @@
     ]
   });
 
-  bind({
-    host: home.querySelector('.assessment-lab-stage'),
-    target: home.querySelector('.assessment-lab-stage .lab-scene'),
-    attribute: 'data-lab-state',
-    states: [
-      { src: unsplash('photo-1586528116311-ad8dd3c8310d'), alt: 'Industrial floor surface being reviewed for condition and wear.', label: '01 · Surface condition — inspect wear, cracks and the existing finish', effect: 'fx-scan' },
-      { src: pexels(2280571), alt: 'Technical testing equipment used to understand material condition.', label: '02 · Moisture / site assessment — identify conditions before selection', effect: 'fx-moisture' },
-      { src: unsplash('photo-1565793298595-6a879b1d9492'), alt: 'Working manufacturing environment with machinery and traffic.', label: '03 · Operating environment — understand loads, traffic and exposure', effect: 'fx-route' },
-      { src: unsplash('photo-1450101499163-c8848c66ca85'), alt: 'Technical documents being reviewed for system selection.', label: '04 · Correct system selection — bring the assessment together', effect: 'fx-docs' },
-      { src: pexels(3862365), alt: 'Professional industrial application work taking place on site.', label: '05 · Controlled application — preparation, application and checks', effect: 'fx-apply' },
-      { src: unsplash('photo-1586528116311-ad8dd3c8310d'), alt: 'Finished industrial floor reviewed after completion.', label: '06 · Final inspection — review completed work against scope', effect: 'fx-focus' }
-    ]
-  });
+  /* Floor Analysis uses a dedicated stage-video layer (home-assessment-video-final.js).\n   * Do not mount a competing static photo here. */\n
 
   /* How We Work uses a dedicated video layer (home-work-video-final.js).
    * Do not mount a competing static photo in this scene. */
