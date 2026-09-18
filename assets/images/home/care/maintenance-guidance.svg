@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" role="img" aria-labelledby="t d">
+<title id="t">Maintenance guidance</title><desc id="d">A cleaning machine follows a recommended maintenance path across the completed floor.</desc>
+<style>
+.t{font:700 24px Inter,Arial;fill:#12384b}.s{font:500 15px Inter,Arial;fill:#5c7380}.h{font:700 14px Inter,Arial;fill:#12384b}
+.route{stroke:#28a9da;stroke-width:8;stroke-dasharray:18 14;animation:dash 1.35s linear infinite}.cleaner{animation:cleaner 4.2s ease-in-out infinite alternate}.shine{animation:shine 2s ease-in-out infinite}
+@keyframes dash{to{stroke-dashoffset:-64}}@keyframes cleaner{from{transform:translateX(0)}to{transform:translateX(370px)}}@keyframes shine{50%{opacity:.95}}
+</style>
+<rect width="960" height="540" rx="28" fill="#f7fbfd"/><text class="t" x="48" y="52">01 · Maintenance Guidance</text><text class="s" x="48" y="82">Follow cleaning routines and floor-care practices suited to the installed system.</text>
+<g transform="translate(55 125)">
+<polygon points="70,55 760,25 820,335 110,375" fill="#dce7eb" stroke="#abc4ce" stroke-width="2"/>
+<path class="route" d="M120 300 C280 245 405 310 545 235 S705 185 775 220" fill="none"/>
+<g class="cleaner" transform="translate(120 260)"><rect width="105" height="52" rx="12" fill="#f2b721"/><rect x="22" y="-30" width="54" height="34" rx="9" fill="#174f6d"/><circle cx="24" cy="58" r="11" fill="#173746"/><circle cx="82" cy="58" r="11" fill="#173746"/><path d="M102 16l34-38" stroke="#174f6d" stroke-width="8" stroke-linecap="round"/></g>
+<g class="shine" opacity=".7"><path d="M550 140l15 30 30 15-30 15-15 30-15-30-30-15 30-15z" fill="#65cbe3"/><path d="M650 240l10 20 20 10-20 10-10 20-10-20-20-10 20-10z" fill="#65cbe3"/></g>
+<g transform="translate(605 80)"><rect width="170" height="95" rx="14" fill="#fff" stroke="#b9d0d9"/><text class="h" x="85" y="30" text-anchor="middle">CARE ROUTINE</text><path d="M35 50h100M35 66h78" stroke="#6a8795" stroke-width="5" stroke-linecap="round"/></g>
+</g></svg>
