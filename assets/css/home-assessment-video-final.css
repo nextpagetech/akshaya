@@ -1,0 +1,106 @@
+/* Final Floor Analysis visual treatment: meaningful 2-second video loops + stage-specific cues. */
+.home-page .assessment-lab-stage .lab-scene{
+  position:relative!important;
+  overflow:hidden!important;
+  background:#0a2a3b!important;
+}
+.home-page .assessment-lab-stage .lab-scene>:not(.assessment-video-layer){display:none!important}
+.home-page .assessment-video-layer{position:absolute;inset:0;z-index:5;overflow:hidden;background:#0a293b}
+.home-page .assessment-stage-video{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;
+  filter:saturate(.9) contrast(1.04) brightness(.9);transform:scale(1.015)
+}
+.home-page .assessment-video-shade{
+  position:absolute;inset:0;z-index:2;pointer-events:none;
+  background:linear-gradient(180deg,rgba(5,25,38,.03) 38%,rgba(5,25,38,.75) 100%),
+             linear-gradient(90deg,rgba(5,25,38,.18),transparent 46%)
+}
+.home-page .assessment-story-overlay{position:absolute;inset:0;z-index:4;pointer-events:none}
+.home-page .assessment-story{position:absolute;inset:0;display:none}
+.home-page .assessment-video-layer[data-story='surface'] .assessment-story--surface,
+.home-page .assessment-video-layer[data-story='moisture'] .assessment-story--moisture,
+.home-page .assessment-video-layer[data-story='operation'] .assessment-story--operation,
+.home-page .assessment-video-layer[data-story='selection'] .assessment-story--selection,
+.home-page .assessment-video-layer[data-story='application'] .assessment-story--application,
+.home-page .assessment-video-layer[data-story='inspection'] .assessment-story--inspection{display:block}
+.home-page .assessment-story b,
+.home-page .assessment-story small{
+  position:absolute;left:1.1rem;z-index:6;color:#fff;background:rgba(5,29,43,.82);backdrop-filter:blur(8px)
+}
+.home-page .assessment-story b{top:1rem;padding:.52rem .7rem;border-left:3px solid #f2b721;font-size:.78rem}
+.home-page .assessment-story small{top:3.55rem;padding:.38rem .62rem;color:#c6d8e0;font-size:.68rem}
+.home-page .assessment-crack{
+  position:absolute;left:18%;top:48%;width:42%;height:3px;background:#f2b721;
+  transform:rotate(-4deg);box-shadow:4rem .6rem 0 -1px #f2b721,8rem -.45rem 0 -1px #f2b721;opacity:.85
+}
+.home-page .assessment-scan-line{
+  position:absolute;top:0;bottom:0;left:-10%;width:10%;background:linear-gradient(90deg,transparent,rgba(101,203,227,.48),transparent);
+  transform:skewX(-12deg);animation:assessment-scan 2s linear infinite
+}
+.home-page .assessment-meter{
+  position:absolute;left:42%;bottom:24%;width:3.8rem;height:4.6rem;border:3px solid #fff;border-radius:.5rem;background:rgba(8,38,55,.76)
+}
+.home-page .assessment-meter::after{content:'MOISTURE';position:absolute;inset:.75rem .35rem auto;color:#65cbe3;font-size:.52rem;font-weight:800;text-align:center}
+.home-page .assessment-moisture-ring{
+  position:absolute;left:calc(42% + .65rem);bottom:18%;width:2.5rem;height:2.5rem;border:2px solid #65cbe3;border-radius:50%;
+  animation:assessment-ring 1.6s ease-out infinite
+}
+.home-page .assessment-route{
+  position:absolute;left:9%;right:9%;bottom:22%;height:5px;background:repeating-linear-gradient(90deg,#65cbe3 0 34px,transparent 34px 52px);
+  box-shadow:0 0 16px rgba(101,203,227,.45);animation:assessment-route 1.5s linear infinite
+}
+.home-page .assessment-load{
+  position:absolute;right:18%;bottom:16%;width:5.4rem;height:5.4rem;border:2px solid #f2b721;border-radius:.6rem;
+  box-shadow:0 0 0 0 rgba(242,183,33,.36);animation:assessment-load 1.8s ease-out infinite
+}
+.home-page .assessment-factor,.home-page .assessment-choice{
+  position:absolute;padding:.45rem .62rem;border:1px solid rgba(101,203,227,.65);background:rgba(6,31,46,.82);color:#fff;
+  font-size:.68rem;font-style:normal;font-weight:800;text-transform:uppercase;letter-spacing:.06em
+}
+.home-page .assessment-factor--a{left:14%;top:35%}.home-page .assessment-factor--b{left:14%;top:49%}.home-page .assessment-factor--c{left:14%;top:63%}
+.home-page .assessment-choice{right:14%;top:49%;border-color:#f2b721;color:#f2d15a}
+.home-page .assessment-choice::before{
+  content:'';position:absolute;right:100%;top:50%;width:10rem;height:2px;background:linear-gradient(90deg,#65cbe3,#f2b721);
+  animation:assessment-choice 1.7s ease-in-out infinite
+}
+.home-page .assessment-apply-sweep{
+  position:absolute;left:-22%;bottom:10%;width:28%;height:48%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.28),rgba(101,203,227,.34),transparent);
+  transform:skewX(-12deg);animation:assessment-apply 2s ease-in-out infinite
+}
+.home-page .assessment-inspection-line{
+  position:absolute;left:8%;right:8%;top:43%;height:3px;background:#65cbe3;box-shadow:0 0 18px rgba(101,203,227,.55);
+  animation:assessment-inspect 1.7s ease-in-out infinite alternate
+}
+.home-page .assessment-check{
+  position:absolute;width:2rem;height:2rem;display:grid;place-items:center;border-radius:50%;background:#0f7f66;color:#fff;font-style:normal;font-weight:900;
+  box-shadow:0 0 0 0 rgba(101,203,227,.35);animation:assessment-check 1.7s ease-out infinite
+}
+.home-page .assessment-check--1{left:22%;top:54%}.home-page .assessment-check--2{left:49%;top:40%;animation-delay:.35s}.home-page .assessment-check--3{right:20%;top:58%;animation-delay:.7s}
+.home-page .assessment-video-meta{
+  position:absolute;z-index:5;left:1rem;right:1rem;bottom:1rem;max-width:40rem;padding:.85rem .95rem;
+  border-left:3px solid #f2b721;background:rgba(5,29,43,.84);backdrop-filter:blur(10px);color:#fff
+}
+.home-page .assessment-video-kicker{display:block;color:#75d8ec;font-size:.65rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase}
+.home-page .assessment-video-title{display:block;margin-top:.2rem;font-family:var(--font-display);font-size:clamp(1.2rem,1.8vw,1.75rem);line-height:1.08}
+.home-page .assessment-video-caption{display:block;margin-top:.35rem;color:#c6d8e0;font-size:.86rem;line-height:1.42}
+.home-page .assessment-video-layer.is-changing{animation:assessment-enter .42s ease both}
+
+@keyframes assessment-enter{from{opacity:.5;transform:scale(.994)}to{opacity:1;transform:none}}
+@keyframes assessment-scan{to{left:110%}}
+@keyframes assessment-ring{0%{transform:scale(.5);opacity:0}35%{opacity:1}100%{transform:scale(1.5);opacity:0}}
+@keyframes assessment-route{to{background-position:86px 0}}
+@keyframes assessment-load{75%{box-shadow:0 0 0 1.6rem rgba(242,183,33,0)}}
+@keyframes assessment-choice{50%{filter:brightness(1.5)}}
+@keyframes assessment-apply{0%{left:-22%;opacity:0}25%{opacity:.85}100%{left:110%;opacity:0}}
+@keyframes assessment-inspect{from{top:30%}to{top:70%}}
+@keyframes assessment-check{75%{box-shadow:0 0 0 1rem rgba(101,203,227,0)}}
+
+@media(max-width:767.98px){
+  .home-page .assessment-video-meta{left:.75rem;right:.75rem;bottom:.75rem;padding:.75rem .8rem}
+  .home-page .assessment-video-caption{font-size:.78rem}
+  .home-page .assessment-factor,.home-page .assessment-choice{font-size:.55rem}
+}
+@media(prefers-reduced-motion:reduce){
+  .home-page .assessment-video-layer.is-changing,
+  .home-page .assessment-story i{animation:none!important}
+}
