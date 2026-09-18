@@ -1,8 +1,9 @@
 <?php
 $pageTitle = 'Flooring Knowledge Centre';
 $pageDescription = 'Practical guidance from Akshaya Floor Solutions on floor assessment, preparation, system selection, execution planning and maintenance.';
-$bodyClass = 'support-page blog-page';
+$bodyClass = 'support-page support-v2 blog-page';
 $assetPrefix = '..';
+$showFooterCta = false;
 require __DIR__ . '/../includes/reusable-components.php';
 require __DIR__ . '/../includes/header.php';
 
