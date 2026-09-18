@@ -199,3 +199,51 @@
 @media(prefers-reduced-motion:reduce){
   .visit-v3-scan,.visit-v3-point,.visit-v3-route{animation:none!important}
 }
+
+
+/* Compact conversion version — intentionally short page. */
+.visit-v3-shell--compact{
+  grid-template-columns:minmax(0,1fr) minmax(32rem,39rem);
+  gap:clamp(2rem,4vw,4.5rem);
+}
+.visit-v3-hero--compact{
+  padding:clamp(2rem,3.5vw,3.5rem) 0 2.5rem;
+  border-bottom:1px solid #d7e4ea;
+}
+.visit-v3-hero--compact h1{max-width:8.8ch;font-size:clamp(3.8rem,6vw,6rem)}
+.visit-v3-hero--compact .visit-v3-lead{max-width:39rem}
+.visit-v3-essentials{
+  padding:clamp(2.5rem,4vw,4rem) 0;
+}
+.visit-v3-essentials h2{
+  max-width:10ch;margin:.75rem 0 1.4rem;color:#102d3e;font-family:var(--font-display);
+  font-size:clamp(2.5rem,4vw,4rem);line-height:.96;letter-spacing:-.045em
+}
+.visit-v3-essential-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.75rem}
+.visit-v3-essential-list article{
+  display:grid;grid-template-columns:2.4rem 1fr;gap:.8rem;min-height:10.5rem;padding:1rem;
+  border:1px solid #d7e4ea;border-radius:.65rem;background:#fff;box-shadow:0 10px 28px rgb(20 56 75/.05)
+}
+.visit-v3-essential-list article>span{color:#68cee6;font-size:1.05rem;font-weight:800}
+.visit-v3-essential-list strong{display:block;color:#102d3e;font-size:1rem}
+.visit-v3-essential-list p{margin:.35rem 0 0;color:#667d89;line-height:1.55;font-size:.88rem}
+.visit-v3-help--compact{
+  margin-top:0!important;
+  padding:1.5rem!important;
+  grid-template-columns:1fr auto!important;
+}
+.visit-v3-help--compact h2{font-size:clamp(1.8rem,2.6vw,2.6rem);margin:.45rem 0}
+.visit-v3-help--compact p{margin:0}
+.visit-v3-shell--compact .visit-v3-form-column{
+  position:sticky;top:6.2rem;align-self:start;
+}
+@media(max-width:991.98px){
+  .visit-v3-shell--compact{grid-template-columns:1fr}
+  .visit-v3-shell--compact .visit-v3-form-column{position:relative;top:auto;grid-row:2}
+  .visit-v3-essential-list{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:767.98px){
+  .visit-v3-essential-list{grid-template-columns:1fr}
+  .visit-v3-help--compact{grid-template-columns:1fr!important}
+  .visit-v3-help--compact .visit-v3-help-actions{display:grid}
+}
