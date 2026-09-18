@@ -108,5 +108,6 @@ if ($showSiteShell ?? true) {
     <script src="<?= site_escape(asset_url('js/inner-page-meaningful-visuals.js')) ?>" defer></script>
     <script src="<?= site_escape(asset_url('js/home-premium-redesign.js')) ?>" defer></script>
     <script src="<?= site_escape(asset_url('js/premium-support.js')) ?>" defer></script>
+    <script src="<?= site_escape(asset_url('js/support-redesign-v2.js')) ?>" defer></script>
 </body>
 </html>
