@@ -1,0 +1,49 @@
+/* Final Floor Analysis: six separate explanatory animated illustrations. */
+.home-page #technical-assessment .assessment-lab-stage .lab-scene{
+  position:relative!important;
+  overflow:hidden!important;
+  background:#eef5f8!important;
+  border-radius:.55rem!important;
+}
+.home-page #technical-assessment .assessment-lab-stage .lab-scene>:not(.assessment-illustration-stage){
+  display:none!important;
+}
+.home-page #technical-assessment .assessment-illustration-stage{
+  position:absolute!important;
+  inset:0!important;
+  z-index:10!important;
+  display:grid!important;
+  place-items:center!important;
+  padding:1rem!important;
+  background:#eef5f8!important;
+}
+.home-page #technical-assessment .assessment-illustration-stage img{
+  display:block!important;
+  width:100%!important;
+  height:100%!important;
+  object-fit:contain!important;
+  border-radius:.45rem!important;
+  background:#f7fbfd!important;
+  animation:assessment-illustration-enter .42s ease both;
+}
+.home-page #technical-assessment .assessment-illustration-stage.has-load-error::after{
+  content:'Illustration could not be loaded';
+  position:absolute;inset:1rem;
+  display:grid;place-items:center;
+  border-radius:.45rem;
+  color:#607783;background:#f7fbfd;
+  font-weight:700;
+}
+.home-page #technical-assessment .assessment-lab-stage .lab-readout{
+  z-index:20!important;
+}
+@keyframes assessment-illustration-enter{
+  from{opacity:.45;transform:scale(.992)}
+  to{opacity:1;transform:none}
+}
+@media(max-width:767.98px){
+  .home-page #technical-assessment .assessment-illustration-stage{padding:.5rem!important}
+}
+@media(prefers-reduced-motion:reduce){
+  .home-page #technical-assessment .assessment-illustration-stage img{animation:none!important}
+}
