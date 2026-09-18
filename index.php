@@ -89,45 +89,35 @@ $journey = [
 
 <a class="home-skip" href="#main-content">Skip to Home page content</a>
 <main id="main-content" class="home-main" tabindex="-1">
-    <!-- 01 / Hero. The image remains illustrative until approved project photography is supplied. -->
-    <section class="ae-hero" aria-labelledby="hero-title">
+    <!-- 01 / Hero. Background video is a temporary stock placeholder (client-approved
+         for now) until real Akshaya project/site footage is supplied — swap the
+         <source> below in .ae-hero-video. -->
+    <section class="ae-hero ae-hero--video" aria-labelledby="hero-title">
+        <div class="ae-hero-media" aria-hidden="true">
+            <video class="ae-hero-video" autoplay muted loop playsinline preload="metadata" poster="<?= site_escape(asset_url('images/home/demo/facility-1440.webp')) ?>">
+                <source src="https://videos.pexels.com/video-files/13422071/13422071-uhd_3840_2160_30fps.mp4" type="video/mp4">
+            </video>
+            <span class="ae-hero-scrim"></span>
+        </div>
         <div class="container-wide ae-hero-layout">
             <div class="ae-hero-copy">
-                <span class="ae-hero-eyebrow">Industrial Flooring &amp; Surface Protection</span>
-                <h1 class="ae-hero-title" id="hero-title">
-                    <span>From Floor Problem</span>
-                    <span>to <em>Engineered</em></span>
-                    <span>Solution.</span>
-                </h1>
-                <p class="ae-hero-lead">Akshaya provides commercial and industrial flooring solutions based on floor condition, operational environment and project requirements.</p>
+                <span class="ae-hero-eyebrow">Industrial Flooring for a Stronger Tomorrow</span>
+                <h1 class="ae-hero-title" id="hero-title">Floors That<br>Power Industry</h1>
+                <p class="ae-hero-lead">High-performance industrial flooring systems for safer, cleaner and more productive spaces.</p>
                 <div class="ae-hero-actions">
                     <a class="btn btn-primary ae-hero-primary" href="<?= $visitUrl ?>">Schedule Site Visit <?= $arrow ?></a>
-                    <a class="ae-hero-secondary" href="#flooring-solutions">Explore Flooring Solutions <?= $arrow ?></a>
+                    <a class="ae-hero-watch" href="<?= site_escape(site_url('gallery.php')) ?>">
+                        <span class="ae-hero-play" aria-hidden="true">&#9654;</span>
+                        <span class="ae-hero-watch-copy"><strong>Watch Our Story</strong><small>2 min</small></span>
+                    </a>
                 </div>
-                <p class="ae-hero-trust"><span>Site Assessment</span><i aria-hidden="true"></i><span>Technical Recommendation</span><i aria-hidden="true"></i><span>Professional Execution</span></p>
             </div>
-
-            <div class="ae-hero-scene" data-hero-scene aria-label="Illustrative layered view of an industrial flooring environment">
-                <div class="ae-hero-grid" aria-hidden="true"></div>
-                <div class="ae-hero-plane ae-hero-plane--navy" data-hero-layer data-depth="0.45" aria-hidden="true"></div>
-                <div class="ae-hero-plane ae-hero-plane--cyan" data-hero-layer data-depth="1.2" aria-hidden="true"></div>
-                <div class="ae-hero-image" data-hero-layer data-depth="1">
-                    <?= home_demo_media('facility', true) ?>
-                    <span class="ae-hero-image-index" aria-hidden="true">01 / 03</span>
-                </div>
-                <div class="ae-hero-card ae-hero-card--assessment" data-hero-layer data-depth="1.5" aria-hidden="true">
-                    <span>Site Assessment</span><strong>Surface <i></i> Moisture <i></i> Environment</strong>
-                </div>
-                <div class="ae-hero-card ae-hero-card--system" data-hero-layer data-depth="1.3" aria-hidden="true">
-                    <span>Engineered System</span><strong>Selected after technical evaluation</strong>
-                </div>
-                <div class="ae-hero-layers" data-hero-layer data-depth="1.65" aria-hidden="true">
-                    <span>Engineered flooring system</span>
-                    <ol><li>Top Coat</li><li>System Layer</li><li>Prepared Substrate</li></ol>
-                </div>
-                <span class="ae-hero-geometry ae-hero-geometry--yellow" data-hero-layer data-depth="1.8" aria-hidden="true"></span>
-                <span class="ae-hero-geometry ae-hero-geometry--red" data-hero-layer data-depth="1.1" aria-hidden="true"></span>
-            </div>
+            <p class="ae-hero-side-message" aria-hidden="true">Tougher<br>Cleaner<br>Safer<br>For a Brighter<br>Tomorrow</p>
+        </div>
+        <div class="ae-hero-benefits" aria-label="Why Akshaya flooring">
+            <div class="ae-hero-benefit"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-2.7 7.9-7 10-4.3-2.1-7-5.5-7-10V6l7-3z"/><path d="M9 12l2 2 4-5"/></svg><span>Longer<br>Life</span></div>
+            <div class="ae-hero-benefit"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 2v3m0 14v3M4.9 4.9L7 7m10 10l2.1 2.1M2 12h3m14 0h3M4.9 19.1L7 17m10-10 2.1-2.1"/></svg><span>Lower<br>Maintenance</span></div>
+            <div class="ae-hero-benefit"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V10h4v10M10 20V6h4v14M16 20V3h4v17"/><path d="M3 7l5-3 4 2 7-4"/></svg><span>Higher<br>Productivity</span></div>
         </div>
     </section>
 

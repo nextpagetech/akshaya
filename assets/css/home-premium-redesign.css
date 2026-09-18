@@ -1,8 +1,100 @@
 /* Premium home redesign: trust strip continuity, featured-project card fix,
  * and typography polish. Loaded last so it wins the cascade without !important. */
 
+/* -- 00 / Hero: full-bleed autoplay video, matching the approved reference layout.
+ * Video source is a temporary stock placeholder — see the HTML comment in index.php. -- */
+.home-page .ae-hero--video {
+    position: relative;
+    isolation: isolate;
+    z-index: 2;
+    overflow: hidden;
+    min-height: clamp(30rem, 44vw, 38rem);
+    display: flex;
+    align-items: center;
+    color: #fff;
+    background: #0a2233;
+}
+.home-page .ae-hero-media { position: absolute; inset: 0; z-index: 0; }
+.home-page .ae-hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: saturate(.92) contrast(1.05) brightness(.82); }
+.home-page .ae-hero-scrim {
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(90deg, rgb(6 26 40 / .88) 0%, rgb(6 26 40 / .62) 32%, rgb(6 26 40 / .18) 58%, rgb(6 26 40 / .55) 100%),
+        linear-gradient(180deg, rgb(6 26 40 / .1), rgb(6 26 40 / .55) 100%);
+}
+.home-page .ae-hero--video .ae-hero-layout { position: relative; z-index: 2; display: flex; align-items: center; justify-content: space-between; gap: 2rem; width: 100%; padding-block: clamp(3rem, 6vw, 5rem) clamp(6rem, 9vw, 8rem); }
+.home-page .ae-hero--video .ae-hero-copy { max-width: 34rem; }
+.home-page .ae-hero--video .ae-hero-eyebrow { display: block; margin-bottom: .75rem; color: #d8edf6; font-size: .78rem; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; }
+.home-page .ae-hero--video .ae-hero-title {
+    margin: 0;
+    color: #fff;
+    font-family: var(--font-display);
+    font-size: clamp(2.6rem, 4.6vw, 4.2rem);
+    font-weight: 700;
+    line-height: .98;
+    letter-spacing: -.02em;
+    text-transform: uppercase;
+}
+.home-page .ae-hero--video .ae-hero-lead { max-width: 28rem; margin: 1.1rem 0 1.5rem; color: rgb(255 255 255 / .86); font-size: 1.05rem; line-height: 1.5; }
+.home-page .ae-hero--video .ae-hero-actions { display: flex; align-items: center; gap: 1.25rem; flex-wrap: wrap; }
+.home-page .ae-hero--video .ae-hero-eyebrow::before { display: none; }
+.home-page .ae-hero--video .ae-hero-primary {
+    --bs-btn-color: #0a2233; --bs-btn-bg: var(--color-signal); --bs-btn-border-color: var(--color-signal);
+    --bs-btn-hover-color: #0a2233; --bs-btn-hover-bg: #ffdd5c; --bs-btn-hover-border-color: #ffdd5c;
+    border-radius: .2rem;
+}
+.home-page .ae-hero-watch { display: inline-flex; align-items: center; gap: .75rem; color: #fff; text-decoration: none; }
+.home-page .ae-hero-play { display: grid; place-items: center; flex: 0 0 auto; width: 2.6rem; height: 2.6rem; border: 2px solid rgb(255 255 255 / .85); border-radius: 50%; font-size: .7rem; padding-left: .12rem; transition: background-color 220ms ease, transform 220ms ease; }
+.home-page .ae-hero-watch:hover .ae-hero-play { background: rgb(255 255 255 / .16); transform: scale(1.06); }
+.home-page .ae-hero-watch-copy { display: flex; flex-direction: column; line-height: 1.25; }
+.home-page .ae-hero-watch-copy strong { font-weight: 700; }
+.home-page .ae-hero-watch-copy small { color: rgb(255 255 255 / .7); font-size: .78rem; }
+.home-page .ae-hero-side-message {
+    margin: 0;
+    flex: 0 0 auto;
+    align-self: flex-start;
+    padding: 1.1rem 0 1.1rem 1.15rem;
+    border-left: 1px solid rgb(255 255 255 / .4);
+    color: rgb(255 255 255 / .92);
+    font-family: var(--font-display);
+    font-size: .85rem;
+    font-weight: 700;
+    line-height: 1.7;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+}
+.home-page .ae-hero-benefits {
+    position: absolute;
+    z-index: 2;
+    right: clamp(1.25rem, 4vw, 4.5rem);
+    bottom: 0;
+    display: flex;
+    background: rgb(6 26 40 / .55);
+    backdrop-filter: blur(4px);
+}
+.home-page .ae-hero-benefit { display: grid; grid-template-columns: 2rem auto; align-items: center; gap: .55rem; padding: .85rem 1rem; border-left: 1px solid rgb(255 255 255 / .22); color: #fff; }
+.home-page .ae-hero-benefit:first-child { border-left: 0; }
+.home-page .ae-hero-benefit svg { width: 1.6rem; height: 1.6rem; fill: none; stroke: #fff; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.home-page .ae-hero-benefit span { font-size: .68rem; font-weight: 800; line-height: 1.2; letter-spacing: .05em; text-transform: uppercase; }
+
+@media (max-width: 991.98px) {
+    .home-page .ae-hero--video { flex-direction: column; align-items: stretch; padding-bottom: 0; }
+    .home-page .ae-hero-side-message { display: none; }
+    .home-page .ae-hero-benefits { position: static; width: 100%; margin-top: 0; }
+    .home-page .ae-hero--video .ae-hero-title { max-width: 100%; font-size: clamp(2.6rem, 9vw, 3.6rem); }
+}
+@media (max-width: 575.98px) {
+    .home-page .ae-hero-benefits { flex-wrap: wrap; }
+    .home-page .ae-hero-benefit { flex: 1 1 50%; }
+    .home-page .ae-hero--video .ae-hero-title { max-width: 100%; font-size: clamp(2.3rem, 11vw, 3rem); }
+}
+@media (prefers-reduced-motion: reduce) {
+    .home-page .ae-hero-video { display: none; }
+    .home-page .ae-hero-media { background: linear-gradient(140deg, #0d3047, #166ba2); }
+}
+
 /* -- 01 / Trust strip: read as a continuation of the hero, not a floating bar. -- */
-.home-page .ae-hero { position: relative; z-index: 2; padding-bottom: clamp(2.5rem, 5vw, 4rem); }
 .home-page .home-trust {
     position: relative;
     margin-top: 0;
