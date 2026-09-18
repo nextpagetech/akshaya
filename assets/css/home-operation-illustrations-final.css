@@ -1,0 +1,59 @@
+/* Why Akshaya final: separate explanatory animated images for the four operational outcomes. */
+.home-page #why-akshaya{
+  background:radial-gradient(circle at 78% 18%,rgb(31 111 153/.17),transparent 28rem),#0e293a!important;
+  color:#f4fafc;
+}
+.home-page #why-akshaya .operation-layout{display:grid!important;grid-template-columns:1fr!important;gap:1rem!important}
+.home-page #why-akshaya .operation-interface{display:contents!important}
+.home-page #why-akshaya .operation-tabs{
+  display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:.6rem!important;margin:0!important
+}
+.home-page #why-akshaya .operation-tabs button{
+  min-height:5rem!important;padding:.9rem 1rem!important;border:1px solid rgb(121 205 226/.18)!important;
+  background:rgb(255 255 255/.025)!important;color:#b9ccd5!important
+}
+.home-page #why-akshaya .operation-tabs button[aria-selected='true']{
+  background:linear-gradient(180deg,rgb(24 115 167/.35),rgb(17 65 91/.38))!important;
+  border-color:#65cbe3!important;color:#fff!important;box-shadow:inset 4px 0 #f2b721!important
+}
+.home-page #why-akshaya .operation-tabs button span{color:#65cbe3!important}
+.home-page #why-akshaya .operation-scene-wrap{
+  position:relative!important;min-height:clamp(28rem,42vw,38rem)!important;margin:0!important;
+  border:1px solid rgb(101 203 227/.2)!important;border-radius:.8rem!important;overflow:hidden!important;
+  background:#0b2a3b!important;box-shadow:0 28px 60px rgb(0 0 0/.24)!important
+}
+.home-page #why-akshaya .operation-scene{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;background:#edf5f8!important}
+.home-page #why-akshaya .operation-scene>:not(.operation-illustration-stage){display:none!important}
+.home-page #why-akshaya .operation-illustration-stage{position:absolute;inset:0;display:grid;place-items:center;padding:4.6rem 1rem 1rem}
+.home-page #why-akshaya .operation-illustration-stage img{
+  width:100%;height:100%;object-fit:contain;display:block;border-radius:.45rem;background:#f7fbfd;
+  animation:operation-image-enter .45s ease both
+}
+.home-page #why-akshaya .operation-scene-wrap>.operation-readout{
+  position:absolute!important;z-index:20!important;top:1rem!important;left:1rem!important;right:1rem!important;
+  display:flex!important;justify-content:space-between!important;gap:1rem!important;padding:.65rem .8rem!important;
+  background:rgb(6 28 41/.84)!important;border:1px solid rgb(101 203 227/.22)!important;color:#fff!important;
+  backdrop-filter:blur(10px)
+}
+.home-page #why-akshaya .operation-panels{
+  display:grid!important;grid-template-columns:minmax(0,1.25fr) minmax(19rem,.75fr)!important;
+  gap:1.5rem!important;align-items:center!important;padding:1rem 1.2rem!important;
+  border:1px solid rgb(101 203 227/.16)!important;background:rgb(255 255 255/.025)!important
+}
+.home-page #why-akshaya .operation-panels h3{color:#fff!important}.home-page #why-akshaya .operation-panels p{color:#bfd0d9!important}
+.home-page #why-akshaya .operation-interface>.link-arrow{justify-self:end!important;color:#9ee5f2!important}
+@keyframes operation-image-enter{from{opacity:.45;transform:scale(.992)}to{opacity:1;transform:none}}
+@media(max-width:991.98px){
+  .home-page #why-akshaya .operation-tabs{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  .home-page #why-akshaya .operation-scene-wrap{min-height:29rem!important}
+  .home-page #why-akshaya .operation-panels{grid-template-columns:1fr!important}
+}
+@media(max-width:767.98px){
+  .home-page #why-akshaya .operation-tabs{display:flex!important;overflow-x:auto!important}
+  .home-page #why-akshaya .operation-tabs button{flex:0 0 16rem!important}
+  .home-page #why-akshaya .operation-scene-wrap{min-height:23rem!important}
+  .home-page #why-akshaya .operation-illustration-stage{padding:4.4rem .5rem .5rem}
+}
+@media(prefers-reduced-motion:reduce){
+  .home-page #why-akshaya .operation-illustration-stage img{animation:none!important}
+}
