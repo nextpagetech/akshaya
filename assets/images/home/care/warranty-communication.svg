@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" role="img" aria-labelledby="t d">
+<title id="t">Warranty communication</title><desc id="d">Project records, warranty terms and completed-floor documentation remain connected after handover.</desc>
+<style>.t{font:700 24px Inter,Arial;fill:#12384b}.s{font:500 15px Inter,Arial;fill:#5c7380}.h{font:700 14px Inter,Arial;fill:#12384b}
+.doc{animation:doc 2.2s ease-in-out infinite}.seal{animation:seal 1.8s ease-out infinite}.line{stroke:#27a9da;stroke-width:5;stroke-dasharray:12 10;animation:dash 1.4s linear infinite}
+@keyframes doc{50%{transform:translateY(-8px)}}@keyframes seal{75%{r:42;opacity:0}}@keyframes dash{to{stroke-dashoffset:-48}}</style>
+<rect width="960" height="540" rx="28" fill="#f7fbfd"/><text class="t" x="48" y="52">03 · Warranty Communication</text><text class="s" x="48" y="82">Keep project-specific warranty terms, records and handover communication clear.</text>
+<g transform="translate(80 130)">
+<g class="doc" transform="translate(70 40)"><rect width="260" height="280" rx="18" fill="#fff" stroke="#afc8d2" stroke-width="2"/><text class="h" x="130" y="48" text-anchor="middle">WARRANTY RECORD</text><path d="M48 85h165M48 118h135M48 151h150M48 184h110" stroke="#7c96a2" stroke-width="7" stroke-linecap="round"/><circle cx="205" cy="225" r="28" fill="#f2b721"/><circle class="seal" cx="205" cy="225" r="28" fill="none" stroke="#f2b721" stroke-width="4"/></g>
+<path class="line" d="M355 180 C455 125 525 145 605 105 S700 115 755 160" fill="none"/>
+<g transform="translate(565 65)"><rect width="220" height="105" rx="16" fill="#123f58"/><text x="110" y="38" text-anchor="middle" font-size="14" font-weight="700" fill="#9fe7f4">PROJECT HANDOVER</text><text x="110" y="68" text-anchor="middle" font-size="13" fill="#d7e8ef">Terms · records · communication</text></g>
+<g transform="translate(530 235)"><rect width="255" height="95" rx="16" fill="#fff" stroke="#b9d0d9"/><text class="h" x="127" y="34" text-anchor="middle">SYSTEM-SPECIFIC TERMS</text><text class="s" x="127" y="62" text-anchor="middle">Depend on selected system and scope</text></g>
+</g></svg>
