@@ -1,6 +1,20 @@
 /* Premium home redesign: trust strip continuity, featured-project card fix,
  * and typography polish. Loaded last so it wins the cascade without !important. */
 
+/* Local fallback for Bootstrap's .visually-hidden utility so accessible-only
+ * link text never renders visibly if the Bootstrap CDN is unreachable. */
+.home-page .visually-hidden {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+}
+
 /* -- 00 / Hero: full-bleed autoplay video, matching the approved reference layout.
  * Video source is a temporary stock placeholder — see the HTML comment in index.php. -- */
 .home-page .ae-hero--video {
@@ -183,29 +197,44 @@
     .home-page .home-project-copy { padding: 1.15rem; }
 }
 
-/* -- 02b / Industries panel: restore the real project photo the redesign pass
- * accidentally cleared (a later same-specificity `background:` shorthand
- * was winning over home-client-media.css's background-image). -- */
-.home-page #industries .home-industry-panel .home-media.home-demo-media,
-.home-page #industries .home-industry-panel .home-media.home-demo-media::before { background-size: cover; background-position: center; background-repeat: no-repeat; }
-.home-page #industry-manufacturing .home-media.home-demo-media { background-image: url('../../website_assets/Amritha Tools/IMG-20190714-WA0024.jpg'); }
-.home-page #industry-pharma .home-media.home-demo-media { background-image: url('../../website_assets/Amritha Tools/IMG-20190714-WA0025.jpg'); }
-.home-page #industry-food-beverage .home-media.home-demo-media { background-image: url('../../website_assets/Amritha Tools/IMG-20190721-WA0003.jpg'); }
-.home-page #industry-electronics .home-media.home-demo-media { background-image: url('../../website_assets/Amritha Tools/IMG-20190721-WA0004.jpg'); }
-.home-page #industry-automobile .home-media.home-demo-media { background-image: url('../../website_assets/Amritha Tools/IMG-20190726-WA0040.jpg'); }
-.home-page #industry-warehouses-logistics .home-media.home-demo-media { background-image: url('../../website_assets/Amritha Tools/IMG-20190726-WA0041.jpg'); }
-.home-page #industry-hospitals-healthcare .home-media.home-demo-media { background-image: url('../../website_assets/Amritha Tools/IMG-20190727-WA0007.jpg'); }
-.home-page #industry-data-centres .home-media.home-demo-media { background-image: url('../../website_assets/Amritha Tools/IMG-20190727-WA0008.jpg'); }
+/* -- 02b / Industries: 8-card loop grid. Real supplied site photography per
+ * card (generic placement, not a claim of that exact sector); no real
+ * per-industry video exists, so motion comes from a light-sweep loop plus a
+ * small animated sector motif instead of hotlinked stock footage. -- */
+.home-page #industry-manufacturing .industry-card-poster { background-image: url('../../website_assets/Amritha Tools/IMG-20190714-WA0024.jpg'); }
+.home-page #industry-pharma .industry-card-poster { background-image: url('../../website_assets/Amritha Tools/IMG-20190714-WA0025.jpg'); }
+.home-page #industry-food-beverage .industry-card-poster { background-image: url('../../website_assets/Amritha Tools/IMG-20190721-WA0003.jpg'); }
+.home-page #industry-electronics .industry-card-poster { background-image: url('../../website_assets/Amritha Tools/IMG-20190721-WA0004.jpg'); }
+.home-page #industry-automobile .industry-card-poster { background-image: url('../../website_assets/Amritha Tools/IMG-20190726-WA0040.jpg'); }
+.home-page #industry-warehouses-logistics .industry-card-poster { background-image: url('../../website_assets/Amritha Tools/IMG-20190726-WA0041.jpg'); }
+.home-page #industry-hospitals-healthcare .industry-card-poster { background-image: url('../../website_assets/Amritha Tools/IMG-20190727-WA0007.jpg'); }
+.home-page #industry-data-centres .industry-card-poster { background-image: url('../../website_assets/Amritha Tools/IMG-20190727-WA0008.jpg'); }
 
-/* -- 02c / Industry copy panel: centered flex content could be taller than the
- * fixed-height card and overflow past its top, clipped by the card's
- * overflow:hidden. Align from the top and allow scroll as a safety net. -- */
-.home-page #industries .home-industry-copy {
-    margin: 0;
-    justify-content: center;
-    overflow-y: auto;
-    max-height: 100%;
+.home-page #industries .industry-card-cover-link { position: absolute; inset: 0; z-index: 4; }
+.home-page #industries .industry-card-cover-link:focus-visible { outline: 2px solid #fff; outline-offset: -2px; }
+.home-page #industries .industry-card-index { position: relative; z-index: 6; font-size: .85rem; padding-left: .1rem; cursor: pointer; transition: background-color .2s ease, transform .2s ease; }
+.home-page #industries .industry-card-index:hover { background: rgb(255 255 255 / .18); transform: scale(1.06); }
+.home-page #industries .industry-card-topline,
+.home-page #industries .industry-card-copy,
+.home-page #industries .industry-card-arrow { z-index: 6; pointer-events: none; }
+.home-page #industries .industry-card-motif {
+    position: absolute;
+    z-index: 5;
+    left: 1rem;
+    bottom: 3.6rem;
+    display: grid;
+    place-items: center;
+    width: 2rem;
+    height: 2rem;
+    color: #fff;
+    opacity: .92;
+    animation: industry-motif-pulse 2.4s ease-in-out infinite;
 }
+.home-page #industries .industry-card-motif svg { width: 100%; height: 100%; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; filter: drop-shadow(0 2px 6px rgb(0 0 0 / .45)); }
+.home-page #industries .industry-video-card.is-paused .industry-card-scan::before,
+.home-page #industries .industry-video-card.is-paused .industry-card-motif,
+.home-page #industries .industry-video-card.is-paused .industry-card-topline::before { animation-play-state: paused; }
+@keyframes industry-motif-pulse { 0%, 100% { transform: scale(1); opacity: .82; } 50% { transform: scale(1.12); opacity: 1; } }
 
 /* -- 03 / Typography polish so headings read as deliberately branded, not default. -- */
 .home-page .section-eyebrow, .section-eyebrow { font-family: var(--font-body); }
