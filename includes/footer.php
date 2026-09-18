@@ -10,6 +10,9 @@ if ($showSiteShell ?? true) {
     $footerCallUrl = 'tel:+' . $siteConfig['phone_country_code'] . preg_replace('/\D+/', '', $siteConfig['phone']);
     $footerWhatsappUrl = 'https://wa.me/' . $siteConfig['phone_country_code'] . preg_replace('/\D+/', '', $siteConfig['whatsapp']);
     $footerArrow = '<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-5-5 5 5-5 5"/></svg>';
+    $footerPhoneIcon = '<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h3l1.5 4-2 1.5a14 14 0 0 0 6 6l1.5-2L21 14v3c0 2.2-1.8 4-4 4A14 14 0 0 1 3 7c0-2.2 1.8-4 4-4Z"/></svg>';
+    $footerWhatsappIcon = '<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.6 7.3L3 20l1.3-5.2A8.4 8.4 0 1 1 21 11.5Z"/></svg>';
+    $footerMailIcon = '<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h18v14H3V5Zm1 1 8 7 8-7"/></svg>';
     $effectiveShowFooterCta = $showFooterCta ?? !in_array(($currentSection ?? ''), ['services', 'industries'], true);
 }
 ?>
@@ -41,17 +44,7 @@ if ($showSiteShell ?? true) {
                     </a>
                     <p class="footer-company"><?= site_escape($siteConfig['company_name']) ?></p>
                     <p class="footer-positioning">Commercial &amp; Industrial Flooring and Surface Protection Solutions</p>
-                    <address class="footer-contact">
-                        <p class="footer-contact-person"><?= site_escape($siteConfig['contact_person']) ?></p>
-                        <a href="<?= site_escape($footerCallUrl) ?>"><span class="footer-contact-label">Call</span><span><?= site_escape($siteConfig['phone']) ?></span></a>
-                        <a href="<?= site_escape($footerWhatsappUrl) ?>"><span class="footer-contact-label">WhatsApp</span><span><?= site_escape($siteConfig['whatsapp']) ?></span></a>
-                        <?php if ($siteConfig['email'] !== ''): ?>
-                        <a href="<?= site_escape('mailto:' . $siteConfig['email']) ?>"><?= site_escape($siteConfig['email']) ?></a>
-                        <?php endif; ?>
-                        <?php if ($siteConfig['address'] !== ''): ?>
-                        <p class="footer-address"><?= site_escape($siteConfig['address']) ?></p>
-                        <?php endif; ?>
-                    </address>
+
                 </div>
 
                 <nav class="footer-link-group" aria-label="Footer flooring solutions">
@@ -71,6 +64,17 @@ if ($showSiteShell ?? true) {
                         <?php endforeach; ?>
                     </ul>
                 </nav>
+
+                <div class="footer-link-group footer-contact-column" aria-label="Footer contact us">
+                    <h2 class="footer-heading">Contact Us</h2>
+                    <div class="footer-contact-links">
+                        <a href="<?= site_escape($footerCallUrl) ?>"><?= $footerPhoneIcon ?><span><small>Call</small><strong><?= site_escape($siteConfig['phone']) ?></strong></span></a>
+                        <a href="<?= site_escape($footerWhatsappUrl) ?>" target="_blank" rel="noopener noreferrer"><?= $footerWhatsappIcon ?><span><small>WhatsApp</small><strong><?= site_escape($siteConfig['whatsapp']) ?></strong></span></a>
+                        <?php if ($siteConfig['email'] !== ''): ?>
+                        <a href="<?= site_escape('mailto:' . $siteConfig['email']) ?>"><?= $footerMailIcon ?><span><small>Email</small><strong><?= site_escape($siteConfig['email']) ?></strong></span></a>
+                        <?php endif; ?>
+                    </div>
+                </div>
 
                 <nav class="footer-link-group" aria-label="Footer quick links">
                     <h2 class="footer-heading">Quick Links</h2>
