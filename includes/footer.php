@@ -10,11 +10,12 @@ if ($showSiteShell ?? true) {
     $footerCallUrl = 'tel:+' . $siteConfig['phone_country_code'] . preg_replace('/\D+/', '', $siteConfig['phone']);
     $footerWhatsappUrl = 'https://wa.me/' . $siteConfig['phone_country_code'] . preg_replace('/\D+/', '', $siteConfig['whatsapp']);
     $footerArrow = '<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-5-5 5 5-5 5"/></svg>';
+    $effectiveShowFooterCta = $showFooterCta ?? !in_array(($currentSection ?? ''), ['services', 'industries'], true);
 }
 ?>
     <?php if ($showSiteShell ?? true): ?>
     <footer class="site-footer bg-technical" id="site-footer">
-        <?php if ($showFooterCta ?? true): ?>
+        <?php if ($effectiveShowFooterCta ?? true): ?>
         <section class="footer-cta section technical-grid<?= $footerCtaCompact ? ' footer-cta--compact' : '' ?>" aria-labelledby="footer-cta-title">
             <div class="container footer-cta-inner">
                 <div class="footer-cta-copy">
