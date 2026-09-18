@@ -66,6 +66,11 @@
   const sections=[...main.querySelectorAll(':scope > .section')];
   const introTarget=serviceMain ? main.querySelector('.service-problems') : main.querySelector('.industry-challenges');
   (introTarget || sections[1])?.insertAdjacentElement('beforebegin',makeIconStrip());
-  const sceneTarget=serviceMain ? (main.querySelector('.service-process') || sections[5]) : (main.querySelector('.industry-execution') || sections[5]);
-  sceneTarget?.insertAdjacentElement('beforebegin',makeScene());
+  // Keep the explanatory engineering scene on service pages only.
+  // Industry pages already contain their own assessment/execution sections, so inserting
+  // this additional scene duplicates the content and makes the page unnecessarily long.
+  if (serviceMain) {
+    const sceneTarget=main.querySelector('.service-process') || sections[5];
+    sceneTarget?.insertAdjacentElement('beforebegin',makeScene());
+  }
 })();
