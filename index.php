@@ -154,44 +154,44 @@ $journey = [
          exists, so each card uses an animated motif + light-sweep loop instead of
          hotlinked stock footage. -->
     <section class="section bg-technical" id="industries" aria-labelledby="industries-title"><div class="container">
-        <div class="section-header section-header--split reveal-up"><span class="section-eyebrow">03 / Industries We Serve</span><h2 class="section-title" id="industries-title">The environment<br>changes the requirement.</h2><p class="section-description">Explore flooring requirements across different sectors, from production floors to controlled environments.</p></div>
+        <div class="section-header section-header--split reveal-up">
+            <span class="section-eyebrow">03 / Industries We Serve</span>
+            <h2 class="section-title" id="industries-title">The environment<br>changes the requirement.</h2>
+            <p class="section-description">Explore flooring requirements across different sectors,<br>from production floors to controlled environments.</p>
+        </div>
         <?php
-        $industryTaglines = [
-            'manufacturing' => 'Heavy traffic. Continuous operations.',
-            'pharma' => 'Controlled, clean production.',
-            'food-beverage' => 'Hygiene-first processing spaces.',
-            'electronics' => 'Precision static-controlled environments.',
-            'automobile' => 'Durable floors for assembly zones.',
-            'warehouses-logistics' => 'Movement, loads and turnaround.',
-            'hospitals-healthcare' => 'Clean, safe, sterile-ready spaces.',
-            'data-centres' => 'Reliable technical environments.',
-        ];
-        $industryMotifs = [
-            'manufacturing' => '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8a4 4 0 100 8 4 4 0 000-8Z"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg>',
-            'pharma' => '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-2.7 7.9-7 10-4.3-2.1-7-5.5-7-10V6l7-3z"/><path d="M9 12l2 2 4-5"/></svg>',
-            'food-beverage' => '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 2h6M10 2v4l-3 4v10a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V10l-3-4V2"/></svg>',
-            'electronics' => '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="7" width="10" height="10" rx="1"/><path d="M9 2v5M15 2v5M9 17v5M15 17v5M2 9h5M2 15h5M17 9h5M17 15h5"/></svg>',
-            'automobile' => '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 16l1.5-5A2 2 0 0 1 7.4 9.5h9.2a2 2 0 0 1 1.9 1.5L20 16"/><path d="M4 16h16v3a1 1 0 0 1-1 1h-1a1 1 0 0 1-1-1v-1H7v1a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-3Z"/><circle cx="7.5" cy="16" r="1.5"/><circle cx="16.5" cy="16" r="1.5"/></svg>',
-            'warehouses-logistics' => '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="10" width="16" height="10" rx="1"/><path d="M4 10l3-5h10l3 5"/></svg>',
-            'hospitals-healthcare' => '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12h4l2-6 4 12 2-6h6"/></svg>',
-            'data-centres' => '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="4" width="14" height="6" rx="1"/><rect x="5" y="14" width="14" height="6" rx="1"/><circle cx="8" cy="7" r=".8"/><circle cx="8" cy="17" r=".8"/></svg>',
+        $industryCards = [
+            'manufacturing' => ['Manufacturing', 'Heavy traffic. Continuous operations.', 'https://videos.pexels.com/video-files/32243651/13751466_3840_2160_25fps.mp4', 'https://images.unsplash.com/photo-1565793298595-6a879b1d9492?auto=format&fit=crop&w=1200&q=84'],
+            'pharma' => ['Pharma', 'Controlled clean production.', 'https://videos.pexels.com/video-files/31522467/13436992_3840_2160_50fps.mp4', 'https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?auto=format&fit=crop&w=1200&q=84'],
+            'food-beverage' => ['Food & Beverage', 'Hygiene-first processing spaces.', 'https://videos.pexels.com/video-files/10416677/10416677-hd_1280_720_50fps.mp4', 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1200&q=84'],
+            'electronics' => ['Electronics', 'Precision static-controlled environments.', 'https://videos.pexels.com/video-files/4709394/4709394-uhd_4096_2160_25fps.mp4', 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=84'],
+            'automobile' => ['Automobile', 'Durable floors for assembly zones.', 'https://videos.pexels.com/video-files/4468754/4468754-uhd_3840_2160_24fps.mp4', 'https://images.unsplash.com/photo-1487754180451-c456f719a1fc?auto=format&fit=crop&w=1200&q=84'],
+            'warehouses-logistics' => ['Warehouses & Logistics', 'Movement, loads and turnaround.', 'https://videos.pexels.com/video-files/6194507/6194507-uhd_3840_2160_30fps.mp4', 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1200&q=84'],
+            'hospitals-healthcare' => ['Hospitals & Healthcare', 'Clean, safe, daily-use spaces.', 'https://videos.pexels.com/video-files/6130553/6130553-hd_1920_1080_30fps.mp4', 'https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&w=1200&q=84'],
+            'data-centres' => ['Data Centres', 'Reliable technical environments.', 'https://videos.pexels.com/video-files/5028622/5028622-uhd_3840_2160_25fps.mp4', 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=84'],
         ];
         ?>
-        <div class="industry-video-grid reveal-group">
-            <?php foreach ($industryDescriptions as $slug => [$title, $description]): ?>
-            <div class="industry-video-card" id="industry-<?= $slug ?>">
-                <span class="industry-card-poster home-demo-media" aria-hidden="true"></span>
-                <span class="industry-card-scan" aria-hidden="true"></span>
-                <button class="industry-card-index" type="button" data-motion-toggle aria-pressed="false" aria-label="Pause motion for <?= site_escape($homeIndustries[$slug]) ?>">&#9654;</button>
-                <span class="industry-card-topline">Loop</span>
-                <span class="industry-card-motif"><?= $industryMotifs[$slug] ?></span>
-                <span class="industry-card-copy"><strong><?= site_escape($homeIndustries[$slug]) ?></strong><span><?= site_escape($industryTaglines[$slug]) ?></span></span>
+        <div class="industry-video-grid reveal-group" aria-label="Featured industries">
+            <?php foreach ($industryCards as $slug => [$title, $tagline, $video, $poster]): ?>
+            <a class="industry-video-card" href="<?= site_escape(site_url('industries/' . $slug . '.php')) ?>" aria-label="Explore <?= site_escape($title) ?>">
+                <span class="industry-card-poster" style="background-image:url('<?= site_escape($poster) ?>')" aria-hidden="true"></span>
+                <video class="industry-card-video" muted autoplay playsinline preload="metadata" poster="<?= site_escape($poster) ?>" data-video-src="<?= site_escape($video) ?>" aria-hidden="true"></video>
+                <span class="industry-card-overlay" aria-hidden="true"></span>
+                <span class="industry-card-copy">
+                    <strong><?= site_escape($title) ?></strong>
+                    <span><?= site_escape($tagline) ?></span>
+                </span>
                 <span class="industry-card-arrow" aria-hidden="true"><?= $arrow ?></span>
-                <a class="industry-card-cover-link" href="<?= site_escape(site_url('industries/' . $slug . '.php')) ?>"><span class="visually-hidden">Explore <?= site_escape($homeIndustries[$slug]) ?></span></a>
-            </div>
+            </a>
             <?php endforeach; ?>
         </div>
-        <details class="home-more-industries"><summary>Explore More Industries <?= $arrow ?></summary><div class="home-more-links"><?php foreach ($homeIndustries as $slug => $label): if (isset($industryDescriptions[$slug])) continue; ?><a href="<?= site_escape(site_url('industries/' . $slug . '.php')) ?>"><?= site_escape($label) ?> <?= $arrow ?></a><?php endforeach; ?></div></details>
+        <div class="industries-grid-footer">
+            <details class="home-more-industries">
+                <summary>Explore All Industries <?= $arrow ?></summary>
+                <div class="home-more-links"><?php foreach ($homeIndustries as $slug => $label): if (isset($industryCards[$slug])) continue; ?><a href="<?= site_escape(site_url('industries/' . $slug . '.php')) ?>"><?= site_escape($label) ?> <?= $arrow ?></a><?php endforeach; ?></div>
+            </details>
+        </div>
+        <div class="industry-section-signoff" aria-hidden="true"><span>Different environments. Higher standards.</span></div>
     </div></section>
 
     <!-- 06 / Operational floor map; outcomes are priorities rather than guarantees. -->
