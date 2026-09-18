@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" role="img" aria-labelledby="t d">
+<title id="t">Service support</title><desc id="d">A service technician route connects the facility, support visit and follow-up communication.</desc>
+<style>.t{font:700 24px Inter,Arial;fill:#12384b}.s{font:500 15px Inter,Arial;fill:#5c7380}.h{font:700 14px Inter,Arial;fill:#12384b}
+.route{stroke:#27a9da;stroke-width:7;stroke-dasharray:16 13;animation:dash 1.35s linear infinite}.van{animation:van 4.5s ease-in-out infinite alternate}.pulse{animation:pulse 1.7s ease-out infinite}
+@keyframes dash{to{stroke-dashoffset:-58}}@keyframes van{from{transform:translateX(0)}to{transform:translateX(300px)}}@keyframes pulse{75%{r:38;opacity:0}}</style>
+<rect width="960" height="540" rx="28" fill="#f7fbfd"/><text class="t" x="48" y="52">04 · Service Support</text><text class="s" x="48" y="82">Stay connected as facility needs evolve and arrange follow-up support when required.</text>
+<g transform="translate(65 125)">
+<polygon points="70,70 250,50 275,210 95,225" fill="#dce6ea" stroke="#aec4cd" stroke-width="2"/><rect x="115" y="105" width="105" height="70" fill="#7995a2"/><rect x="135" y="125" width="28" height="50" fill="#e7eef1"/><rect x="175" y="122" width="30" height="28" fill="#bcd2da"/>
+<path class="route" d="M235 290 C360 230 430 295 535 220 S695 165 765 205" fill="none"/>
+<g class="van" transform="translate(245 247)"><rect width="110" height="48" rx="10" fill="#e5edf1" stroke="#1b5b7a" stroke-width="3"/><rect x="65" y="-22" width="40" height="24" rx="5" fill="#d0e2e9"/><circle cx="25" cy="53" r="11" fill="#173746"/><circle cx="84" cy="53" r="11" fill="#173746"/><path d="M20 22h55" stroke="#1b5b7a" stroke-width="6"/></g>
+<g transform="translate(615 80)"><rect width="180" height="105" rx="16" fill="#fff" stroke="#b9d0d9"/><text class="h" x="90" y="36" text-anchor="middle">FOLLOW-UP SUPPORT</text><text class="s" x="90" y="64" text-anchor="middle">Call · visit · review</text></g>
+<circle cx="690" cy="265" r="11" fill="#f2b721"/><circle class="pulse" cx="690" cy="265" r="11" fill="none" stroke="#f2b721" stroke-width="4"/>
+<text class="h" x="625" y="315">SERVICE POINT</text>
+</g></svg>
