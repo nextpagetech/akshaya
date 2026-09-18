@@ -1,8 +1,9 @@
 <?php
 $pageTitle = 'Contact Us';
 $pageDescription = 'Contact Akshaya Floor Solutions about industrial flooring, wall coating, waterproofing or a site assessment.';
-$bodyClass = 'support-page contact-page';
+$bodyClass = 'support-page support-v2 contact-page';
 $assetPrefix = '.';
+$showFooterCta = false;
 require_once __DIR__ . '/includes/reusable-components.php';
 require_once __DIR__ . '/includes/form-handler.php';
 
