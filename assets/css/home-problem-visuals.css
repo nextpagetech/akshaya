@@ -18,13 +18,16 @@
 .home-page .problem-visual-scene svg{position:absolute;inset:0;width:100%;height:100%}
 .home-page .pv-effect-label{position:absolute;right:7%;bottom:18%;padding:.52rem .7rem;background:rgb(228 77 54/.94);color:#fff;border-radius:.3rem;font:800 .72rem/1 var(--font-body);letter-spacing:.03em;box-shadow:0 8px 18px rgb(4 22 32/.24);animation:problem-label 3.2s ease-in-out infinite}
 
-/* Floor crack — strong, clearly visible animated trace and callout. */
-.home-page .pv-crack-base{fill:none;stroke:rgb(48 31 28/.7);stroke-width:14;stroke-linecap:round;stroke-linejoin:round}
-.home-page .pv-crack-path{fill:none;stroke:#ff5b3d;stroke-width:8;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:760;stroke-dashoffset:760;filter:drop-shadow(0 0 7px rgb(255 91 61/.95));animation:problem-trace 4.4s ease-in-out infinite}
-.home-page .pv-crack-ring{fill:none;stroke:#fff;stroke-width:4;opacity:.95;transform-box:fill-box;transform-origin:center;animation:problem-ring 2s ease-out infinite}
-.home-page .pv-crack-ring-b{animation-delay:.7s}
-.home-page .pv-callout path{fill:none;stroke:#ff5b3d;stroke-width:3}.home-page .pv-callout rect{fill:#e84f35}.home-page .pv-callout text{fill:#fff;font:800 20px/1 var(--font-body)}
-.home-page .pv-callout{animation:problem-callout 4.4s ease-in-out infinite}
+/* Floor crack — a small 3D floor tile that visibly splits open along a crack line. */
+.home-page .pv-crack-tile{position:absolute;right:9%;bottom:11%;width:40%;height:36%;perspective:640px;perspective-origin:50% 30%}
+.home-page .pv-crack-crevice{position:absolute;inset:5% 7%;background:linear-gradient(180deg,#2a1f18,#050403);border-radius:2px;box-shadow:inset 0 6px 10px rgb(0 0 0/.65)}
+.home-page .pv-crack-slab{position:absolute;inset:0;transform-style:preserve-3d;will-change:transform,filter}
+.home-page .pv-crack-slab-left{background:linear-gradient(160deg,#d3d7d5,#9ea3a1 55%,#7d827f);clip-path:polygon(0 0,50% 0,58% 14%,42% 28%,60% 42%,40% 56%,58% 70%,44% 84%,50% 100%,0 100%);transform-origin:0 50%;animation:crack-slab-left 4.6s ease-in-out infinite}
+.home-page .pv-crack-slab-right{background:linear-gradient(200deg,#c3c7c5,#8f9491 55%,#6c716e);clip-path:polygon(100% 0,50% 0,58% 14%,42% 28%,60% 42%,40% 56%,58% 70%,44% 84%,50% 100%,100% 100%);transform-origin:100% 50%;animation:crack-slab-right 4.6s ease-in-out infinite}
+.home-page .pv-crack-line{position:absolute;inset:0;overflow:visible}
+.home-page .pv-crack-line path{fill:none;stroke:#ff5b3d;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:130;stroke-dashoffset:130;filter:drop-shadow(0 0 5px rgb(255 91 61/.95));animation:crack-line-draw 4.6s ease-in-out infinite}
+.home-page .pv-crack-dust{position:absolute;top:46%;width:.4rem;height:.4rem;border-radius:50%;background:rgb(214 208 200/.92);opacity:0;animation:crack-dust-puff 4.6s ease-in-out infinite}
+.home-page .pv-crack-dust-1{left:44%;--dx:-8px;animation-delay:.05s}.home-page .pv-crack-dust-2{left:52%;top:52%;--dx:7px;animation-delay:.18s}.home-page .pv-crack-dust-3{left:48%;top:60%;--dx:2px;animation-delay:.3s}
 
 /* Dust — obvious moving particles plus a visible surface haze. */
 .home-page .pv-dust-haze{position:absolute;right:5%;bottom:4%;width:54%;height:42%;background:radial-gradient(ellipse at 55% 75%,rgb(225 231 233/.58),transparent 62%);filter:blur(5px);animation:problem-haze 2.8s ease-in-out infinite alternate}
@@ -51,9 +54,10 @@
 .home-page .pv-ripple{position:absolute;border:3px solid rgb(124 220 239/.85);border-radius:50%;animation:problem-ripple 2s ease-out infinite}.home-page .pv-ripple-a{right:22%;bottom:20%;width:3rem;height:1.4rem}.home-page .pv-ripple-b{right:35%;bottom:14%;width:2.4rem;height:1.1rem;animation-delay:.75s}
 
 @keyframes problem-camera{0%{transform:scale(1.05) translate3d(0,0,0)}100%{transform:scale(1.095) translate3d(-1.2%,.7%,0)}}
-@keyframes problem-trace{0%,10%{stroke-dashoffset:760;opacity:.15}45%,72%{stroke-dashoffset:0;opacity:1}100%{stroke-dashoffset:0;opacity:.28}}
-@keyframes problem-ring{0%{transform:scale(.55);opacity:0}30%{opacity:1}100%{transform:scale(1.75);opacity:0}}
-@keyframes problem-callout{0%,27%{opacity:0;transform:translateY(8px)}42%,80%{opacity:1;transform:none}100%{opacity:0;transform:translateY(-3px)}}
+@keyframes crack-line-draw{0%,8%{stroke-dashoffset:130;opacity:0}30%{stroke-dashoffset:0;opacity:1}68%{stroke-dashoffset:0;opacity:1}88%,100%{opacity:.35}}
+@keyframes crack-slab-left{0%,25%{transform:rotateY(0) translateZ(0);filter:drop-shadow(0 0 0 rgb(0 0 0/0))}50%,62%{transform:rotateY(-10deg) translateZ(-9px) translateY(1px);filter:drop-shadow(-5px 7px 7px rgb(0 0 0/.42))}100%{transform:rotateY(0) translateZ(0);filter:drop-shadow(0 0 0 rgb(0 0 0/0))}}
+@keyframes crack-slab-right{0%,25%{transform:rotateY(0) translateZ(0);filter:drop-shadow(0 0 0 rgb(0 0 0/0))}50%,62%{transform:rotateY(10deg) translateZ(-9px) translateY(1px);filter:drop-shadow(5px 7px 7px rgb(0 0 0/.42))}100%{transform:rotateY(0) translateZ(0);filter:drop-shadow(0 0 0 rgb(0 0 0/0))}}
+@keyframes crack-dust-puff{0%,44%{transform:translate(0,0) scale(.4);opacity:0}54%{opacity:.9}100%{transform:translate(var(--dx,6px),-22px) scale(1.2);opacity:0}}
 @keyframes problem-pulse{70%{box-shadow:0 0 0 .7rem rgb(228 77 54/0)}}
 @keyframes problem-live{50%{opacity:.28;transform:scale(.72)}}
 @keyframes problem-label{0%,18%,100%{opacity:0;transform:translateY(7px)}30%,78%{opacity:1;transform:none}}
@@ -71,5 +75,5 @@
 
 @media (hover:hover) and (pointer:fine){.home-page .diagnostic-stage:hover .problem-visual-image{filter:saturate(1.02) contrast(1.06)}}
 @media (max-width:991.98px){.home-page .diagnostic-stage{min-height:30rem}.home-page .problem-visual-copy{max-width:70%}}
-@media (max-width:767.98px){.home-page .diagnostic-stage{min-height:27rem}.home-page .problem-visual-copy{left:1.1rem;top:1.2rem;max-width:82%}.home-page .problem-visual-title{font-size:clamp(1.8rem,9vw,2.65rem)}.home-page .problem-visual-text{font-size:.9rem}.home-page .problem-visual-tag{right:.8rem;bottom:.8rem;left:.8rem;justify-content:center}.home-page .problem-motion-cue{display:none}.home-page .problem-visual::after{background:linear-gradient(180deg,rgb(8 28 40/.78) 0 42%,rgb(8 28 40/.08) 72%,rgb(8 28 40/.38) 100%)}.home-page .pv-effect-label{right:.8rem;bottom:5rem}.home-page .pv-callout{display:none}}
-@media (prefers-reduced-motion:reduce){.home-page .problem-visual-image,.home-page .problem-motion-cue span,.home-page .pv-crack-path,.home-page .pv-crack-ring,.home-page .pv-callout,.home-page .problem-visual-tag i,.home-page .pv-dust,.home-page .pv-dust-haze,.home-page .pv-peel,.home-page .pv-peel-edge,.home-page .pv-grid,.home-page .pv-static-route,.home-page .pv-static-pulse,.home-page .pv-clean,.home-page .pv-clean-shine,.home-page .pv-water,.home-page .pv-drop,.home-page .pv-ripple,.home-page .pv-effect-label{animation:none!important;transition:none!important}.home-page .pv-crack-path{stroke-dashoffset:0}.home-page .pv-effect-label{opacity:1}}
+@media (max-width:767.98px){.home-page .diagnostic-stage{min-height:27rem}.home-page .problem-visual-copy{left:1.1rem;top:1.2rem;max-width:82%}.home-page .problem-visual-title{font-size:clamp(1.8rem,9vw,2.65rem)}.home-page .problem-visual-text{font-size:.9rem}.home-page .problem-visual-tag{right:.8rem;bottom:.8rem;left:.8rem;justify-content:center}.home-page .problem-motion-cue{display:none}.home-page .problem-visual::after{background:linear-gradient(180deg,rgb(8 28 40/.78) 0 42%,rgb(8 28 40/.08) 72%,rgb(8 28 40/.38) 100%)}.home-page .pv-effect-label{right:.8rem;bottom:5rem}}
+@media (prefers-reduced-motion:reduce){.home-page .problem-visual-image,.home-page .problem-motion-cue span,.home-page .pv-crack-line path,.home-page .pv-crack-slab,.home-page .pv-crack-dust,.home-page .problem-visual-tag i,.home-page .pv-dust,.home-page .pv-dust-haze,.home-page .pv-peel,.home-page .pv-peel-edge,.home-page .pv-grid,.home-page .pv-static-route,.home-page .pv-static-pulse,.home-page .pv-clean,.home-page .pv-clean-shine,.home-page .pv-water,.home-page .pv-drop,.home-page .pv-ripple,.home-page .pv-effect-label{animation:none!important;transition:none!important}.home-page .pv-crack-line path{stroke-dashoffset:0;opacity:1}.home-page .pv-crack-slab-left{transform:rotateY(-10deg) translateZ(-9px)}.home-page .pv-crack-slab-right{transform:rotateY(10deg) translateZ(-9px)}.home-page .pv-effect-label{opacity:1}}

@@ -1,0 +1,241 @@
+/* Premium home redesign: trust strip continuity, featured-project card fix,
+ * and typography polish. Loaded last so it wins the cascade without !important. */
+
+/* Local fallback for Bootstrap's .visually-hidden utility so accessible-only
+ * link text never renders visibly if the Bootstrap CDN is unreachable. */
+.home-page .visually-hidden {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+}
+
+/* -- 00 / Hero: full-bleed autoplay video, matching the approved reference layout.
+ * Video source is a temporary stock placeholder — see the HTML comment in index.php. -- */
+.home-page .ae-hero--video {
+    position: relative;
+    isolation: isolate;
+    z-index: 2;
+    overflow: hidden;
+    min-height: clamp(30rem, 44vw, 38rem);
+    display: flex;
+    align-items: center;
+    color: #fff;
+    background: #0a2233;
+}
+.home-page .ae-hero-media { position: absolute; inset: 0; z-index: 0; }
+.home-page .ae-hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: saturate(.92) contrast(1.05) brightness(.82); }
+.home-page .ae-hero-scrim {
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(90deg, rgb(6 26 40 / .88) 0%, rgb(6 26 40 / .62) 32%, rgb(6 26 40 / .18) 58%, rgb(6 26 40 / .55) 100%),
+        linear-gradient(180deg, rgb(6 26 40 / .1), rgb(6 26 40 / .55) 100%);
+}
+.home-page .ae-hero--video .ae-hero-layout { position: relative; z-index: 2; display: flex; align-items: center; justify-content: space-between; gap: 2rem; width: 100%; padding-block: clamp(3rem, 6vw, 5rem) clamp(6rem, 9vw, 8rem); }
+.home-page .ae-hero--video .ae-hero-copy { max-width: 34rem; }
+.home-page .ae-hero--video .ae-hero-eyebrow { display: block; margin-bottom: .75rem; color: #d8edf6; font-size: .78rem; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; }
+.home-page .ae-hero--video .ae-hero-title {
+    margin: 0;
+    color: #fff;
+    font-family: var(--font-display);
+    font-size: clamp(2.6rem, 4.6vw, 4.2rem);
+    font-weight: 700;
+    line-height: .98;
+    letter-spacing: -.02em;
+    text-transform: uppercase;
+}
+.home-page .ae-hero--video .ae-hero-lead { max-width: 28rem; margin: 1.1rem 0 1.5rem; color: rgb(255 255 255 / .86); font-size: 1.05rem; line-height: 1.5; }
+.home-page .ae-hero--video .ae-hero-actions { display: flex; align-items: center; gap: 1.25rem; flex-wrap: wrap; }
+.home-page .ae-hero--video .ae-hero-eyebrow::before { display: none; }
+.home-page .ae-hero--video .ae-hero-primary {
+    --bs-btn-color: #0a2233; --bs-btn-bg: var(--color-signal); --bs-btn-border-color: var(--color-signal);
+    --bs-btn-hover-color: #0a2233; --bs-btn-hover-bg: #ffdd5c; --bs-btn-hover-border-color: #ffdd5c;
+    border-radius: .2rem;
+}
+.home-page .ae-hero-watch { display: inline-flex; align-items: center; gap: .75rem; color: #fff; text-decoration: none; }
+.home-page .ae-hero-play { display: grid; place-items: center; flex: 0 0 auto; width: 2.6rem; height: 2.6rem; border: 2px solid rgb(255 255 255 / .85); border-radius: 50%; font-size: .7rem; padding-left: .12rem; transition: background-color 220ms ease, transform 220ms ease; }
+.home-page .ae-hero-watch:hover .ae-hero-play { background: rgb(255 255 255 / .16); transform: scale(1.06); }
+.home-page .ae-hero-watch-copy { display: flex; flex-direction: column; line-height: 1.25; }
+.home-page .ae-hero-watch-copy strong { font-weight: 700; }
+.home-page .ae-hero-watch-copy small { color: rgb(255 255 255 / .7); font-size: .78rem; }
+.home-page .ae-hero-side-message {
+    margin: 0;
+    flex: 0 0 auto;
+    align-self: flex-start;
+    padding: 1.1rem 0 1.1rem 1.15rem;
+    border-left: 1px solid rgb(255 255 255 / .4);
+    color: rgb(255 255 255 / .92);
+    font-family: var(--font-display);
+    font-size: .85rem;
+    font-weight: 700;
+    line-height: 1.7;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+}
+.home-page .ae-hero-benefits {
+    position: absolute;
+    z-index: 2;
+    right: clamp(1.25rem, 4vw, 4.5rem);
+    bottom: 0;
+    display: flex;
+    background: rgb(6 26 40 / .55);
+    backdrop-filter: blur(4px);
+}
+.home-page .ae-hero-benefit { display: grid; grid-template-columns: 2rem auto; align-items: center; gap: .55rem; padding: .85rem 1rem; border-left: 1px solid rgb(255 255 255 / .22); color: #fff; }
+.home-page .ae-hero-benefit:first-child { border-left: 0; }
+.home-page .ae-hero-benefit svg { width: 1.6rem; height: 1.6rem; fill: none; stroke: #fff; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.home-page .ae-hero-benefit span { font-size: .68rem; font-weight: 800; line-height: 1.2; letter-spacing: .05em; text-transform: uppercase; }
+
+@media (max-width: 991.98px) {
+    .home-page .ae-hero--video { flex-direction: column; align-items: stretch; padding-bottom: 0; }
+    .home-page .ae-hero-side-message { display: none; }
+    .home-page .ae-hero-benefits { position: static; width: 100%; margin-top: 0; }
+    .home-page .ae-hero--video .ae-hero-title { max-width: 100%; font-size: clamp(2.6rem, 9vw, 3.6rem); }
+}
+@media (max-width: 575.98px) {
+    .home-page .ae-hero-benefits { flex-wrap: wrap; }
+    .home-page .ae-hero-benefit { flex: 1 1 50%; }
+    .home-page .ae-hero--video .ae-hero-title { max-width: 100%; font-size: clamp(2.3rem, 11vw, 3rem); }
+}
+@media (prefers-reduced-motion: reduce) {
+    .home-page .ae-hero-video { display: none; }
+    .home-page .ae-hero-media { background: linear-gradient(140deg, #0d3047, #166ba2); }
+}
+
+/* -- 01 / Trust strip: read as a continuation of the hero, not a floating bar. -- */
+.home-page .home-trust {
+    position: relative;
+    margin-top: 0;
+    padding-block: clamp(1.75rem, 3vw, 2.5rem) 0;
+}
+.home-page .home-trust::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgb(101 203 227 / .45), transparent);
+}
+.home-page .home-trust-grid { padding-block: 0 clamp(1.75rem, 3vw, 2.5rem); }
+.home-page .home-trust-intro { gap: .2rem; }
+.home-page .home-trust-item { border-left-color: rgb(255 255 255 / .16); }
+
+/* -- 02 / Featured Projects: consistent premium editorial cards. -- */
+.home-page #featured-projects { padding-block: clamp(3rem, 6vw, 5.5rem); }
+.home-page .home-heading-row { align-items: flex-end; }
+
+.home-page .home-projects-grid { grid-template-columns: minmax(0, 1.25fr) minmax(0, .95fr); grid-auto-rows: 1fr; }
+.home-page .home-project {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    min-height: 24rem;
+    isolation: isolate;
+    transition: transform 320ms var(--ease-out), box-shadow 320ms var(--ease-out);
+}
+.home-page .home-project--featured { grid-row: span 2; min-height: 32rem; }
+.home-page .home-project .home-media,
+.home-page .home-project .home-demo-media {
+    position: absolute;
+    inset: 0;
+    height: 100%;
+    border-radius: 0;
+}
+.home-page .home-project .home-media img { width: 100%; height: 100%; object-fit: cover; transition: transform 650ms var(--ease-out); }
+.home-page .home-project:hover .home-media img { transform: scale(1.045); }
+.home-page .home-project:hover { transform: translateY(-4px); box-shadow: 0 30px 60px rgb(16 44 61 / .18); }
+
+.home-page .home-project::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background: linear-gradient(180deg, rgb(9 28 40 / .05) 0%, rgb(9 28 40 / .32) 42%, rgb(9 28 40 / .92) 100%);
+}
+.home-page .home-project-copy {
+    position: relative;
+    z-index: 2;
+    padding: clamp(1.35rem, 2.6vw, 2.25rem);
+    color: #fff;
+}
+.home-page .home-project-copy p { color: rgb(255 255 255 / .82); }
+.home-page .home-development-label {
+    display: inline-flex;
+    align-items: center;
+    gap: .4rem;
+    padding: .3rem .65rem;
+    border: 1px solid rgb(255 255 255 / .32);
+    border-radius: 999px;
+    color: rgb(255 255 255 / .92);
+    font-size: .68rem;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    background: rgb(255 255 255 / .08);
+    backdrop-filter: blur(6px);
+}
+.home-page .home-project-copy h3 { margin-top: .75rem; color: #fff; }
+.home-page .home-project-facts { color: rgb(255 255 255 / .88); }
+.home-page .home-project-facts dt { color: rgb(255 255 255 / .65); font-weight: 600; }
+.home-page .home-project-facts dd { color: #fff; }
+.home-page .home-project .link-arrow { color: #fff; }
+.home-page .home-project .link-arrow svg { stroke: #fff; }
+
+@media (max-width: 991.98px) {
+    .home-page .home-projects-grid { grid-template-columns: 1fr; grid-auto-rows: auto; }
+    .home-page .home-project, .home-page .home-project--featured { grid-row: auto; min-height: 22rem; }
+}
+@media (max-width: 575.98px) {
+    .home-page .home-project, .home-page .home-project--featured { min-height: 19rem; }
+    .home-page .home-project-copy { padding: 1.15rem; }
+}
+
+/* -- 02b / Industries: 8-card loop grid. Real supplied site photography per
+ * card (generic placement, not a claim of that exact sector); no real
+ * per-industry video exists, so motion comes from a light-sweep loop plus a
+ * small animated sector motif instead of hotlinked stock footage. -- */
+.home-page #industry-manufacturing .industry-card-poster { background-image: url('../../website_assets/Amritha Tools/IMG-20190714-WA0024.jpg'); }
+.home-page #industry-pharma .industry-card-poster { background-image: url('../../website_assets/Amritha Tools/IMG-20190714-WA0025.jpg'); }
+.home-page #industry-food-beverage .industry-card-poster { background-image: url('../../website_assets/Amritha Tools/IMG-20190721-WA0003.jpg'); }
+.home-page #industry-electronics .industry-card-poster { background-image: url('../../website_assets/Amritha Tools/IMG-20190721-WA0004.jpg'); }
+.home-page #industry-automobile .industry-card-poster { background-image: url('../../website_assets/Amritha Tools/IMG-20190726-WA0040.jpg'); }
+.home-page #industry-warehouses-logistics .industry-card-poster { background-image: url('../../website_assets/Amritha Tools/IMG-20190726-WA0041.jpg'); }
+.home-page #industry-hospitals-healthcare .industry-card-poster { background-image: url('../../website_assets/Amritha Tools/IMG-20190727-WA0007.jpg'); }
+.home-page #industry-data-centres .industry-card-poster { background-image: url('../../website_assets/Amritha Tools/IMG-20190727-WA0008.jpg'); }
+
+.home-page #industries .industry-card-cover-link { position: absolute; inset: 0; z-index: 4; }
+.home-page #industries .industry-card-cover-link:focus-visible { outline: 2px solid #fff; outline-offset: -2px; }
+.home-page #industries .industry-card-index { position: relative; z-index: 6; font-size: .85rem; padding-left: .1rem; cursor: pointer; transition: background-color .2s ease, transform .2s ease; }
+.home-page #industries .industry-card-index:hover { background: rgb(255 255 255 / .18); transform: scale(1.06); }
+.home-page #industries .industry-card-topline,
+.home-page #industries .industry-card-copy,
+.home-page #industries .industry-card-arrow { z-index: 6; pointer-events: none; }
+.home-page #industries .industry-card-motif {
+    position: absolute;
+    z-index: 5;
+    left: 1rem;
+    bottom: 3.6rem;
+    display: grid;
+    place-items: center;
+    width: 2rem;
+    height: 2rem;
+    color: #fff;
+    opacity: .92;
+    animation: industry-motif-pulse 2.4s ease-in-out infinite;
+}
+.home-page #industries .industry-card-motif svg { width: 100%; height: 100%; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; filter: drop-shadow(0 2px 6px rgb(0 0 0 / .45)); }
+.home-page #industries .industry-video-card.is-paused .industry-card-scan::before,
+.home-page #industries .industry-video-card.is-paused .industry-card-motif,
+.home-page #industries .industry-video-card.is-paused .industry-card-topline::before { animation-play-state: paused; }
+@keyframes industry-motif-pulse { 0%, 100% { transform: scale(1); opacity: .82; } 50% { transform: scale(1.12); opacity: 1; } }
+
+/* -- 03 / Typography polish so headings read as deliberately branded, not default. -- */
+.home-page .section-eyebrow, .section-eyebrow { font-family: var(--font-body); }
+.home-page .section-title, .home-page h1, .home-page h2, .home-page h3 { letter-spacing: -.02em; }
