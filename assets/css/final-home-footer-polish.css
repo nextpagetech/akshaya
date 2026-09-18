@@ -1,0 +1,152 @@
+/* Final home/footer cleanup:
+ * - one Home CTA only
+ * - clear visual separation between final CTA and dark footer
+ * - dedicated footer Contact Us column with icons
+ * - tighter Home section introductions
+ */
+
+/* Home assessment + workflow headers: reduce empty right-side space. */
+.home-page #technical-assessment .section-header{
+  max-width:none!important;
+  margin-bottom:clamp(1.75rem,3vw,2.75rem)!important;
+}
+@media(min-width:992px){
+  .home-page #technical-assessment .section-header--split{
+    grid-template-columns:minmax(0,1.18fr) minmax(24rem,.82fr)!important;
+    gap:clamp(2rem,4vw,4.5rem)!important;
+    align-items:end!important;
+  }
+  .home-page #technical-assessment .section-title{
+    max-width:21ch!important;
+    font-size:clamp(2.55rem,3.35vw,3.35rem)!important;
+  }
+  .home-page #technical-assessment .section-description{
+    max-width:36rem!important;
+    justify-self:end!important;
+    margin-bottom:.25rem!important;
+  }
+}
+.home-page #how-we-work .home-work-heading{
+  max-width:none!important;
+  margin-bottom:clamp(1.75rem,3vw,2.75rem)!important;
+}
+@media(min-width:992px){
+  .home-page #how-we-work .home-work-heading{
+    display:grid!important;
+    grid-template-columns:minmax(0,1.08fr) minmax(24rem,.92fr)!important;
+    gap:.7rem clamp(2rem,4vw,4.5rem)!important;
+    align-items:end!important;
+  }
+  .home-page #how-we-work .home-work-heading .section-eyebrow{grid-column:1/-1}
+  .home-page #how-we-work .home-work-heading .section-title{
+    max-width:19ch!important;
+    margin-bottom:0!important;
+    font-size:clamp(2.5rem,3.3vw,3.3rem)!important;
+  }
+  .home-page #how-we-work .home-work-heading .section-description{
+    max-width:36rem!important;
+    justify-self:end!important;
+    margin-bottom:.2rem!important;
+  }
+}
+
+/* Keep the final Home CTA clearly different from the dark footer. */
+.home-page .home-final-cta{
+  background:
+    radial-gradient(circle at 84% 18%,rgb(104 206 230/.18),transparent 24rem),
+    linear-gradient(135deg,#f8fbfc,#eaf4f7)!important;
+  color:#102d3e!important;
+  border-top:1px solid #d7e4ea;
+  border-bottom:1px solid #d7e4ea;
+}
+.home-page .home-final-cta::before{
+  background:linear-gradient(90deg,#176ea6,#68cee6,#f2b721)!important;
+}
+.home-page .home-final-cta .section-eyebrow{color:#176ea6!important}
+.home-page .home-final-cta .section-title{color:#102d3e!important}
+.home-page .home-final-cta :is(p,.body-large){color:#58717f!important}
+.home-page .home-final-cta .btn-outline{
+  color:#102d3e!important;
+  border-color:#9fb8c4!important;
+  background:#fff!important;
+}
+.home-page .home-final-cta .btn-outline:hover{
+  color:#fff!important;background:#10517d!important;border-color:#10517d!important;
+}
+
+/* Service/industry pages now have one CTA only; keep it visually separate from footer. */
+.service-main .service-final,
+.industry-main .industry-final{
+  background:
+    radial-gradient(circle at 84% 18%,rgb(104 206 230/.14),transparent 24rem),
+    linear-gradient(135deg,#f8fbfc,#edf5f8)!important;
+  color:#102d3e!important;
+  border-top:1px solid #d7e4ea;
+}
+.service-main .service-final .section-title,
+.industry-main .industry-final .section-title{color:#102d3e!important}
+.service-main .service-final .section-eyebrow,
+.industry-main .industry-final .section-eyebrow{color:#176ea6!important}
+.service-main .service-final p,
+.industry-main .industry-final p{color:#5a7180!important}
+.service-main .service-final .btn-outline,
+.industry-main .industry-final .btn-outline{
+  color:#102d3e!important;border-color:#9fb8c4!important;background:#fff!important;
+}
+.service-main .service-final .btn-outline:hover,
+.industry-main .industry-final .btn-outline:hover{
+  color:#fff!important;background:#10517d!important;border-color:#10517d!important;
+}
+
+/* Footer: brand stays compact; contact details become their own column. */
+.site-footer{background:#102838!important}
+.footer-brand{max-width:18rem!important}
+.footer-positioning{margin-bottom:0!important}
+.footer-contact-column{min-width:0}
+.footer-contact-links{display:grid;gap:.3rem}
+.footer-contact-links a{
+  display:grid!important;
+  grid-template-columns:2.35rem minmax(0,1fr);
+  align-items:center;
+  gap:.65rem;
+  width:100%!important;
+  min-height:3.25rem!important;
+  padding:.35rem 0!important;
+  color:var(--color-muted-on-dark)!important;
+  text-decoration:none!important;
+}
+.footer-contact-links .icon{
+  width:2.15rem;height:2.15rem;padding:.5rem;border-radius:.45rem;
+  color:#68cee6;background:rgb(104 206 230/.08);
+  stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;
+}
+.footer-contact-links span{min-width:0}
+.footer-contact-links small{
+  display:block;color:#8ea6b4;font-size:.66rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;
+}
+.footer-contact-links strong{
+  display:block;margin-top:.05rem;color:#d7e5ec;font-size:.82rem;font-weight:600;line-height:1.35;
+  overflow-wrap:anywhere;
+}
+.footer-contact-links a:hover .icon{color:#fff;background:rgb(104 206 230/.16)}
+.footer-contact-links a:hover strong{color:#68cee6}
+
+@media(min-width:1200px){
+  .footer-grid{
+    grid-template-columns:minmax(11rem,1.15fr) minmax(10rem,1fr) minmax(10rem,.9fr) minmax(12rem,1.05fr) minmax(10rem,.9fr)!important;
+    gap:clamp(1.25rem,2.2vw,2.5rem)!important;
+  }
+}
+@media(min-width:768px) and (max-width:1199.98px){
+  .footer-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  .footer-contact-column{order:4}
+}
+@media(max-width:767.98px){
+  .footer-contact-column{padding-top:var(--space-5);border-top:1px solid var(--color-border-on-dark)}
+}
+
+/* Compact mobile rhythm for the two Home sections. */
+@media(max-width:991.98px){
+  .home-page #technical-assessment .section-header,
+  .home-page #how-we-work .home-work-heading{margin-bottom:1.75rem!important}
+}
