@@ -1,7 +1,7 @@
 <?php
 $pageTitle = 'Contact Us';
 $pageDescription = 'Contact Akshaya Floor Solutions about industrial flooring, wall coating, waterproofing or a site assessment.';
-$bodyClass = 'support-page support-v2 contact-page';
+$bodyClass = 'support-page support-v2 contact-page contact-v2';
 $assetPrefix = '.';
 $showFooterCta = false;
 require_once __DIR__ . '/includes/reusable-components.php';
@@ -17,49 +17,92 @@ $formFields = [
 $formResult = site_form_submit($formFields, 'General Contact', $siteConfig);
 $formValues = $formResult['values'] ?? [];
 require_once __DIR__ . '/includes/header.php';
+
 $phoneUrl = site_escape('tel:+' . $siteConfig['phone_country_code'] . preg_replace('/\D+/', '', $siteConfig['phone']));
 $whatsappUrl = site_escape('https://wa.me/' . $siteConfig['phone_country_code'] . preg_replace('/\D+/', '', $siteConfig['whatsapp']));
 $emailUrl = site_escape('mailto:' . $siteConfig['email']);
+$mapQuery = rawurlencode($siteConfig['address'] !== '' ? $siteConfig['address'] : $siteConfig['company_name']);
+$mapSrc = 'https://www.google.com/maps?q=' . $mapQuery . '&output=embed';
+
 $callIcon = '<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h3l1.5 4-2 1.5a14 14 0 0 0 6 6l1.5-2L21 14v3c0 2.2-1.8 4-4 4A14 14 0 0 1 3 7c0-2.2 1.8-4 4-4Z"/></svg>';
 $whatsappIcon = '<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.6 7.3L3 20l1.3-5.2A8.4 8.4 0 1 1 21 11.5Z"/></svg>';
 $mailIcon = '<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h18v14H3V5Zm1 1 8 7 8-7"/></svg>';
+$pinIcon = '<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s6-5.2 6-11a6 6 0 1 0-12 0c0 5.8 6 11 6 11Zm0-8.5A2.5 2.5 0 1 0 12 7a2.5 2.5 0 0 0 0 5.5Z"/></svg>';
 ?>
 
-<main class="support-main" id="main-content">
-    <section class="support-hero" aria-labelledby="contact-title"><div class="container-wide support-hero-grid"><div class="support-hero-copy"><span class="support-kicker">Contact Akshaya</span><h1 id="contact-title">Tell Us About the <em>Floor.</em></h1><p>For a useful first conversation, share what the facility is used for, what is happening on the existing floor and what constraints the project needs to work around.</p><div class="support-actions"><a class="btn btn-primary" href="<?= site_escape(site_url('schedule-visit.php')) ?>">Schedule Site Visit</a><a class="btn btn-outline" href="<?= $phoneUrl ?>">Call Now</a></div></div><div class="support-hero-media" role="img" aria-label="Akshaya flooring project source photograph"></div></div></section>
-
-    <section class="section" aria-labelledby="contact-channels-title">
-        <div class="container">
-            <span class="section-eyebrow">01 / Choose a channel</span>
-            <h2 class="section-title" id="contact-channels-title">However you'd like to reach us.</h2>
-            <div class="contact-channels">
-                <a class="contact-channel" href="<?= $phoneUrl ?>"><span class="icon-box"><?= $callIcon ?></span><strong>Call</strong><span>+91 <?= site_escape($siteConfig['phone']) ?></span></a>
-                <a class="contact-channel" href="<?= $whatsappUrl ?>" target="_blank" rel="noopener noreferrer"><span class="icon-box"><?= $whatsappIcon ?></span><strong>WhatsApp</strong><span>Message our team directly</span></a>
-                <a class="contact-channel" href="<?= $emailUrl ?>"><span class="icon-box"><?= $mailIcon ?></span><strong>Email</strong><span><?= site_escape($siteConfig['email']) ?></span></a>
+<main class="support-main contact-v2-main" id="main-content">
+    <section class="contact-v2-hero" aria-labelledby="contact-title">
+        <div class="container-wide contact-v2-hero-grid">
+            <div>
+                <span class="support-kicker">Contact Akshaya</span>
+                <h1 id="contact-title">Tell us what is happening on the <em>floor.</em></h1>
             </div>
+            <p>Share the requirement, current floor condition or project context. Our team can review the enquiry and guide you on the appropriate next step.</p>
         </div>
     </section>
 
-    <section class="section" aria-labelledby="contact-form-title"><div class="container support-contact-grid"><div><span class="section-eyebrow">02 / Contact details</span><h2 class="section-title" id="contact-form-title">Start with a simple requirement.</h2><div class="contact-details"><div class="contact-row"><span>Contact person</span><strong><?= site_escape($siteConfig['contact_person']) ?></strong></div><div class="contact-row"><span>Phone</span><a href="<?= $phoneUrl ?>">+91 <?= site_escape($siteConfig['phone']) ?></a></div><div class="contact-row"><span>Email</span><a href="<?= $emailUrl ?>"><?= site_escape($siteConfig['email']) ?></a></div><div class="contact-row"><span>Company</span><strong><?= site_escape($siteConfig['company_name']) ?></strong></div></div>
+    <section class="contact-v2-main-section" aria-labelledby="contact-form-title">
+        <div class="container contact-v2-grid">
+            <div class="contact-v2-form-wrap">
+                <span class="section-eyebrow">01 / Send an enquiry</span>
+                <h2 id="contact-form-title">Start with the essentials.</h2>
+                <form class="support-form contact-v2-form" method="post" action="#contact-form-title" novalidate>
+                    <?php if ($formResult['submitted']): ?><div class="form-status<?= $formResult['success'] ? '' : ' is-error' ?>" role="status"><?= site_escape($formResult['message']) ?></div><?php endif; ?>
+                    <div class="form-honeypot" aria-hidden="true"><label>Website <input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+                    <div class="field"><label for="contact-name">Name *</label><input id="contact-name" name="name" required maxlength="100" value="<?= site_escape($formValues['name'] ?? '') ?>"></div>
+                    <div class="field"><label for="contact-company">Company</label><input id="contact-company" name="company" maxlength="150" value="<?= site_escape($formValues['company'] ?? '') ?>"></div>
+                    <div class="field"><label for="contact-phone">Phone *</label><input id="contact-phone" name="phone" type="tel" required pattern="[0-9+()\-\s]{7,20}" maxlength="30" value="<?= site_escape($formValues['phone'] ?? '') ?>"></div>
+                    <div class="field"><label for="contact-email">Email</label><input id="contact-email" name="email" type="email" maxlength="150" value="<?= site_escape($formValues['email'] ?? '') ?>"></div>
+                    <div class="field field-full"><label for="contact-requirement">Message / Requirement *</label><textarea id="contact-requirement" name="requirement" required maxlength="1000" placeholder="Tell us briefly about the floor or project requirement."><?= site_escape($formValues['requirement'] ?? '') ?></textarea></div>
+                    <div class="field-full"><button class="btn btn-primary" type="submit">Send Enquiry</button></div>
+                </form>
+            </div>
 
-        <div class="faq-list">
-            <details open><summary>Do you assess the floor before quoting?</summary><p>Yes. Akshaya's approach starts with a site visit and technical review before any system or pricing is discussed.</p></details>
-            <details><summary>Can I send photos instead of describing the problem?</summary><p>Photos help, but they are a starting point rather than a substitute for an on-site assessment of substrate and moisture condition.</p></details>
-            <details><summary>Do you work outside your home region?</summary><p>Project location and scheduling are discussed during the initial conversation; share your location and we'll confirm feasibility.</p></details>
-            <details><summary>What should I have ready for the first call?</summary><p>Facility use, approximate area, current floor condition and any known constraints such as shutdown windows are useful to share upfront.</p></details>
+            <aside class="contact-v2-details" aria-label="Contact details">
+                <span class="section-eyebrow">02 / Contact details</span>
+                <h2>Reach the team directly.</h2>
+
+                <a class="contact-v2-detail" href="<?= $phoneUrl ?>">
+                    <span class="contact-v2-icon"><?= $callIcon ?></span>
+                    <span><small>Call</small><strong>+91 <?= site_escape($siteConfig['phone']) ?></strong></span>
+                </a>
+
+                <a class="contact-v2-detail" href="<?= $whatsappUrl ?>" target="_blank" rel="noopener noreferrer">
+                    <span class="contact-v2-icon"><?= $whatsappIcon ?></span>
+                    <span><small>WhatsApp</small><strong><?= site_escape($siteConfig['whatsapp']) ?></strong></span>
+                </a>
+
+                <a class="contact-v2-detail" href="<?= $emailUrl ?>">
+                    <span class="contact-v2-icon"><?= $mailIcon ?></span>
+                    <span><small>Email</small><strong><?= site_escape($siteConfig['email']) ?></strong></span>
+                </a>
+
+                <?php if ($siteConfig['address'] !== ''): ?>
+                <div class="contact-v2-detail">
+                    <span class="contact-v2-icon"><?= $pinIcon ?></span>
+                    <span><small>Address</small><strong><?= site_escape($siteConfig['address']) ?></strong></span>
+                </div>
+                <?php endif; ?>
+
+                <div class="contact-v2-company">
+                    <span>Contact person</span>
+                    <strong><?= site_escape($siteConfig['contact_person']) ?></strong>
+                    <span>Company</span>
+                    <strong><?= site_escape($siteConfig['company_name']) ?></strong>
+                </div>
+            </aside>
         </div>
-    </div><div>
-        <form class="support-form" method="post" action="#contact-form-title" novalidate>
-            <?php if ($formResult['submitted']): ?><div class="form-status<?= $formResult['success'] ? '' : ' is-error' ?>" role="status"><?= site_escape($formResult['message']) ?></div><?php endif; ?>
-            <div class="form-honeypot" aria-hidden="true"><label>Website <input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
-            <div class="field"><label for="contact-name">Name *</label><input id="contact-name" name="name" required maxlength="100" value="<?= site_escape($formValues['name'] ?? '') ?>"></div>
-            <div class="field"><label for="contact-company">Company</label><input id="contact-company" name="company" maxlength="150" value="<?= site_escape($formValues['company'] ?? '') ?>"></div>
-            <div class="field"><label for="contact-phone">Phone *</label><input id="contact-phone" name="phone" type="tel" required pattern="[0-9+()\-\s]{7,20}" maxlength="30" value="<?= site_escape($formValues['phone'] ?? '') ?>"></div>
-            <div class="field"><label for="contact-email">Email</label><input id="contact-email" name="email" type="email" maxlength="150" value="<?= site_escape($formValues['email'] ?? '') ?>"></div>
-            <div class="field field-full"><label for="contact-requirement">Flooring problem or requirement *</label><textarea id="contact-requirement" name="requirement" required maxlength="1000"><?= site_escape($formValues['requirement'] ?? '') ?></textarea></div>
-            <p class="form-note">Please do not send confidential production data through this form. Technical system selection is confirmed only after the relevant project conditions are reviewed.</p>
-            <div class="field-full"><button class="btn btn-primary" type="submit">Send Enquiry</button></div>
-        </form>
-    </div></div></section>
+    </section>
+
+    <section class="contact-v2-map" aria-label="Location map">
+        <iframe
+            src="<?= site_escape($mapSrc) ?>"
+            title="<?= site_escape($siteConfig['company_name']) ?> location map"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen>
+        </iframe>
+    </section>
 </main>
+
 <?php require_once __DIR__ . '/includes/footer.php'; ?>
